@@ -67,6 +67,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\datawebebook.mdf" />
+    <Content Include="App_Data\datawebebook_log.ldf">
+      <DependentUpon>datawebebook.mdf</DependentUpon>
+    </Content>
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
