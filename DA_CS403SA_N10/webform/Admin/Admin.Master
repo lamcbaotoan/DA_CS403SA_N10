@@ -1,0 +1,430 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Admin.Master.cs" Inherits="Webebook.WebForm.Admin.Admin" %>
+
+<!DOCTYPE html>
+<html lang="vi">
+<head runat="server">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <%-- Tiêu đề mặc định, có thể được ghi đè bởi trang con hoặc Javascript --%>
+    <title>Trang Quản Trị - Webebook</title>
+
+        <%-- === FAVICON TỐI ƯU & MANIFEST (Dành cho các file đã tạo) === --%>
+        <%-- File .ico cho tương thích rộng --%>
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+        <%-- File PNG với kích thước cụ thể cho trình duyệt hiện đại --%>
+        <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+
+        <%-- Icon cho thiết bị Apple --%>
+        <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+        <%-- Link tới Web App Manifest (cho PWA, Android Add to Homescreen) --%>
+        <link rel="manifest" href="/site.webmanifest">
+
+        <%-- (Tùy chọn) Khai báo màu nền cho Tile của Windows & Theme trình duyệt --%>
+        <meta name="msapplication-TileColor" content="#2d89ef"> <%-- Màu này thường có trong file manifest hoặc bạn tự chọn --%>
+        <meta name="theme-color" content="#ffffff"> <%-- Màu nền trình duyệt mobile, thường là trắng hoặc màu chủ đạo --%>
+        <%-- === KẾT THÚC FAVICON & MANIFEST === --%>
+
+
+    <%-- Tailwind CSS qua CDN --%>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <%-- FontAwesome qua CDN --%>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <%-- SweetAlert2 cho Popup xác nhận --%>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <style>
+        /* Thanh cuộn tùy chỉnh (Webkit) */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb { background: #a0a0a0; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #707070; }
+
+        /* Hiệu ứng chuyển đổi cho liên kết Sidebar */
+        .sidebar-link {
+            transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+        }
+        .sidebar-link:hover {
+            transform: translateX(3px); /* Hiệu ứng di chuyển nhẹ khi hover */
+        }
+
+        /* Kiểu cho liên kết đang hoạt động (áp dụng bằng JS) */
+        .sidebar-link-active {
+            background-color: theme('colors.sky.700'); /* Màu sky-700 của Tailwind */
+            color: theme('colors.white');
+            font-weight: 600; /* Chữ bán đậm */
+            box-shadow: inset 3px 0 0 0 theme('colors.sky.400'); /* Vạch chỉ thị bên trái */
+        }
+         .sidebar-link-active:hover {
+             background-color: theme('colors.sky.600'); /* Màu nhạt hơn một chút khi hover lúc đang active */
+         }
+
+
+        /* Hiệu ứng Fade-in cho nội dung chính */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .content-fade-in {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+
+        /* Đảm bảo body chiếm toàn bộ chiều cao cho flexbox */
+        html, body { height: 100%; }
+        body { display: flex; flex-direction: column; }
+        #form1 { display: flex; flex-direction: column; flex-grow: 1; } /* Form cũng cần flex để chiếm không gian */
+
+        /* Tùy chỉnh SweetAlert2 (Tùy chọn) */
+        .swal2-popup {
+            font-family: inherit; /* Sử dụng font của trang web */
+        }
+        .swal2-confirm {
+             background-color: theme('colors.red.600') !important; /* Màu red-600 */
+        }
+         .swal2-confirm:hover {
+             background-color: theme('colors.red.700') !important; /* Màu red-700 */
+         }
+         .swal2-cancel {
+             background-color: theme('colors.gray.500') !important; /* Màu gray-500 */
+         }
+         .swal2-cancel:hover {
+             background-color: theme('colors.gray.600') !important; /* Màu gray-600 */
+         }
+         /* --- CSS CHO TRỢ LÝ QUẢN TRỊ --- */
+        #admin-chatbot-window { 
+            transition: opacity 0.2s ease-out, transform 0.2s ease-out; 
+            transform: scale(0.95) translateY(10px); 
+            opacity: 0; 
+            pointer-events: none; 
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        #admin-chatbot-window:not(.hidden) { 
+            opacity: 1; 
+            transform: scale(1) translateY(0); 
+            pointer-events: auto; 
+        }
+    </style>
+    <%-- Placeholder cho các thẻ head bổ sung từ trang con --%>
+    <asp:ContentPlaceHolder ID="head" runat="server" />
+</head>
+<body class="bg-gray-100 antialiased">
+    <%-- Form chính bao bọc toàn bộ nội dung trang --%>
+    <form id="form1" runat="server" enctype="multipart/form-data">
+        <%-- ScriptManager cần thiết cho __doPostBack được sử dụng bởi popup đăng xuất --%>
+        <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="true" />
+
+        <%-- Container chính sử dụng Flexbox --%>
+        <div class="flex flex-grow min-h-0"> <%-- min-h-0 để khắc phục lỗi flex grow trên một số trình duyệt --%>
+            <%-- Thanh Sidebar bên trái --%>
+            <aside class="w-64 bg-gradient-to-b from-gray-800 to-slate-900 text-slate-200 p-5 space-y-6 flex flex-col shadow-lg border-r border-slate-700">
+                <%-- Logo/Tiêu đề Sidebar --%>
+                <a href="~/WebForm/Admin/adminhome.aspx" runat="server" class="text-white text-2xl font-bold hover:text-sky-300 transition duration-300 ease-in-out flex items-center space-x-2 px-2" title="Về trang Bảng điều khiển">
+                    <i class="fas fa-book-open text-sky-400"></i>
+                    <span>Quản trị Webebook</span> <%-- Đã Việt hóa --%>
+                </a>
+                <%-- Menu điều hướng --%>
+                <nav class="mt-8 flex-1 space-y-1.5 overflow-y-auto pr-1"> <%-- Thêm overflow-y và padding nhỏ để tránh thanh cuộn che chữ --%>
+                    <asp:HyperLink ID="hlHome" NavigateUrl="~/WebForm/Admin/adminhome.aspx" runat="server" CssClass="sidebar-link flex items-center py-2.5 px-4 rounded-md hover:bg-slate-700 hover:text-white" aria-label="Bảng Điều Khiển"><i class="fas fa-tachometer-alt fa-fw mr-3 w-5 text-center text-slate-400"></i> Bảng Điều Khiển</asp:HyperLink>
+                    <asp:HyperLink ID="hlQuanLySach" NavigateUrl="~/WebForm/Admin/QuanLySach.aspx" runat="server" CssClass="sidebar-link flex items-center py-2.5 px-4 rounded-md hover:bg-slate-700 hover:text-white" aria-label="Quản Lý Sách"><i class="fas fa-book fa-fw mr-3 w-5 text-center text-slate-400"></i> Quản Lý Sách</asp:HyperLink>
+                    <asp:HyperLink ID="hlQuanLyDonHang" NavigateUrl="~/WebForm/Admin/QuanLyDonHang.aspx" runat="server" CssClass="sidebar-link flex items-center py-2.5 px-4 rounded-md hover:bg-slate-700 hover:text-white" aria-label="Quản Lý Đơn Hàng"><i class="fas fa-shopping-cart fa-fw mr-3 w-5 text-center text-slate-400"></i> Quản Lý Đơn Hàng</asp:HyperLink>
+                    <asp:HyperLink ID="hlQuanLyNguoiDung" NavigateUrl="~/WebForm/Admin/QuanLyNguoiDung.aspx" runat="server" CssClass="sidebar-link flex items-center py-2.5 px-4 rounded-md hover:bg-slate-700 hover:text-white" aria-label="Quản Lý Người Dùng"><i class="fas fa-users fa-fw mr-3 w-5 text-center text-slate-400"></i> Quản Lý Người Dùng</asp:HyperLink>
+                    <asp:HyperLink ID="hlQuanLyDanhGia" NavigateUrl="~/WebForm/Admin/QuanLyDanhGia.aspx" runat="server" CssClass="sidebar-link flex items-center py-2.5 px-4 rounded-md hover:bg-slate-700 hover:text-white" aria-label="Quản Lý Đánh Giá"><i class="fas fa-comments fa-fw mr-3 w-5 text-center text-slate-400"></i> Quản Lý Đánh Giá</asp:HyperLink>
+                    <asp:HyperLink ID="hlBaoCaoDoanhThu" NavigateUrl="~/WebForm/Admin/BaoCaoDoanhThu.aspx" runat="server" CssClass="sidebar-link flex items-center py-2.5 px-4 rounded-md hover:bg-slate-700 hover:text-white" aria-label="Báo Cáo Doanh Thu"><i class="fas fa-chart-line fa-fw mr-3 w-5 text-center text-slate-400"></i> Báo Cáo Doanh Thu</asp:HyperLink>
+                    <asp:HyperLink ID="hlThongKeSach" NavigateUrl="~/WebForm/Admin/ThongKeSach.aspx" runat="server" CssClass="sidebar-link flex items-center py-2.5 px-4 rounded-md hover:bg-slate-700 hover:text-white" aria-label="Thống Kê Sách"><i class="fas fa-chart-bar fa-fw mr-3 w-5 text-center text-slate-400"></i> Thống Kê Sách</asp:HyperLink>
+                </nav>
+                <%-- Thông tin người dùng và nút Đăng xuất --%>
+                <div class="mt-auto pt-4 border-t border-slate-700">
+                    <asp:Label ID="lblUsername" runat="server" CssClass="block text-sm text-slate-400 mb-3 px-4 truncate" ToolTip="Tên người dùng đăng nhập"></asp:Label>
+                    <%-- Nút đăng xuất --%>
+                    <asp:LinkButton ID="btnLogout" runat="server" OnClick="btnLogout_Click"
+                        CssClass="flex items-center justify-center w-full py-2.5 px-4 rounded-md transition duration-300 bg-red-600 hover:bg-red-700 text-white font-medium focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 focus:ring-offset-slate-900"
+                        OnClientClick="showLogoutConfirmation(this); return false;"
+                        ToolTip="Đăng xuất khỏi tài khoản quản trị">
+                        <i class="fas fa-sign-out-alt fa-fw mr-2 w-5 text-center"></i> Đăng Xuất
+                    </asp:LinkButton>
+                    <%-- Chú thích về OnClientClick: Gọi JS để hiển thị popup xác nhận và ngăn postback mặc định --%>
+                </div>
+            </aside>
+
+            <%-- Khu vực Nội dung chính --%>
+            <div class="flex-1 flex flex-col overflow-hidden">
+                <%-- Thanh Header --%>
+                <header class="bg-white shadow-md p-4 border-b border-gray-200 z-10">
+                    <div class="flex justify-between items-center">
+                        <h1 class="text-xl font-semibold text-gray-800 flex items-center">
+                            <i class="fas fa-angle-right text-gray-500 mr-2 text-lg"></i> <%-- Icon chỉ hướng --%>
+                            <asp:Label ID="lblPageTitle" runat="server" Text="Trang Quản Trị"></asp:Label>
+                        </h1>
+                        <%-- Có thể thêm các thành phần khác vào header tại đây (vd: tìm kiếm, thông báo) --%>
+                    </div>
+                </header>
+
+                <%-- Nội dung chính của trang con - Thêm class hiệu ứng fade-in và xử lý overflow --%>
+                <main class="flex-1 overflow-x-hidden overflow-y-auto bg-gray-50 p-6 md:p-8 content-fade-in">
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server" />
+                </main>
+            </div>
+        </div>
+
+        <%-- Phần Footer --%>
+        <footer class="bg-slate-900 text-slate-400 p-4 text-center mt-auto">
+            <div class="container mx-auto text-xs">
+                 <p class="mb-1">&copy; <%: DateTime.Now.Year %> Webebook. [Phát triển bởi Lâm Chu Bảo Toàn.]</p>
+            </div>
+        </footer>
+    </form>
+
+    <%-- Đặt ngay trước thẻ đóng </form> trong Admin.Master --%>
+    <button id="admin-chatbot-toggle-button" type="button" title="Trò chuyện với Trợ lý Quản trị"
+        class="fixed bottom-6 right-6 z-[90] w-14 h-14 bg-sky-600 text-white rounded-full flex items-center justify-center shadow-lg hover:bg-sky-700 transition-transform transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500">
+        <i class="fas fa-robot text-2xl"></i>
+    </button>
+
+    <div id="admin-chatbot-window" class="hidden fixed bottom-24 right-6 z-[90] w-full max-w-sm h-[70vh] max-h-[500px] bg-white rounded-lg shadow-2xl flex flex-col transition-all duration-300 ease-in-out transform origin-bottom-right">
+        <div class="flex-shrink-0 bg-gradient-to-r from-slate-800 to-slate-900 text-white p-3 flex justify-between items-center rounded-t-lg shadow-md">
+            <div>
+                <h3 class="font-bold text-lg">Trợ lý Quản trị</h3>
+                <p class="text-xs text-slate-400 flex items-center">
+                    <span class="inline-block w-2 h-2 bg-green-400 rounded-full mr-1.5"></span>
+                    Sẵn sàng nhận lệnh
+                </p>
+            </div>
+            <button id="admin-chatbot-close-button" type="button" class="p-2 hover:bg-white/20 rounded-full focus:outline-none" aria-label="Đóng chat">
+                <i class="fas fa-times text-xl"></i>
+            </button>
+        </div>
+        <div id="admin-chatbot-messages" class="flex-grow p-4 overflow-y-auto space-y-4 bg-gray-50">
+            <div class="flex">
+                <div class="bg-gray-200 text-gray-800 p-3 rounded-lg max-w-[85%]">
+                    <p class="text-sm">Xin chào Quản trị viên. Tôi có thể giúp gì cho bạn?</p>
+                </div>
+            </div>
+        </div>
+        <div class="flex-shrink-0 p-3 border-t bg-gray-100">
+            <div class="relative">
+                <input type="text" id="admin-chatbot-input" placeholder="Hỏi về doanh thu, đơn hàng..." 
+                       class="w-full pr-12 pl-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-sky-400 transition" />
+                <button id="admin-chatbot-send-button" type="button" class="absolute inset-y-0 right-0 flex items-center justify-center w-12 text-sky-600 hover:text-sky-800" aria-label="Gửi">
+                    <i class="fas fa-paper-plane text-lg"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <%-- Các đoạn mã Script phía Client --%>
+    <script type="text/javascript">
+        // Hàm hiển thị popup xác nhận đăng xuất bằng SweetAlert2
+        function showLogoutConfirmation(buttonElement) {
+            Swal.fire({
+                title: 'Xác nhận đăng xuất', // Tiêu đề popup
+                text: "Bạn có chắc chắn muốn thoát khỏi phiên làm việc quản trị này?", // Nội dung mô tả
+                icon: 'warning', // Icon cảnh báo
+                showCancelButton: true, // Hiển thị nút Hủy
+                confirmButtonColor: '#d33', // Mã màu đỏ cho nút xác nhận
+                cancelButtonColor: '#6b7280', // Mã màu xám cho nút hủy
+                confirmButtonText: '<i class="fas fa-sign-out-alt fa-fw mr-1"></i> Đồng ý Đăng xuất', // Text nút xác nhận
+                cancelButtonText: '<i class="fas fa-times fa-fw mr-1"></i> Hủy bỏ', // Text nút hủy
+                reverseButtons: true // Đảo vị trí nút (nút xác nhận bên phải)
+            }).then((result) => {
+                if (result.isConfirmed) {
+        // Nếu người dùng xác nhận, thực hiện postback để kích hoạt sự kiện server-side btnLogout_Click
+        // Sử dụng hàm __doPostBack do ASP.NET ScriptManager cung cấp.
+        // Argument đầu tiên là UniqueID của control gây ra postback.
+                    // Lưu ý: <%= btnLogout.UniqueID %> được server render thành ID thực tế của control.
+                    console.log('Xác nhận đăng xuất, thực hiện postback cho: <%= btnLogout.UniqueID %>'); // Ghi log để debug
+                    __doPostBack('<%= btnLogout.UniqueID %>', '');
+                } else {
+                     console.log('Hủy bỏ hành động đăng xuất.'); // Ghi log để debug
+                }
+            });
+            // Đã return false trong OnClientClick nên không có postback mặc định nào xảy ra ở đây.
+        }
+
+
+        // Sự kiện DOMContentLoaded đảm bảo script chạy sau khi HTML đã được tải xong
+        document.addEventListener("DOMContentLoaded", function () {
+            // --- Làm nổi bật Menu đang hoạt động ---
+            const currentPath = window.location.pathname.toLowerCase();
+            const sidebarLinks = document.querySelectorAll('.sidebar-link'); // Chọn tất cả các link sidebar
+            const pageTitleLabel = document.getElementById('<%= lblPageTitle.ClientID %>'); // Label tiêu đề trên header
+            const pageHtmlTitle = document.querySelector('title'); // Thẻ <title> của trang
+
+            let foundActiveLink = false; // Cờ để đánh dấu đã tìm thấy link active chưa
+
+            sidebarLinks.forEach(link => {
+                const linkHref = link.getAttribute('href');
+                if (!linkHref) return; // Bỏ qua nếu link không có href
+
+                // Chuẩn hóa đường dẫn để so sánh tên file chính xác hơn
+                const linkUrl = new URL(linkHref, window.location.origin); // Tạo URL đầy đủ để lấy pathname chuẩn
+                const linkPath = linkUrl.pathname.toLowerCase();
+                const linkFileName = linkPath.substring(linkPath.lastIndexOf('/') + 1) || 'index.aspx'; // Lấy tên file, mặc định là 'index.aspx' nếu trống
+                const currentFileName = currentPath.substring(currentPath.lastIndexOf('/') + 1) || 'index.aspx';
+
+                // Luôn xóa class active khỏi tất cả các link trước khi áp dụng lại
+                link.classList.remove('sidebar-link-active');
+                // Xóa các style inline có thể đã được thêm trước đó (phòng trường hợp logic cũ)
+                link.style.backgroundColor = '';
+                link.style.color = '';
+                link.style.fontWeight = '';
+                link.style.boxShadow = '';
+
+                // So sánh tên file để xác định link active
+                // Ưu tiên khớp tên file chính xác
+                if (linkFileName && currentFileName === linkFileName) {
+                    link.classList.add('sidebar-link-active');
+                    foundActiveLink = true; // Đánh dấu đã tìm thấy
+                    // Cập nhật tiêu đề từ link đang active nếu tiêu đề hiện tại là mặc định
+                    if (pageTitleLabel && (pageTitleLabel.innerText.trim() === 'Trang Quản Trị' || pageTitleLabel.innerText.trim() === 'Chưa có tiêu đề' || pageTitleLabel.innerText.trim() === '')) {
+                        const linkText = link.innerText.trim(); // Lấy text của link
+                        if (linkText) {
+                            pageTitleLabel.innerText = linkText;
+                            if (pageHtmlTitle) pageHtmlTitle.innerText = linkText + " - Quản trị Webebook";
+                        }
+                    }
+                }
+                // Xử lý trường hợp đặc biệt: trang chủ admin có thể truy cập qua thư mục gốc /admin/
+                else if (!foundActiveLink && linkFileName === 'adminhome.aspx' && (currentPath.endsWith('/admin/') || currentPath.endsWith('/admin'))) {
+                    link.classList.add('sidebar-link-active');
+                    foundActiveLink = true;
+                    if (pageTitleLabel && (pageTitleLabel.innerText.trim() === 'Trang Quản Trị' || pageTitleLabel.innerText.trim() === '')) {
+                        const homeText = "Bảng Điều Khiển";
+                        pageTitleLabel.innerText = homeText;
+                        if (pageHtmlTitle) pageHtmlTitle.innerText = homeText + " - Quản trị Webebook";
+                    }
+                }
+            });
+
+            // --- Đặt Tiêu đề Trang Mặc định (Nếu JS không tìm thấy link active hoặc tiêu đề chưa được đặt) ---
+            if (pageTitleLabel) {
+                let currentHeaderText = pageTitleLabel.innerText.trim();
+                // Nếu tiêu đề vẫn là mặc định sau khi duyệt link, đặt lại tiêu đề dựa trên trang chủ hoặc giữ nguyên
+                if (currentHeaderText === 'Trang Quản Trị' || currentHeaderText === 'Chưa có tiêu đề' || currentHeaderText === '') {
+                    if (currentPath.includes('adminhome.aspx') || currentPath.endsWith('/admin/') || currentPath.endsWith('/admin')) {
+                        const homeText = "Bảng Điều Khiển";
+                        pageTitleLabel.innerText = homeText;
+                        if (pageHtmlTitle) pageHtmlTitle.innerText = homeText + " - Quản trị Webebook";
+                    } else {
+                        // Giữ lại "Trang Quản Trị" nếu không phải trang chủ và không có link nào khớp
+                        pageTitleLabel.innerText = "Trang Quản Trị";
+                        if (pageHtmlTitle) pageHtmlTitle.innerText = "Trang Quản Trị - Webebook"; // Giữ title cũ nếu header không xác định được
+                    }
+                } else {
+                    // Đảm bảo thẻ <title> khớp với header nếu header đã được đặt (bởi code-behind hoặc từ link active)
+                    if (pageHtmlTitle) pageHtmlTitle.innerText = currentHeaderText + " - Quản trị Webebook";
+                }
+            } else if (pageHtmlTitle) {
+                // Trường hợp không có label tiêu đề nhưng có thẻ title, đặt mặc định
+                pageHtmlTitle.innerText = "Quản trị Webebook";
+            }
+
+            // --- CODE MỚI CHO TRỢ LÝ QUẢN TRỊ ---
+            const adminChatbotToggleButton = document.getElementById('admin-chatbot-toggle-button');
+            const adminChatbotWindow = document.getElementById('admin-chatbot-window');
+            const adminChatbotCloseButton = document.getElementById('admin-chatbot-close-button');
+            const adminChatbotMessages = document.getElementById('admin-chatbot-messages');
+            const adminChatbotInput = document.getElementById('admin-chatbot-input');
+            const adminChatbotSendButton = document.getElementById('admin-chatbot-send-button');
+
+            // Logic hoạt động tương tự chatbot người dùng nhưng gọi đến service khác
+            if (adminChatbotToggleButton) {
+                let adminChatHistory = []; // Lịch sử chat riêng cho admin
+
+                // Lưu và tải lịch sử chat cho admin (dùng key khác)
+                const saveAdminHistory = () => sessionStorage.setItem('webebookAdminChatHistory', JSON.stringify(adminChatHistory));
+                const loadAdminHistory = () => {
+                    const saved = sessionStorage.getItem('webebookAdminChatHistory');
+                    if (saved) adminChatHistory = JSON.parse(saved);
+                    renderAdminHistory();
+                };
+
+                const renderAdminHistory = () => {
+                    adminChatbotMessages.innerHTML = '';
+                    adminChatHistory.forEach(item => addAdminMessageToUI(item.sender, item.sender === 'user' ? item.text : item.response));
+                    adminChatbotMessages.scrollTop = adminChatbotMessages.scrollHeight;
+                };
+
+                const addAdminMessageToUI = (sender, data) => {
+                    const wrapper = document.createElement('div');
+                    const bubble = document.createElement('div');
+                    wrapper.className = 'flex w-full flex-col mb-3';
+                    bubble.className = 'p-3 rounded-lg max-w-[85%] text-sm';
+
+                    if (sender === 'user') {
+                        wrapper.classList.add('items-end');
+                        bubble.classList.add('bg-sky-600', 'text-white');
+                        bubble.innerHTML = data;
+                    } else { // bot
+                        wrapper.classList.add('items-start');
+                        bubble.classList.add('bg-gray-200', 'text-gray-800');
+                        bubble.innerHTML = data.Text;
+                    }
+                    wrapper.appendChild(bubble);
+                    adminChatbotMessages.appendChild(wrapper);
+                };
+
+                const sendAdminMessage = () => {
+                    const text = adminChatbotInput.value.trim();
+                    if (text === '') return;
+
+                    adminChatHistory.push({ sender: 'user', text: text });
+                    saveAdminHistory();
+                    renderAdminHistory();
+                    adminChatbotInput.value = '';
+                    showAdminTypingIndicator();
+
+                    fetch('/AdminAssistantService.asmx/GetAdminResponse', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json; charset=utf-8' },
+                        body: JSON.stringify({ userMessage: text })
+                    })
+                        .then(res => res.json())
+                        .then(data => onAdminSuccess(data.d))
+                        .catch(onAdminError);
+                };
+
+                const onAdminSuccess = (responseObject) => {
+                    removeAdminTypingIndicator();
+                    adminChatHistory.push({ sender: 'bot', response: responseObject });
+                    saveAdminHistory();
+                    renderAdminHistory();
+                };
+
+                const onAdminError = (error) => {
+                    removeAdminTypingIndicator();
+                    const errorResponse = { sender: 'bot', response: { Text: 'Rất xin lỗi, có lỗi xảy ra.' } };
+                    adminChatHistory.push(errorResponse);
+                    saveAdminHistory();
+                    renderAdminHistory();
+                    console.error("Lỗi gọi Trợ lý Quản trị:", error);
+                };
+
+                const showAdminTypingIndicator = () => {
+                    const typingWrapper = document.createElement('div');
+                    typingWrapper.id = 'admin-typing-indicator';
+                    typingWrapper.className = 'flex';
+                    typingWrapper.innerHTML = `<div class="bg-gray-200 p-3 rounded-lg"><div class="typing-indicator"><span></span><span></span><span></span></div></div>`;
+                    adminChatbotMessages.appendChild(typingWrapper);
+                    adminChatbotMessages.scrollTop = adminChatbotMessages.scrollHeight;
+                };
+                const removeAdminTypingIndicator = () => {
+                    const indicator = document.getElementById('admin-typing-indicator');
+                    if (indicator) indicator.remove();
+                };
+
+                // Gán sự kiện
+                adminChatbotToggleButton.addEventListener('click', () => adminChatbotWindow.classList.toggle('hidden'));
+                adminChatbotCloseButton.addEventListener('click', () => adminChatbotWindow.classList.add('hidden'));
+                adminChatbotSendButton.addEventListener('click', sendAdminMessage);
+                adminChatbotInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') { e.preventDefault(); sendAdminMessage(); } });
+
+                // Tải lịch sử khi mở trang
+                loadAdminHistory();
+            }
+        });
+    </script>
+</body>
+</html>
