@@ -72,9 +72,79 @@
       <DependentUpon>datawebebook.mdf</DependentUpon>
     </Content>
     <Content Include="Web.config" />
+    <Content Include="webform\User\chitietdonhang.aspx" />
+    <Content Include="webform\User\danhgia.aspx" />
+    <Content Include="webform\User\gioithieu_user.aspx" />
+    <Content Include="webform\User\lichsumuahang.aspx" />
+    <Content Include="webform\User\thanhtoan.aspx" />
+    <Content Include="webform\User\thanhvien.aspx" />
+    <Content Include="webform\User\thongtincanhan.aspx" />
+    <Content Include="webform\User\xacnhandonhang.aspx" />
+    <Content Include="webform\VangLai\gioithieu.aspx" />
+    <Content Include="webform\VangLai\quenmatkhau.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="webform\User\chitietdonhang.aspx.cs">
+      <DependentUpon>chitietdonhang.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webform\User\chitietdonhang.aspx.designer.cs">
+      <DependentUpon>chitietdonhang.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webform\User\danhgia.aspx.cs">
+      <DependentUpon>danhgia.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webform\User\danhgia.aspx.designer.cs">
+      <DependentUpon>danhgia.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webform\User\gioithieu_user.aspx.cs">
+      <DependentUpon>gioithieu_user.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webform\User\gioithieu_user.aspx.designer.cs">
+      <DependentUpon>gioithieu_user.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webform\User\lichsumuahang.aspx.cs">
+      <DependentUpon>lichsumuahang.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webform\User\lichsumuahang.aspx.designer.cs">
+      <DependentUpon>lichsumuahang.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webform\User\thanhtoan.aspx.cs">
+      <DependentUpon>thanhtoan.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webform\User\thanhtoan.aspx.designer.cs">
+      <DependentUpon>thanhtoan.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webform\User\thanhvien.aspx.cs">
+      <DependentUpon>thanhvien.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webform\User\thanhvien.aspx.designer.cs">
+      <DependentUpon>thanhvien.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webform\User\thongtincanhan.aspx.cs">
+      <DependentUpon>thongtincanhan.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webform\User\thongtincanhan.aspx.designer.cs">
+      <DependentUpon>thongtincanhan.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webform\User\xacnhandonhang.aspx.cs">
+      <DependentUpon>xacnhandonhang.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webform\User\xacnhandonhang.aspx.designer.cs">
+      <DependentUpon>xacnhandonhang.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webform\VangLai\gioithieu.aspx.cs">
+      <DependentUpon>gioithieu.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webform\VangLai\gioithieu.aspx.designer.cs">
+      <DependentUpon>gioithieu.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webform\VangLai\quenmatkhau.aspx.cs">
+      <DependentUpon>quenmatkhau.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webform\VangLai\quenmatkhau.aspx.designer.cs">
+      <DependentUpon>quenmatkhau.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
