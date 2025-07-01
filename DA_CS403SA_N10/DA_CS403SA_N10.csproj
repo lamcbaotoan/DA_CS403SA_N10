@@ -72,18 +72,77 @@
       <DependentUpon>datawebebook.mdf</DependentUpon>
     </Content>
     <Content Include="Web.config" />
+    <Content Include="webform\Admin\BaoCaoDoanhThu.aspx" />
+    <Content Include="webform\Admin\ChiTietDonHang_Admin.aspx" />
+    <Content Include="webform\Admin\QuanLyDanhGia.aspx" />
+    <Content Include="webform\Admin\QuanLyDonHang.aspx" />
+    <Content Include="webform\Admin\QuanLyNguoiDung.aspx" />
+    <Content Include="webform\Admin\ThemNguoiDung.aspx" />
+    <Content Include="webform\Admin\ThongKeSach.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="webform\Admin\BaoCaoDoanhThu.aspx.cs">
+      <DependentUpon>BaoCaoDoanhThu.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webform\Admin\BaoCaoDoanhThu.aspx.designer.cs">
+      <DependentUpon>BaoCaoDoanhThu.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webform\Admin\ChiTietDonHang_Admin.aspx.cs">
+      <DependentUpon>ChiTietDonHang_Admin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webform\Admin\ChiTietDonHang_Admin.aspx.designer.cs">
+      <DependentUpon>ChiTietDonHang_Admin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webform\Admin\QuanLyDanhGia.aspx.cs">
+      <DependentUpon>QuanLyDanhGia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webform\Admin\QuanLyDanhGia.aspx.designer.cs">
+      <DependentUpon>QuanLyDanhGia.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webform\Admin\QuanLyDonHang.aspx.cs">
+      <DependentUpon>QuanLyDonHang.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webform\Admin\QuanLyDonHang.aspx.designer.cs">
+      <DependentUpon>QuanLyDonHang.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webform\Admin\QuanLyNguoiDung.aspx.cs">
+      <DependentUpon>QuanLyNguoiDung.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webform\Admin\QuanLyNguoiDung.aspx.designer.cs">
+      <DependentUpon>QuanLyNguoiDung.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webform\Admin\ThemNguoiDung.aspx.cs">
+      <DependentUpon>ThemNguoiDung.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webform\Admin\ThemNguoiDung.aspx.designer.cs">
+      <DependentUpon>ThemNguoiDung.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webform\Admin\ThongKeSach.aspx.cs">
+      <DependentUpon>ThongKeSach.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webform\Admin\ThongKeSach.aspx.designer.cs">
+      <DependentUpon>ThongKeSach.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="webform\user\" />
+    <Folder Include="webform\VangLai\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
