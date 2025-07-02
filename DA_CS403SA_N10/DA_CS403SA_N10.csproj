@@ -1,5 +1,4 @@
 ﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -7,7 +6,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{BB5F236E-5C4D-44B1-8C01-0C707612CCF7}</ProjectGuid>
+    <ProjectGuid>{5EFFCB7F-41AE-4C51-B81D-A46CCD0F2BD6}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -16,7 +15,7 @@
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
-    <IISExpressSSLPort>44375</IISExpressSSLPort>
+    <IISExpressSSLPort>44352</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -43,7 +42,101 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=9.0.0.6, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.9.0.6\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\lib\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Extensions.DependencyInjection, Version=9.0.0.6, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.9.0.6\lib\net462\Microsoft.Extensions.DependencyInjection.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=9.0.0.6, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.9.0.6\lib\net462\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging, Version=9.0.0.6, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Logging.9.0.6\lib\net462\Microsoft.Extensions.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=9.0.0.6, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Logging.Abstractions.9.0.6\lib\net462\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Options, Version=9.0.0.6, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Options.9.0.6\lib\net462\Microsoft.Extensions.Options.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Primitives, Version=9.0.0.6, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Primitives.9.0.6\lib\net462\Microsoft.Extensions.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Buffers, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.6.1\lib\net462\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ComponentModel.Annotations.5.0.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=9.0.0.6, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.9.0.6\lib\net462\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.4.3.0\lib\net462\System.IO.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO.Pipelines, Version=9.0.0.6, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.IO.Pipelines.9.0.6\lib\net462\System.IO.Pipelines.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Memory, Version=4.0.5.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.6.3\lib\net462\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http, Version=4.1.1.3, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Net.Http.4.3.4\lib\net46\System.Net.Http.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.6.1\lib\net462\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime, Version=4.1.1.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.4.3.1\lib\net462\System.Runtime.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.1.2\lib\net462\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Algorithms, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Algorithms.4.3.1\lib\net463\System.Security.Cryptography.Algorithms.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Encoding, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Encoding.4.3.0\lib\net46\System.Security.Cryptography.Encoding.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.Primitives.4.3.0\lib\net46\System.Security.Cryptography.Primitives.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Security.Cryptography.X509Certificates, Version=4.1.1.2, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Cryptography.X509Certificates.4.3.2\lib\net461\System.Security.Cryptography.X509Certificates.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Text.Encodings.Web, Version=9.0.0.6, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encodings.Web.9.0.6\lib\net462\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Json, Version=9.0.0.6, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Json.9.0.6\lib\net462\System.Text.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.4.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.6.3\lib\net462\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -62,22 +155,45 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
-      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
+    <Content Include="AdminAssistantService.asmx" />
     <Content Include="App_Data\datawebebook.mdf" />
     <Content Include="App_Data\datawebebook_log.ldf">
       <DependentUpon>datawebebook.mdf</DependentUpon>
     </Content>
+    <Content Include="ChatbotService.asmx" />
+    <Content Include="Global.asax" />
+    <Content Include="illink\ILLink.Descriptors.LibraryBuild.xml" />
+    <Content Include="images\android-chrome-192x192.png" />
+    <Content Include="images\android-chrome-512x512.png" />
+    <Content Include="images\apple-touch-icon.png" />
+    <Content Include="images\default_avatar.png" />
+    <Content Include="images\favicon-16x16.png" />
+    <Content Include="images\favicon-32x32.png" />
+    <Content Include="images\Icons\momo-logo.png" />
+    <Content Include="images\Icons\viettelmoney-logo.png" />
+    <Content Include="images\Icons\vnpay-logo.png" />
+    <Content Include="images\placeholder_cover.png" />
+    <Content Include="images\QR\placeholder-qr-momo.png" />
+    <Content Include="images\QR\placeholder-qr-viettelmoney.png" />
+    <Content Include="images\QR\placeholder-qr-vnpay.png" />
+    <Content Include="images\QR\placeholder-qr.png" />
+    <None Include="scripts\jquery-3.7.1.intellisense.js" />
+    <Content Include="scripts\jquery-3.7.1.js" />
+    <Content Include="scripts\jquery-3.7.1.min.js" />
+    <Content Include="scripts\jquery-3.7.1.slim.js" />
+    <Content Include="scripts\jquery-3.7.1.slim.min.js" />
     <Content Include="Web.config" />
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+    <Content Include="webform\Admin\adminhome.aspx" />
+>>>>>>> 757b752e1a665f286a6b9901d0c7bb818d2d3c46
     <Content Include="webform\Admin\BaoCaoDoanhThu.aspx" />
     <Content Include="webform\Admin\ChiTietDonHang_Admin.aspx" />
     <Content Include="webform\Admin\QuanLyDanhGia.aspx" />
     <Content Include="webform\Admin\QuanLyDonHang.aspx" />
     <Content Include="webform\Admin\QuanLyNguoiDung.aspx" />
+<<<<<<< HEAD
     <Content Include="webform\Admin\ThemNguoiDung.aspx" />
     <Content Include="webform\Admin\ThongKeSach.aspx" />
   </ItemGroup>
@@ -133,33 +249,215 @@
       <DependentUpon>ThongKeSach.aspx</DependentUpon>
 =======
 <<<<<<< HEAD
+=======
+    <Content Include="webform\Admin\QuanLySach.aspx" />
+    <Content Include="webform\Admin\SuaNoiDungChuong.aspx" />
+    <Content Include="webform\Admin\SuaNoiDungSach.aspx" />
+    <Content Include="webform\Admin\SuaSach.aspx" />
+    <Content Include="webform\Admin\ThemChuongMoi.aspx" />
+    <Content Include="webform\Admin\ThemNguoiDung.aspx" />
+    <Content Include="webform\Admin\ThemSach.aspx" />
+    <Content Include="webform\Admin\ThongKeSach.aspx" />
+>>>>>>> 757b752e1a665f286a6b9901d0c7bb818d2d3c46
     <Content Include="webform\User\chitietdonhang.aspx" />
+    <Content Include="webform\User\chitietsach_chap.aspx" />
+    <Content Include="webform\User\chitietsach_user.aspx" />
     <Content Include="webform\User\danhgia.aspx" />
+    <Content Include="webform\User\danhsachsach_user.aspx" />
+    <Content Include="webform\User\docsach.aspx" />
+    <Content Include="webform\User\giohang_user.aspx" />
     <Content Include="webform\User\gioithieu_user.aspx" />
     <Content Include="webform\User\lichsumuahang.aspx" />
     <Content Include="webform\User\thanhtoan.aspx" />
     <Content Include="webform\User\thanhvien.aspx" />
     <Content Include="webform\User\thongtincanhan.aspx" />
+    <Content Include="webform\User\timkiem_user.aspx" />
+    <Content Include="webform\User\tusach.aspx" />
+    <Content Include="webform\User\usertrangchu.aspx" />
     <Content Include="webform\User\xacnhandonhang.aspx" />
+    <Content Include="webform\VangLai\chitietsach.aspx" />
+    <Content Include="webform\VangLai\dangky.aspx" />
+    <Content Include="webform\VangLai\dangnhap.aspx" />
+    <Content Include="webform\VangLai\danhsachsach.aspx" />
     <Content Include="webform\VangLai\gioithieu.aspx" />
     <Content Include="webform\VangLai\quenmatkhau.aspx" />
+    <Content Include="webform\VangLai\thanhvienvl.aspx" />
+    <Content Include="webform\VangLai\timkiem.aspx" />
+    <Content Include="webform\VangLai\trangchu.aspx" />
+    <Content Include="webform\VangLai\WebForm1.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminAssistantService.asmx.cs">
+      <DependentUpon>AdminAssistantService.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ChatbotService.asmx.cs">
+      <DependentUpon>ChatbotService.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ChatModels.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="handlers\UploadHandler.ashx.cs">
+      <DependentUpon>UploadHandler.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="webform\Admin\Admin.Master.cs">
+      <DependentUpon>Admin.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webform\Admin\Admin.Master.designer.cs">
+      <DependentUpon>Admin.Master</DependentUpon>
+    </Compile>
+    <Compile Include="webform\Admin\adminhome.aspx.cs">
+      <DependentUpon>adminhome.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webform\Admin\adminhome.aspx.designer.cs">
+      <DependentUpon>adminhome.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webform\Admin\BaoCaoDoanhThu.aspx.cs">
+      <DependentUpon>BaoCaoDoanhThu.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webform\Admin\BaoCaoDoanhThu.aspx.designer.cs">
+      <DependentUpon>BaoCaoDoanhThu.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webform\Admin\ChiTietDonHang_Admin.aspx.cs">
+      <DependentUpon>ChiTietDonHang_Admin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webform\Admin\ChiTietDonHang_Admin.aspx.designer.cs">
+      <DependentUpon>ChiTietDonHang_Admin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webform\Admin\QuanLyDanhGia.aspx.cs">
+      <DependentUpon>QuanLyDanhGia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webform\Admin\QuanLyDanhGia.aspx.designer.cs">
+      <DependentUpon>QuanLyDanhGia.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webform\Admin\QuanLyDonHang.aspx.cs">
+      <DependentUpon>QuanLyDonHang.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webform\Admin\QuanLyDonHang.aspx.designer.cs">
+      <DependentUpon>QuanLyDonHang.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webform\Admin\QuanLyNguoiDung.aspx.cs">
+      <DependentUpon>QuanLyNguoiDung.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webform\Admin\QuanLyNguoiDung.aspx.designer.cs">
+      <DependentUpon>QuanLyNguoiDung.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webform\Admin\QuanLySach.aspx.cs">
+      <DependentUpon>QuanLySach.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webform\Admin\QuanLySach.aspx.designer.cs">
+      <DependentUpon>QuanLySach.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webform\Admin\SuaNoiDungChuong.aspx.cs">
+      <DependentUpon>SuaNoiDungChuong.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webform\Admin\SuaNoiDungChuong.aspx.designer.cs">
+      <DependentUpon>SuaNoiDungChuong.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webform\Admin\SuaNoiDungSach.aspx.cs">
+      <DependentUpon>SuaNoiDungSach.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webform\Admin\SuaNoiDungSach.aspx.designer.cs">
+      <DependentUpon>SuaNoiDungSach.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webform\Admin\SuaSach.aspx.cs">
+      <DependentUpon>SuaSach.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webform\Admin\SuaSach.aspx.designer.cs">
+      <DependentUpon>SuaSach.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webform\Admin\ThemChuongMoi.aspx.cs">
+      <DependentUpon>ThemChuongMoi.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webform\Admin\ThemChuongMoi.aspx.designer.cs">
+      <DependentUpon>ThemChuongMoi.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webform\Admin\ThemNguoiDung.aspx.cs">
+      <DependentUpon>ThemNguoiDung.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webform\Admin\ThemNguoiDung.aspx.designer.cs">
+      <DependentUpon>ThemNguoiDung.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webform\Admin\ThemSach.aspx.cs">
+      <DependentUpon>ThemSach.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webform\Admin\ThemSach.aspx.designer.cs">
+      <DependentUpon>ThemSach.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webform\Admin\ThongKeSach.aspx.cs">
+      <DependentUpon>ThongKeSach.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webform\Admin\ThongKeSach.aspx.designer.cs">
+      <DependentUpon>ThongKeSach.aspx</DependentUpon>
+    </Compile>
     <Compile Include="webform\User\chitietdonhang.aspx.cs">
       <DependentUpon>chitietdonhang.aspx</DependentUpon>
     </Compile>
     <Compile Include="webform\User\chitietdonhang.aspx.designer.cs">
       <DependentUpon>chitietdonhang.aspx</DependentUpon>
     </Compile>
+    <Compile Include="webform\User\chitietsach_chap.aspx.cs">
+      <DependentUpon>chitietsach_chap.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webform\User\chitietsach_chap.aspx.designer.cs">
+      <DependentUpon>chitietsach_chap.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webform\User\chitietsach_user.aspx.cs">
+      <DependentUpon>chitietsach_user.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webform\User\chitietsach_user.aspx.designer.cs">
+      <DependentUpon>chitietsach_user.aspx</DependentUpon>
+    </Compile>
     <Compile Include="webform\User\danhgia.aspx.cs">
       <DependentUpon>danhgia.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="webform\User\danhgia.aspx.designer.cs">
       <DependentUpon>danhgia.aspx</DependentUpon>
     </Compile>
+    <Compile Include="webform\User\danhsachsach_user.aspx.cs">
+      <DependentUpon>danhsachsach_user.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webform\User\danhsachsach_user.aspx.designer.cs">
+      <DependentUpon>danhsachsach_user.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webform\User\docsach.aspx.cs">
+      <DependentUpon>docsach.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webform\User\docsach.aspx.designer.cs">
+      <DependentUpon>docsach.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webform\User\giohang_user.aspx.cs">
+      <DependentUpon>giohang_user.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webform\User\giohang_user.aspx.designer.cs">
+      <DependentUpon>giohang_user.aspx</DependentUpon>
+    </Compile>
     <Compile Include="webform\User\gioithieu_user.aspx.cs">
       <DependentUpon>gioithieu_user.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="webform\User\gioithieu_user.aspx.designer.cs">
       <DependentUpon>gioithieu_user.aspx</DependentUpon>
@@ -172,51 +470,38 @@
     </Compile>
     <Compile Include="webform\User\thanhtoan.aspx.cs">
       <DependentUpon>thanhtoan.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="webform\User\thanhtoan.aspx.designer.cs">
       <DependentUpon>thanhtoan.aspx</DependentUpon>
     </Compile>
     <Compile Include="webform\User\thanhvien.aspx.cs">
       <DependentUpon>thanhvien.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="webform\User\thanhvien.aspx.designer.cs">
       <DependentUpon>thanhvien.aspx</DependentUpon>
     </Compile>
     <Compile Include="webform\User\thongtincanhan.aspx.cs">
       <DependentUpon>thongtincanhan.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="webform\User\thongtincanhan.aspx.designer.cs">
       <DependentUpon>thongtincanhan.aspx</DependentUpon>
     </Compile>
-    <Compile Include="webform\User\xacnhandonhang.aspx.cs">
-      <DependentUpon>xacnhandonhang.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="webform\User\xacnhandonhang.aspx.designer.cs">
-      <DependentUpon>xacnhandonhang.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="webform\VangLai\gioithieu.aspx.cs">
-      <DependentUpon>gioithieu.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="webform\VangLai\gioithieu.aspx.designer.cs">
-      <DependentUpon>gioithieu.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="webform\VangLai\quenmatkhau.aspx.cs">
-      <DependentUpon>quenmatkhau.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="webform\VangLai\quenmatkhau.aspx.designer.cs">
-      <DependentUpon>quenmatkhau.aspx</DependentUpon>
-=======
-    <Content Include="webform\User\usertrangchu.aspx" />
-    <Content Include="webform\VangLai\trangchu.aspx" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="webform\Admin\Admin.Master.cs">
-      <DependentUpon>Admin.Master</DependentUpon>
+    <Compile Include="webform\User\timkiem_user.aspx.cs">
+      <DependentUpon>timkiem_user.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="webform\Admin\Admin.Master.designer.cs">
-      <DependentUpon>Admin.Master</DependentUpon>
+    <Compile Include="webform\User\timkiem_user.aspx.designer.cs">
+      <DependentUpon>timkiem_user.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webform\User\tusach.aspx.cs">
+      <DependentUpon>tusach.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webform\User\tusach.aspx.designer.cs">
+      <DependentUpon>tusach.aspx</DependentUpon>
     </Compile>
     <Compile Include="webform\User\User.Master.cs">
       <DependentUpon>User.Master</DependentUpon>
@@ -232,6 +517,55 @@
     <Compile Include="webform\User\usertrangchu.aspx.designer.cs">
       <DependentUpon>usertrangchu.aspx</DependentUpon>
     </Compile>
+    <Compile Include="webform\User\xacnhandonhang.aspx.cs">
+      <DependentUpon>xacnhandonhang.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webform\User\xacnhandonhang.aspx.designer.cs">
+      <DependentUpon>xacnhandonhang.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webform\VangLai\chitietsach.aspx.cs">
+      <DependentUpon>chitietsach.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webform\VangLai\chitietsach.aspx.designer.cs">
+      <DependentUpon>chitietsach.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webform\VangLai\dangky.aspx.cs">
+      <DependentUpon>dangky.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webform\VangLai\dangky.aspx.designer.cs">
+      <DependentUpon>dangky.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webform\VangLai\dangnhap.aspx.cs">
+      <DependentUpon>dangnhap.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webform\VangLai\dangnhap.aspx.designer.cs">
+      <DependentUpon>dangnhap.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webform\VangLai\danhsachsach.aspx.cs">
+      <DependentUpon>danhsachsach.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webform\VangLai\danhsachsach.aspx.designer.cs">
+      <DependentUpon>danhsachsach.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webform\VangLai\gioithieu.aspx.cs">
+      <DependentUpon>gioithieu.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webform\VangLai\gioithieu.aspx.designer.cs">
+      <DependentUpon>gioithieu.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webform\VangLai\quenmatkhau.aspx.cs">
+      <DependentUpon>quenmatkhau.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webform\VangLai\quenmatkhau.aspx.designer.cs">
+      <DependentUpon>quenmatkhau.aspx</DependentUpon>
+    </Compile>
     <Compile Include="webform\VangLai\Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -239,17 +573,48 @@
     <Compile Include="webform\VangLai\Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
     </Compile>
+    <Compile Include="webform\VangLai\thanhvienvl.aspx.cs">
+      <DependentUpon>thanhvienvl.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webform\VangLai\thanhvienvl.aspx.designer.cs">
+      <DependentUpon>thanhvienvl.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="webform\VangLai\timkiem.aspx.cs">
+      <DependentUpon>timkiem.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webform\VangLai\timkiem.aspx.designer.cs">
+      <DependentUpon>timkiem.aspx</DependentUpon>
+    </Compile>
     <Compile Include="webform\VangLai\trangchu.aspx.cs">
       <DependentUpon>trangchu.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="webform\VangLai\trangchu.aspx.designer.cs">
       <DependentUpon>trangchu.aspx</DependentUpon>
+<<<<<<< HEAD
 >>>>>>> 9b244bbd52650f1051f7c446f4749e0c1b18e3a7
 >>>>>>> 3792d9fd889da65a4202dd3d3f6106476f865db9
     </Compile>
   </ItemGroup>
   <ItemGroup>
+=======
+    </Compile>
+    <Compile Include="webform\VangLai\WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="webform\VangLai\WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="handlers\UploadHandler.ashx" />
+    <None Include="packages.config" />
+    <Content Include="scripts\jquery-3.7.1.min.map" />
+    <Content Include="scripts\jquery-3.7.1.slim.min.map" />
+>>>>>>> 757b752e1a665f286a6b9901d0c7bb818d2d3c46
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -277,9 +642,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>65067</DevelopmentServerPort>
+          <DevelopmentServerPort>61392</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>https://localhost:44375/</IISUrl>
+          <IISUrl>https://localhost:44352/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
@@ -289,12 +654,15 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.4.1.0\build\net472\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.targets'))" />
+    <Error Condition="!Exists('..\packages\System.ValueTuple.4.6.1\build\net471\System.ValueTuple.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\System.ValueTuple.4.6.1\build\net471\System.ValueTuple.targets'))" />
   </Target>
+  <Import Project="..\packages\System.ValueTuple.4.6.1\build\net471\System.ValueTuple.targets" Condition="Exists('..\packages\System.ValueTuple.4.6.1\build\net471\System.ValueTuple.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
