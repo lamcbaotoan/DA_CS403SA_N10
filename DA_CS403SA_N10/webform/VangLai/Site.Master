@@ -1,0 +1,143 @@
+﻿<%-- Webebook/WebForm/VangLai/Site.Master --%>
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.Master.cs" Inherits="Webebook.WebForm.VangLai.SiteMaster" %>
+
+<!DOCTYPE html>
+<html lang="vi">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%: Page.Title %> - Webebook</title>
+
+        <%-- === FAVICON TỐI ƯU & MANIFEST (Dành cho các file đã tạo) === --%>
+        <%-- File .ico cho tương thích rộng --%>
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+        <%-- File PNG với kích thước cụ thể cho trình duyệt hiện đại --%>
+        <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+
+        <%-- Icon cho thiết bị Apple --%>
+        <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+        <%-- Link tới Web App Manifest (cho PWA, Android Add to Homescreen) --%>
+        <link rel="manifest" href="/site.webmanifest">
+
+        <%-- (Tùy chọn) Khai báo màu nền cho Tile của Windows & Theme trình duyệt --%>
+        <meta name="msapplication-TileColor" content="#2d89ef"> <%-- Màu này thường có trong file manifest hoặc bạn tự chọn --%>
+        <meta name="theme-color" content="#ffffff"> <%-- Màu nền trình duyệt mobile, thường là trắng hoặc màu chủ đạo --%>
+        <%-- === KẾT THÚC FAVICON & MANIFEST === --%>
+
+
+    <%-- Link Tailwind CSS (Đảm bảo bạn có link đúng, có thể cần bản mới hơn) --%>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <%-- Link Font Awesome --%>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <%-- Link CSS tùy chỉnh --%>
+    <link href="<%: ResolveUrl("~/Styles/main.css") %>" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder runat="server" ID="HeadContent" />
+    <style>
+        /* Thêm CSS tùy chỉnh nếu cần */
+        body { font-family: 'Inter', sans-serif; /* Ví dụ font */ }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <form runat="server">
+        <div class="flex flex-col min-h-screen">
+            <header class="bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-md sticky top-0 z-50">
+                <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+                    <%-- Logo/Tên Trang Web --%>
+                    <asp:HyperLink ID="hlLogo" runat="server" NavigateUrl="~/WebForm/VangLai/trangchu.aspx" CssClass="text-2xl font-bold tracking-tight hover:opacity-90 transition-opacity">
+                        <i class="fas fa-book-open mr-2"></i> Webebook
+                    </asp:HyperLink>
+
+                    <%-- Thanh Tìm Kiếm --%>
+                    <div class="hidden md:flex flex-grow max-w-xl mx-4">
+                        <div class="relative w-full">
+                             <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+                                <i class="fas fa-search text-gray-400"></i>
+                            </span>
+                            <asp:TextBox ID="txtSearch" runat="server" CssClass="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-full text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-transparent shadow-sm" placeholder="Tìm kiếm sách, tác giả..."></asp:TextBox>
+                        </div>
+                        <asp:Button ID="btnSearch" runat="server" Text="Tìm" CssClass="ml-2 bg-purple-500 hover:bg-purple-700 text-white font-semibold py-2 px-5 rounded-full shadow-sm transition duration-150 ease-in-out" OnClick="btnSearch_Click" />
+                    </div>
+
+                    <%-- Điều hướng và Nút Đăng nhập/Đăng ký --%>
+                    <nav class="flex items-center space-x-3 md:space-x-5">
+                        <asp:HyperLink ID="hlHomeNav" runat="server" NavigateUrl="~/WebForm/VangLai/trangchu.aspx" CssClass="text-sm font-medium hover:text-purple-200 transition-colors hidden md:inline-block">Trang Chủ</asp:HyperLink>
+                        <asp:HyperLink ID="hlBooksNav" runat="server" NavigateUrl="~/WebForm/VangLai/danhsachsach.aspx" CssClass="text-sm font-medium hover:text-purple-200 transition-colors hidden md:inline-block">Danh Sách Sách</asp:HyperLink>
+                        <%-- Hiển thị cho khách --%>
+                        <asp:HyperLink ID="hlLogin" runat="server" NavigateUrl="~/WebForm/VangLai/dangnhap.aspx" CssClass="px-4 py-2 bg-white text-blue-600 text-sm font-semibold rounded-md shadow hover:bg-gray-100 transition duration-150 ease-in-out">Đăng Nhập</asp:HyperLink>
+                        <asp:HyperLink ID="hlRegister" runat="server" NavigateUrl="~/WebForm/VangLai/dangky.aspx" CssClass="px-4 py-2 bg-purple-500 hover:bg-purple-700 text-white text-sm font-semibold rounded-md shadow transition duration-150 ease-in-out hidden sm:inline-block">Đăng Ký</asp:HyperLink>
+                        <%-- Nút menu cho mobile (nếu cần) --%>
+<button type="button" id="mobile-menu-button" class="md:hidden p-2 rounded-md hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-label="Menu">
+    <i class="fas fa-bars text-xl"></i>
+</button>
+                    </nav>
+                </div>
+                 <%-- Mobile Menu (Ẩn ban đầu) --%>
+                 <div id="mobile-menu" class="md:hidden hidden px-2 pt-2 pb-3 space-y-1">
+                     <asp:HyperLink ID="hlHomeNavMobile" runat="server" NavigateUrl="~/WebForm/VangLai/trangchu.aspx" CssClass="block px-3 py-2 rounded-md text-base font-medium hover:bg-purple-700">Trang Chủ</asp:HyperLink>
+                     <asp:HyperLink ID="hlBooksNavMobile" runat="server" NavigateUrl="~/WebForm/VangLai/danhsachsach.aspx" CssClass="block px-3 py-2 rounded-md text-base font-medium hover:bg-purple-700">Danh Sách Sách</asp:HyperLink>
+                     <div class="pt-2 border-t border-purple-700">
+                        <asp:HyperLink ID="hlLoginMobile" runat="server" NavigateUrl="~/WebForm/VangLai/dangnhap.aspx" CssClass="block px-3 py-2 rounded-md text-base font-medium hover:bg-purple-700">Đăng Nhập</asp:HyperLink>
+                        <asp:HyperLink ID="hlRegisterMobile" runat="server" NavigateUrl="~/WebForm/VangLai/dangky.aspx" CssClass="block px-3 py-2 rounded-md text-base font-medium hover:bg-purple-700">Đăng Ký</asp:HyperLink>
+                     </div>
+                     <%-- Thanh tìm kiếm cho mobile --%>
+                     <div class="px-2 pt-3">
+                         <div class="relative w-full">
+                             <span class="absolute inset-y-0 left-0 flex items-center pl-3">
+                                <i class="fas fa-search text-gray-400"></i>
+                            </span>
+                             <asp:TextBox ID="txtSearchMobile" runat="server" CssClass="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-full text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-300 focus:border-transparent shadow-sm" placeholder="Tìm kiếm..."></asp:TextBox>
+                         </div>
+                         <asp:Button ID="btnSearchMobile" runat="server" Text="Tìm" CssClass="mt-2 w-full bg-purple-500 hover:bg-purple-700 text-white font-semibold py-2 px-5 rounded-full shadow-sm transition duration-150 ease-in-out" OnClick="btnSearch_Click" />
+                     </div>
+                 </div>
+            </header>
+
+            <main class="flex-grow container mx-auto px-4 py-6 md:py-8">
+                <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+            </main>
+
+        <%-- === PHẦN FOOTER ĐƯỢC CẬP NHẬT === --%>
+        <footer class="bg-gray-800 text-gray-300 p-6 mt-auto">
+            <div class="container mx-auto text-center text-sm">
+                    <p class="mb-2">&copy; <%: DateTime.Now.Year %> Webebook. Phát triển bởi [Lâm Chu Bảo Toàn].</p>
+                 <p class="mt-2">
+                     <%-- ***** CẬP NHẬT NAVIGATEURL VỚI HASH ***** --%>
+                    <asp:HyperLink ID="hlFooterAbout" runat="server" NavigateUrl="~/WebForm/VangLai/gioithieu.aspx#about" CssClass="hover:text-white hover:underline px-2"> Về Chúng Tôi </asp:HyperLink> |
+                    <asp:HyperLink ID="hlFooterContact" runat="server" NavigateUrl="~/WebForm/VangLai/gioithieu.aspx#contact" CssClass="hover:text-white hover:underline px-2"> Liên Hệ </asp:HyperLink> |
+                    <asp:HyperLink ID="hlFooterTerms" runat="server" NavigateUrl="~/WebForm/VangLai/gioithieu.aspx#terms" CssClass="hover:text-white hover:underline px-2"> Điều Khoản Dịch Vụ </asp:HyperLink>
+                </p>
+            </div>
+        </footer>
+        <%-- === KẾT THÚC PHẦN FOOTER === --%>
+        </div>
+        <script>
+            // Mobile Menu Toggle
+            const menuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (menuButton && mobileMenu) {
+                menuButton.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            }
+
+            // Sync mobile search term with main search box on submit if needed
+            const btnSearchMobile = document.getElementById('<%= btnSearchMobile.ClientID %>');
+            const txtSearchMobileInput = document.getElementById('<%= txtSearchMobile.ClientID %>');
+            const txtSearchInput = document.getElementById('<%= txtSearch.ClientID %>');
+
+            if (btnSearchMobile && txtSearchMobileInput && txtSearchInput) {
+                btnSearchMobile.addEventListener('click', function () {
+                    if (txtSearchInput && txtSearchMobileInput.value) {
+                        txtSearchInput.value = txtSearchMobileInput.value;
+                    }
+                    // The actual search logic is handled by the btnSearch_Click server-side event
+                });
+            }
+        </script>
+    </form>
+</body>
+</html>

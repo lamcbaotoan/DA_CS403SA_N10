@@ -3,7 +3,10 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <%-- Đảm bảo Font Awesome đã được liên kết (nên đặt trong MasterPage) --%>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<<<<<<< HEAD
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+=======
+>>>>>>> 0ea43edc707e5e92fc656cf72f9448994cf7c8b3
     <style>
         /* Các lớp utility của Tailwind sẽ xử lý hầu hết việc tạo kiểu. */
         .gridview-footer td { /* Ví dụ tạo kiểu cho phần phân trang */
@@ -150,8 +153,13 @@
                                     <i class="fas fa-edit fa-fw"></i>
                                 </asp:LinkButton>
                                 <asp:LinkButton ID="lnkXoa" runat="server" CommandName="Delete" CommandArgument='<%# Eval("IDSach") %>'
+<<<<<<< HEAD
                                     CssClass="text-red-600 hover:text-red-900 transition duration-150 ease-in-out inline-flex items-center" ToolTip="Xóa">
                                     <%-- Thuộc tính OnClientClick đã được xóa bỏ khỏi đây --%>
+=======
+                                    CssClass="text-red-600 hover:text-red-900 transition duration-150 ease-in-out inline-flex items-center" ToolTip="Xóa"
+                                    OnClientClick='<%# GetDeleteConfirmationScript(Eval("TenSach"), Eval("IDSach")) %>'>
+>>>>>>> 0ea43edc707e5e92fc656cf72f9448994cf7c8b3
                                     <i class="fas fa-trash fa-fw"></i>
                                 </asp:LinkButton>
                             </ItemTemplate>
@@ -181,6 +189,7 @@
         </div> <%-- Hết Grid Container --%>
 
     </div> <%-- Hết Container --%>
+<<<<<<< HEAD
 
         <%-- BẮT ĐẦU: THÊM SCRIPT CHO POPUP XÓA --%>
     <script type="text/javascript">
@@ -233,4 +242,6 @@
         }
     </script>
     <%-- KẾT THÚC: THÊM SCRIPT CHO POPUP XÓA --%>
+=======
+>>>>>>> 0ea43edc707e5e92fc656cf72f9448994cf7c8b3
 </asp:Content>
