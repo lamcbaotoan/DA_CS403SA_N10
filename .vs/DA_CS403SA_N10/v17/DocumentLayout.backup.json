@@ -3,8 +3,16 @@
   "WorkspaceRootPath": "E:\\Tai Lieu Hoc Tap\\CS 403 SA\\SRC_nhom\\UP\\UP\\DA_CS403SA_N10\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{5EFFCB7F-41AE-4C51-B81D-A46CCD0F2BD6}|DA_CS403SA_N10\\DA_CS403SA_N10.csproj|e:\\tai lieu hoc tap\\cs 403 sa\\src_nhom\\up\\up\\da_cs403sa_n10\\da_cs403sa_n10\\global.asax.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5EFFCB7F-41AE-4C51-B81D-A46CCD0F2BD6}|DA_CS403SA_N10\\DA_CS403SA_N10.csproj|solutionrelative:da_cs403sa_n10\\global.asax.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5EFFCB7F-41AE-4C51-B81D-A46CCD0F2BD6}|DA_CS403SA_N10\\DA_CS403SA_N10.csproj|e:\\tai lieu hoc tap\\cs 403 sa\\src_nhom\\up\\up\\da_cs403sa_n10\\da_cs403sa_n10\\webform\\vanglai\\trangchu.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{5EFFCB7F-41AE-4C51-B81D-A46CCD0F2BD6}|DA_CS403SA_N10\\DA_CS403SA_N10.csproj|solutionrelative:da_cs403sa_n10\\webform\\vanglai\\trangchu.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5EFFCB7F-41AE-4C51-B81D-A46CCD0F2BD6}|DA_CS403SA_N10\\DA_CS403SA_N10.csproj|e:\\tai lieu hoc tap\\cs 403 sa\\src_nhom\\up\\up\\da_cs403sa_n10\\da_cs403sa_n10\\chatbotservice.asmx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5EFFCB7F-41AE-4C51-B81D-A46CCD0F2BD6}|DA_CS403SA_N10\\DA_CS403SA_N10.csproj|solutionrelative:da_cs403sa_n10\\chatbotservice.asmx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5EFFCB7F-41AE-4C51-B81D-A46CCD0F2BD6}|DA_CS403SA_N10\\DA_CS403SA_N10.csproj|e:\\tai lieu hoc tap\\cs 403 sa\\src_nhom\\up\\up\\da_cs403sa_n10\\da_cs403sa_n10\\chatmodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5EFFCB7F-41AE-4C51-B81D-A46CCD0F2BD6}|DA_CS403SA_N10\\DA_CS403SA_N10.csproj|solutionrelative:da_cs403sa_n10\\chatmodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{5EFFCB7F-41AE-4C51-B81D-A46CCD0F2BD6}|DA_CS403SA_N10\\DA_CS403SA_N10.csproj|e:\\tai lieu hoc tap\\cs 403 sa\\src_nhom\\up\\up\\da_cs403sa_n10\\da_cs403sa_n10\\adminassistantservice.asmx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -15,16 +23,8 @@
       "RelativeMoniker": "D:0:0:{5EFFCB7F-41AE-4C51-B81D-A46CCD0F2BD6}|DA_CS403SA_N10\\DA_CS403SA_N10.csproj|solutionrelative:da_cs403sa_n10\\global.asax||{4D30FDB3-AB3E-4810-B6F2-64627BCCA384}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5EFFCB7F-41AE-4C51-B81D-A46CCD0F2BD6}|DA_CS403SA_N10\\DA_CS403SA_N10.csproj|e:\\tai lieu hoc tap\\cs 403 sa\\src_nhom\\up\\up\\da_cs403sa_n10\\da_cs403sa_n10\\chatbotservice.asmx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5EFFCB7F-41AE-4C51-B81D-A46CCD0F2BD6}|DA_CS403SA_N10\\DA_CS403SA_N10.csproj|solutionrelative:da_cs403sa_n10\\chatbotservice.asmx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5EFFCB7F-41AE-4C51-B81D-A46CCD0F2BD6}|DA_CS403SA_N10\\DA_CS403SA_N10.csproj|e:\\tai lieu hoc tap\\cs 403 sa\\src_nhom\\up\\up\\da_cs403sa_n10\\da_cs403sa_n10\\webform\\vanglai\\trangchu.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{5EFFCB7F-41AE-4C51-B81D-A46CCD0F2BD6}|DA_CS403SA_N10\\DA_CS403SA_N10.csproj|solutionrelative:da_cs403sa_n10\\webform\\vanglai\\trangchu.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5EFFCB7F-41AE-4C51-B81D-A46CCD0F2BD6}|DA_CS403SA_N10\\DA_CS403SA_N10.csproj|e:\\tai lieu hoc tap\\cs 403 sa\\src_nhom\\up\\up\\da_cs403sa_n10\\da_cs403sa_n10\\chatmodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5EFFCB7F-41AE-4C51-B81D-A46CCD0F2BD6}|DA_CS403SA_N10\\DA_CS403SA_N10.csproj|solutionrelative:da_cs403sa_n10\\chatmodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{5EFFCB7F-41AE-4C51-B81D-A46CCD0F2BD6}|DA_CS403SA_N10\\DA_CS403SA_N10.csproj|e:\\tai lieu hoc tap\\cs 403 sa\\src_nhom\\up\\up\\da_cs403sa_n10\\da_cs403sa_n10\\global.asax.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5EFFCB7F-41AE-4C51-B81D-A46CCD0F2BD6}|DA_CS403SA_N10\\DA_CS403SA_N10.csproj|solutionrelative:da_cs403sa_n10\\global.asax.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,19 +34,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 0,
           "Children": [
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{007a3a6b-b5b2-454d-a2bd-cf929f989be2}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
-            },
-            {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
               "Title": "trangchu.aspx",
               "DocumentMoniker": "E:\\Tai Lieu Hoc Tap\\CS 403 SA\\SRC_nhom\\UP\\UP\\DA_CS403SA_N10\\DA_CS403SA_N10\\WebForm\\VangLai\\trangchu.aspx",
               "RelativeDocumentMoniker": "DA_CS403SA_N10\\WebForm\\VangLai\\trangchu.aspx",
@@ -59,7 +51,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 2,
               "Title": "ChatModels.cs",
               "DocumentMoniker": "E:\\Tai Lieu Hoc Tap\\CS 403 SA\\SRC_nhom\\UP\\UP\\DA_CS403SA_N10\\DA_CS403SA_N10\\ChatModels.cs",
               "RelativeDocumentMoniker": "DA_CS403SA_N10\\ChatModels.cs",
@@ -72,20 +64,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "ChatbotService.asmx.cs",
               "DocumentMoniker": "E:\\Tai Lieu Hoc Tap\\CS 403 SA\\SRC_nhom\\UP\\UP\\DA_CS403SA_N10\\DA_CS403SA_N10\\ChatbotService.asmx.cs",
               "RelativeDocumentMoniker": "DA_CS403SA_N10\\ChatbotService.asmx.cs",
               "ToolTip": "E:\\Tai Lieu Hoc Tap\\CS 403 SA\\SRC_nhom\\UP\\UP\\DA_CS403SA_N10\\DA_CS403SA_N10\\ChatbotService.asmx.cs",
               "RelativeToolTip": "DA_CS403SA_N10\\ChatbotService.asmx.cs",
-              "ViewState": "AgIAAPoCAAAAAAAAAAAmwBoDAAABAAAAAAAAAA==",
+              "ViewState": "AgIAADUAAAAAAAAAAAAwwHoAAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-04T20:11:18.886Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "Global.asax",
               "DocumentMoniker": "E:\\Tai Lieu Hoc Tap\\CS 403 SA\\SRC_nhom\\UP\\UP\\DA_CS403SA_N10\\DA_CS403SA_N10\\Global.asax",
               "RelativeDocumentMoniker": "DA_CS403SA_N10\\Global.asax",
@@ -98,20 +90,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 5,
               "Title": "Global.asax.cs",
               "DocumentMoniker": "E:\\Tai Lieu Hoc Tap\\CS 403 SA\\SRC_nhom\\UP\\UP\\DA_CS403SA_N10\\DA_CS403SA_N10\\Global.asax.cs",
               "RelativeDocumentMoniker": "DA_CS403SA_N10\\Global.asax.cs",
               "ToolTip": "E:\\Tai Lieu Hoc Tap\\CS 403 SA\\SRC_nhom\\UP\\UP\\DA_CS403SA_N10\\DA_CS403SA_N10\\Global.asax.cs",
               "RelativeToolTip": "DA_CS403SA_N10\\Global.asax.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAABkAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-04T20:10:50.868Z",
               "EditorCaption": ""
             },
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{007a3a6b-b5b2-454d-a2bd-cf929f989be2}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "AdminAssistantService.asmx.cs",
               "DocumentMoniker": "E:\\Tai Lieu Hoc Tap\\CS 403 SA\\SRC_nhom\\UP\\UP\\DA_CS403SA_N10\\DA_CS403SA_N10\\AdminAssistantService.asmx.cs",
               "RelativeDocumentMoniker": "DA_CS403SA_N10\\AdminAssistantService.asmx.cs",

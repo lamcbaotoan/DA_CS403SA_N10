@@ -1,0 +1,2 @@
+E:\Tai Lieu Hoc Tap\CS 403 SA\SRC_nhom\UP\UP\DA_CS403SA_N10\DA_CS403SA_N10\obj\Debug\DA_CS403SA_N10.csproj.AssemblyReference.cache
+E:\Tai Lieu Hoc Tap\CS 403 SA\SRC_nhom\UP\UP\DA_CS403SA_N10\DA_CS403SA_N10\obj\Debug\DA_CS403SA_N10.csproj.CoreCompileInputs.cache

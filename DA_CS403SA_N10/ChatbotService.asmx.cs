@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using System.Web.Script.Serialization;
 using System.Web.Script.Services;
 using System.Web.Services;
 
 namespace Webebook
 {
-
-
     [WebService(Namespace = "http://tempuri.org/")]
     [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
     [System.ComponentModel.ToolboxItem(false)]
@@ -22,7 +22,6 @@ namespace Webebook
         private readonly string connectionString = ConfigurationManager.ConnectionStrings["datawebebookConnectionString"].ConnectionString;
         private static readonly HttpClient client = new HttpClient();
 
-        // Static constructor để thiết lập TLS 1.2 một lần duy nhất khi ứng dụng khởi chạy
         static ChatbotService()
         {
             System.Net.ServicePointManager.SecurityProtocol = System.Net.SecurityProtocolType.Tls12;
@@ -53,23 +52,39 @@ namespace Webebook
                 Bạn có các khả năng đặc biệt sau, và chỉ được trả về MỘT LỆNH DUY NHẤT:
 
                 **A. VỀ SÁCH (CHUNG):**
-                1. Tìm kiếm sách: [COMMAND:SEARCH_BOOK:tên sách]
-                2. Báo giá sách: [COMMAND:GET_PRICE:tên sách]
-                3. Tìm sách rẻ nhất: [COMMAND:GET_CHEAPEST_BOOK]
-                4. Tìm sách đắt nhất: [COMMAND:GET_MOST_EXPENSIVE_BOOK]
-                5. Tìm sách theo thể loại: [COMMAND:FILTER_BY_GENRE:tên thể loại]
-                6. Gợi ý sách ngẫu nhiên: [COMMAND:GET_RANDOM_BOOK]
+                1.  Tìm kiếm sách theo tên: [COMMAND:SEARCH_BOOK:tên sách]
+                2.  Báo giá sách: [COMMAND:GET_PRICE:tên sách]
+                3.  Tìm sách theo thể loại: [COMMAND:FILTER_BY_GENRE:tên thể loại]
+                4.  Tìm sách theo tác giả: [COMMAND:FIND_BOOKS_BY_AUTHOR:tên tác giả]
+                5.  Tìm sách rẻ nhất: [COMMAND:GET_CHEAPEST_BOOK]
+                6.  Tìm sách đắt nhất: [COMMAND:GET_MOST_EXPENSIVE_BOOK]
+                7.  Gợi ý sách ngẫu nhiên: [COMMAND:GET_RANDOM_BOOK]
+                8.  Liệt kê sách mới nhất: [COMMAND:GET_NEWEST_BOOKS:số lượng] (Mặc định là 5)
+                9.  Liệt kê sách được đánh giá cao nhất: [COMMAND:GET_TOP_RATED_BOOKS:số lượng] (Mặc định là 5)
 
-                **B. DÀNH RIÊNG CHO NGƯỜI DÙNG:**
-                7. Xem giỏ hàng: [COMMAND:VIEW_CART]
-                8. Xem lịch sử mua hàng: [COMMAND:VIEW_PURCHASE_HISTORY]
-                9. Kiểm tra trạng thái đơn hàng gần nhất: [COMMAND:CHECK_LAST_ORDER_STATUS]
-                10. Xem tủ sách (sách đã mua): [COMMAND:VIEW_BOOKSHELF]
-                11. Kiểm tra tiến độ đọc sách: [COMMAND:CHECK_READING_PROGRESS:tên sách]
+                **B. ĐƠN HÀNG & GIỎ HÀNG:**
+                10. Xem giỏ hàng: [COMMAND:VIEW_CART]
+                11. Thêm sách vào giỏ hàng: [COMMAND:ADD_TO_CART:tên sách]
+                12. Xóa sách khỏi giỏ hàng: [COMMAND:REMOVE_FROM_CART:tên sách]
+                13. Dọn dẹp toàn bộ giỏ hàng: [COMMAND:CLEAR_CART]
+                14. Xem lịch sử mua hàng: [COMMAND:VIEW_PURCHASE_HISTORY]
+                15. Kiểm tra trạng thái đơn hàng gần nhất: [COMMAND:CHECK_LAST_ORDER_STATUS]
+                16. Tìm một đơn hàng cụ thể: [COMMAND:FIND_ORDER_BY_ID:mã đơn hàng]
+
+                **C. ĐỌC SÁCH & TỦ SÁCH:**
+                17. Xem tủ sách (sách đã mua): [COMMAND:VIEW_BOOKSHELF]
+                18. Kiểm tra tiến độ đọc sách: [COMMAND:CHECK_READING_PROGRESS:tên sách]
+                19. Cập nhật tiến độ đọc: [COMMAND:UPDATE_READING_PROGRESS:tên sách,số chương]
+                20. Lấy chương đầu tiên của sách: [COMMAND:GET_FIRST_CHAPTER:tên sách]
+                21. Lấy chương mới nhất của sách: [COMMAND:GET_LATEST_CHAPTER:tên sách]
+
+                **D. ĐÁNH GIÁ & TƯƠNG TÁC:**
+                22. Hướng dẫn viết đánh giá cho một sách: [COMMAND:GUIDE_REVIEW:tên sách]
+                23. Xem lại các đánh giá của tôi: [COMMAND:VIEW_MY_REVIEWS]
 
                 QUAN TRỌNG:
-                - Luôn trích xuất từ khóa chính xác. Ví dụ, nếu người dùng hỏi 'tôi đọc tới đâu trong sách Thiều Quang Mạn rồi', bạn trả về '[COMMAND:CHECK_READING_PROGRESS:Thiều Quang Mạn]'.
-                - Với các câu hỏi trò chuyện khác, hãy trả lời tự nhiên.";
+                - Luôn trích xuất từ khóa chính xác từ câu hỏi của người dùng.
+                - Với các câu hỏi trò chuyện khác, hãy trả lời tự nhiên, thân thiện và hữu ích.";
 
             var fullPrompt = $"{systemPrompt}\n\nCâu hỏi của người dùng: {userMessage}";
             var requestPayload = new GeminiRequest { contents = new List<Content> { new Content { parts = new List<Part> { new Part { text = fullPrompt } } } } };
@@ -109,20 +124,36 @@ namespace Webebook
 
             switch (commandType)
             {
-                // Lệnh có nút bấm
-                case "VIEW_CART": return ViewCart(userId);
-                case "VIEW_PURCHASE_HISTORY": return ViewPurchaseHistory(userId);
-                case "VIEW_BOOKSHELF": return ViewBookshelf(userId);
-
-                // Lệnh không có nút bấm
+                // A. SÁCH (CHUNG)
                 case "SEARCH_BOOK": return new ChatResponse { Text = SearchBookInDatabase(argument) };
                 case "GET_PRICE": return new ChatResponse { Text = GetBookPrice(argument) };
                 case "GET_CHEAPEST_BOOK": return new ChatResponse { Text = GetCheapestBook() };
                 case "GET_MOST_EXPENSIVE_BOOK": return new ChatResponse { Text = GetMostExpensiveBook() };
                 case "FILTER_BY_GENRE": return new ChatResponse { Text = FilterByGenre(argument) };
                 case "GET_RANDOM_BOOK": return new ChatResponse { Text = GetRandomBook() };
+                case "FIND_BOOKS_BY_AUTHOR": return new ChatResponse { Text = FindBooksByAuthor(argument) }; // Mới
+                case "GET_NEWEST_BOOKS": return new ChatResponse { Text = GetNewestBooks(argument) }; // Mới
+                case "GET_TOP_RATED_BOOKS": return new ChatResponse { Text = GetTopRatedBooks(argument) }; // Mới
+
+                // B. ĐƠN HÀNG & GIỎ HÀNG
+                case "VIEW_CART": return ViewCart(userId);
+                case "ADD_TO_CART": return new ChatResponse { Text = AddToCart(userId, argument) }; // Mới
+                case "REMOVE_FROM_CART": return new ChatResponse { Text = RemoveFromCart(userId, argument) }; // Mới
+                case "CLEAR_CART": return new ChatResponse { Text = ClearCart(userId) }; // Mới
+                case "VIEW_PURCHASE_HISTORY": return ViewPurchaseHistory(userId);
                 case "CHECK_LAST_ORDER_STATUS": return new ChatResponse { Text = CheckLastOrderStatus(userId) };
+                case "FIND_ORDER_BY_ID": return new ChatResponse { Text = FindOrderById(userId, argument) }; // Mới
+
+                // C. ĐỌC SÁCH & TỦ SÁCH
+                case "VIEW_BOOKSHELF": return ViewBookshelf(userId);
                 case "CHECK_READING_PROGRESS": return new ChatResponse { Text = CheckReadingProgress(userId, argument) };
+                case "UPDATE_READING_PROGRESS": return new ChatResponse { Text = UpdateReadingProgress(userId, argument) }; // Mới
+                case "GET_FIRST_CHAPTER": return GetChapterLink(userId, argument, "first"); // Mới
+                case "GET_LATEST_CHAPTER": return GetChapterLink(userId, argument, "latest"); // Mới
+
+                // D. ĐÁNH GIÁ & TƯƠNG TÁC
+                case "GUIDE_REVIEW": return GuideReview(userId, argument); // Mới
+                case "VIEW_MY_REVIEWS": return ViewMyReviews(userId); // Mới
 
                 default:
                     System.Diagnostics.Debug.WriteLine($"Lệnh không nhận dạng được: '{command}'");
@@ -130,7 +161,7 @@ namespace Webebook
             }
         }
 
-        #region Các Hàm Truy Vấn CSDL
+        #region (A) Các Hàm Truy Vấn Về Sách (Chung)
 
         private string SearchBookInDatabase(string searchTerm)
         {
@@ -301,6 +332,96 @@ namespace Webebook
             }
         }
 
+        private string FindBooksByAuthor(string authorName)
+        {
+            if (string.IsNullOrWhiteSpace(authorName)) return "Bạn muốn tìm sách của tác giả nào?";
+            var result = new StringBuilder($"Các sách của tác giả '{authorName}':<br/>");
+            string query = "SELECT TOP 5 TenSach FROM Sach WHERE TacGia LIKE @AuthorName";
+            using (var con = new SqlConnection(connectionString))
+            using (var cmd = new SqlCommand(query, con))
+            {
+                cmd.Parameters.AddWithValue("@AuthorName", "%" + authorName + "%");
+                try
+                {
+                    con.Open();
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        if (!reader.HasRows) return $"Không tìm thấy sách nào của tác giả '{authorName}'.";
+                        while (reader.Read())
+                        {
+                            result.AppendLine($"- <b>{reader["TenSach"]}</b><br/>");
+                        }
+                    }
+                }
+                catch { return "Hệ thống CSDL đang gặp sự cố khi tìm sách theo tác giả."; }
+            }
+            return result.ToString();
+        }
+
+        private string GetNewestBooks(string limitStr)
+        {
+            if (!int.TryParse(limitStr, out int limit) || limit <= 0)
+            {
+                limit = 5;
+            }
+            var result = new StringBuilder($"{limit} sách mới nhất trên Webebook:<br/>");
+            string query = $"SELECT TOP {limit} TenSach, TacGia FROM Sach ORDER BY IDSach DESC";
+            using (var con = new SqlConnection(connectionString))
+            using (var cmd = new SqlCommand(query, con))
+            {
+                try
+                {
+                    con.Open();
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        if (!reader.HasRows) return "Chưa có sách nào trên hệ thống.";
+                        while (reader.Read())
+                        {
+                            result.AppendLine($"- <b>{reader["TenSach"]}</b> của {reader["TacGia"]}<br/>");
+                        }
+                    }
+                }
+                catch { return "Hệ thống CSDL đang gặp sự cố."; }
+            }
+            return result.ToString();
+        }
+
+        private string GetTopRatedBooks(string limitStr)
+        {
+            if (!int.TryParse(limitStr, out int limit) || limit <= 0)
+            {
+                limit = 5;
+            }
+            var result = new StringBuilder($"{limit} sách được đánh giá cao nhất:<br/>");
+            string query = $@"SELECT TOP {limit} s.TenSach, AVG(CAST(dg.Diem AS FLOAT)) as AvgRating
+                              FROM DanhGiaSach dg
+                              JOIN Sach s ON dg.IDSach = s.IDSach
+                              GROUP BY s.TenSach
+                              ORDER BY AvgRating DESC";
+            using (var con = new SqlConnection(connectionString))
+            using (var cmd = new SqlCommand(query, con))
+            {
+                try
+                {
+                    con.Open();
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        if (!reader.HasRows) return "Chưa có sách nào được đánh giá.";
+                        while (reader.Read())
+                        {
+                            result.AppendLine($"- <b>{reader["TenSach"]}</b> (Điểm: {Convert.ToDouble(reader["AvgRating"]):F1}/5)<br/>");
+                        }
+                    }
+                }
+                catch { return "Hệ thống CSDL đang gặp sự cố."; }
+            }
+            return result.ToString();
+        }
+
+        #endregion
+
+        #region (B) Các Hàm Về Đơn Hàng & Giỏ Hàng
+
         private ChatResponse ViewCart(int userId)
         {
             var result = new StringBuilder("Trong giỏ hàng của bạn hiện có:<br/>");
@@ -327,6 +448,81 @@ namespace Webebook
                 catch { result.Clear().Append("Hệ thống CSDL đang gặp sự cố."); }
             }
             return new ChatResponse { Text = result.ToString(), ButtonText = "Đi đến Giỏ Hàng", ButtonUrl = "/WebForm/User/giohang_user.aspx" };
+        }
+
+        private string AddToCart(int userId, string bookName)
+        {
+            if (string.IsNullOrWhiteSpace(bookName)) return "Bạn muốn thêm sách nào vào giỏ?";
+
+            int bookId = 0;
+            using (var con = new SqlConnection(connectionString))
+            {
+                // Tìm ID của sách
+                string findQuery = "SELECT TOP 1 IDSach FROM Sach WHERE TenSach LIKE @BookName";
+                using (var findCmd = new SqlCommand(findQuery, con))
+                {
+                    findCmd.Parameters.AddWithValue("@BookName", $"%{bookName}%");
+                    try
+                    {
+                        con.Open();
+                        var result = findCmd.ExecuteScalar();
+                        if (result == null || result == DBNull.Value)
+                        {
+                            return $"Không tìm thấy sách nào có tên giống '{bookName}'.";
+                        }
+                        bookId = Convert.ToInt32(result);
+                    }
+                    catch { return "Lỗi khi tìm sách."; }
+                }
+
+                // Kiểm tra sách đã có trong giỏ chưa
+                string checkQuery = "SELECT SoLuong FROM GioHang WHERE IDNguoiDung = @UserId AND IDSach = @BookId";
+                using (var checkCmd = new SqlCommand(checkQuery, con))
+                {
+                    checkCmd.Parameters.AddWithValue("@UserId", userId);
+                    checkCmd.Parameters.AddWithValue("@BookId", bookId);
+                    var currentQuantity = checkCmd.ExecuteScalar();
+                    if (currentQuantity != null && currentQuantity != DBNull.Value)
+                    {
+                        return $"Sách '{bookName}' đã có trong giỏ hàng rồi.";
+                    }
+                }
+
+                // Thêm sách vào giỏ
+                string insertQuery = "INSERT INTO GioHang (IDNguoiDung, IDSach, SoLuong) VALUES (@UserId, @BookId, 1)";
+                using (var insertCmd = new SqlCommand(insertQuery, con))
+                {
+                    insertCmd.Parameters.AddWithValue("@UserId", userId);
+                    insertCmd.Parameters.AddWithValue("@BookId", bookId);
+                    int rowsAffected = insertCmd.ExecuteNonQuery();
+                    return rowsAffected > 0 ? $"Đã thêm sách '{bookName}' vào giỏ hàng thành công!" : "Không thể thêm sách vào giỏ hàng lúc này.";
+                }
+            }
+        }
+
+        private string RemoveFromCart(int userId, string bookName)
+        {
+            if (string.IsNullOrWhiteSpace(bookName)) return "Bạn muốn xóa sách nào khỏi giỏ hàng?";
+            // Logic tương tự AddToCart nhưng là lệnh DELETE
+            // Do phức tạp trong việc xác định chính xác sách, chức năng này có thể cần cải tiến thêm
+            return "Chức năng xóa sách khỏi giỏ hàng qua chat đang được phát triển.";
+        }
+
+        private string ClearCart(int userId)
+        {
+            string query = "DELETE FROM GioHang WHERE IDNguoiDung = @UserId";
+            using (var con = new SqlConnection(connectionString))
+            using (var cmd = new SqlCommand(query, con))
+            {
+                cmd.Parameters.AddWithValue("@UserId", userId);
+                try
+                {
+                    con.Open();
+                    int rowsAffected = cmd.ExecuteNonQuery();
+                    return rowsAffected > 0 ? "Đã dọn dẹp giỏ hàng của bạn." : "Giỏ hàng của bạn vốn đã trống rồi.";
+                }
+                catch { return "Lỗi khi dọn dẹp giỏ hàng."; }
+            }
         }
 
         private ChatResponse ViewPurchaseHistory(int userId)
@@ -374,6 +570,39 @@ namespace Webebook
                 catch { return "Hệ thống CSDL đang gặp sự cố."; }
             }
         }
+
+        private string FindOrderById(int userId, string orderIdStr)
+        {
+            if (!int.TryParse(orderIdStr, out int orderId))
+            {
+                return "Mã đơn hàng không hợp lệ. Vui lòng nhập một số.";
+            }
+
+            string query = "SELECT NgayDat, SoTien, TrangThaiThanhToan FROM DonHang WHERE IDDonHang = @OrderId AND IDNguoiDung = @UserId";
+            using (var con = new SqlConnection(connectionString))
+            using (var cmd = new SqlCommand(query, con))
+            {
+                cmd.Parameters.AddWithValue("@OrderId", orderId);
+                cmd.Parameters.AddWithValue("@UserId", userId);
+                try
+                {
+                    con.Open();
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            return $"Thông tin đơn hàng #{orderId}:<br/>- Ngày đặt: {((DateTime)reader["NgayDat"]):dd/MM/yyyy}<br/>- Tổng tiền: {((decimal)reader["SoTien"]):N0} VNĐ<br/>- Trạng thái: <b>{reader["TrangThaiThanhToan"]}</b>";
+                        }
+                        return $"Không tìm thấy đơn hàng nào của bạn có mã là #{orderId}.";
+                    }
+                }
+                catch { return "Lỗi khi tìm kiếm đơn hàng."; }
+            }
+        }
+
+        #endregion
+
+        #region (C) Các Hàm Về Đọc Sách & Tủ Sách
 
         private ChatResponse ViewBookshelf(int userId)
         {
@@ -428,6 +657,137 @@ namespace Webebook
                     return "Hệ thống CSDL đang gặp sự cố khi kiểm tra tiến độ đọc sách.";
                 }
             }
+        }
+
+        private string UpdateReadingProgress(int userId, string argument)
+        {
+            var parts = argument.Split(new[] { ',' }, 2);
+            if (parts.Length < 2) return "Cú pháp không đúng. Cần: [COMMAND:UPDATE_READING_PROGRESS:tên sách,số chương]";
+
+            string bookName = parts[0].Trim();
+            string chapter = parts[1].Trim();
+
+            string query = @"UPDATE TuSach SET ViTriDoc = @ViTriDoc
+                             WHERE IDNguoiDung = @UserId AND IDSach = (SELECT IDSach FROM Sach WHERE TenSach LIKE @TenSach)";
+
+            using (var con = new SqlConnection(connectionString))
+            using (var cmd = new SqlCommand(query, con))
+            {
+                cmd.Parameters.AddWithValue("@ViTriDoc", chapter);
+                cmd.Parameters.AddWithValue("@UserId", userId);
+                cmd.Parameters.AddWithValue("@TenSach", $"%{bookName}%");
+                try
+                {
+                    con.Open();
+                    int rowsAffected = cmd.ExecuteNonQuery();
+                    return rowsAffected > 0 ? $"Đã cập nhật tiến độ đọc cho sách '{bookName}' đến chương {chapter}." : $"Không thể cập nhật tiến độ. Sách '{bookName}' có thể không có trong tủ sách của bạn.";
+                }
+                catch { return "Lỗi khi cập nhật tiến độ đọc."; }
+            }
+        }
+
+        private ChatResponse GetChapterLink(int userId, string bookName, string chapterType)
+        {
+            string order = chapterType == "first" ? "ASC" : "DESC";
+            string query = $@"SELECT TOP 1 s.IDSach, nd.SoChuong
+                              FROM NoiDungSach nd
+                              JOIN Sach s ON nd.IDSach = s.IDSach
+                              JOIN TuSach ts ON s.IDSach = ts.IDSach
+                              WHERE ts.IDNguoiDung = @UserId AND s.TenSach LIKE @BookName
+                              ORDER BY nd.SoChuong {order}";
+
+            using (var con = new SqlConnection(connectionString))
+            using (var cmd = new SqlCommand(query, con))
+            {
+                cmd.Parameters.AddWithValue("@UserId", userId);
+                cmd.Parameters.AddWithValue("@BookName", $"%{bookName}%");
+                try
+                {
+                    con.Open();
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            string sachId = reader["IDSach"].ToString();
+                            string soChuong = reader["SoChuong"].ToString();
+                            return new ChatResponse
+                            {
+                                Text = $"Đây là chương {(chapterType == "first" ? "đầu tiên" : "mới nhất")} của sách '{bookName}'.",
+                                ButtonText = "Đọc Ngay",
+                                ButtonUrl = $"/WebForm/User/docsach.aspx?IDSach={sachId}&SoChuong={soChuong}"
+                            };
+                        }
+                    }
+                }
+                catch { }
+            }
+            return new ChatResponse { Text = $"Không thể tìm thấy chương cho sách '{bookName}' trong tủ sách của bạn." };
+        }
+
+        #endregion
+
+        #region (D) Các Hàm Về Đánh Giá & Tương Tác
+
+        private ChatResponse GuideReview(int userId, string bookName)
+        {
+            if (string.IsNullOrWhiteSpace(bookName)) return new ChatResponse { Text = "Bạn muốn viết đánh giá cho sách nào?" };
+
+            string query = @"SELECT s.IDSach FROM Sach s JOIN TuSach ts ON s.IDSach = ts.IDSach
+                             WHERE ts.IDNguoiDung = @UserId AND s.TenSach LIKE @BookName";
+            using (var con = new SqlConnection(connectionString))
+            using (var cmd = new SqlCommand(query, con))
+            {
+                cmd.Parameters.AddWithValue("@UserId", userId);
+                cmd.Parameters.AddWithValue("@BookName", $"%{bookName}%");
+                try
+                {
+                    con.Open();
+                    object result = cmd.ExecuteScalar();
+                    if (result != null && result != DBNull.Value)
+                    {
+                        string sachId = result.ToString();
+                        return new ChatResponse
+                        {
+                            Text = $"Tuyệt vời! Bạn có thể viết đánh giá cho sách '{bookName}' tại đây.",
+                            ButtonText = "Viết Đánh Giá",
+                            ButtonUrl = $"/WebForm/User/danhgia.aspx?IDSach={sachId}"
+                        };
+                    }
+                }
+                catch { }
+            }
+            return new ChatResponse { Text = $"Bạn cần sở hữu sách '{bookName}' để có thể viết đánh giá." };
+        }
+
+        private ChatResponse ViewMyReviews(int userId)
+        {
+            var result = new StringBuilder("Các đánh giá của bạn:<br/>");
+            string query = @"SELECT TOP 5 s.TenSach, dg.Diem, dg.NhanXet, dg.NgayDanhGia
+                             FROM DanhGiaSach dg
+                             JOIN Sach s ON dg.IDSach = s.IDSach
+                             WHERE dg.IDNguoiDung = @UserId
+                             ORDER BY dg.NgayDanhGia DESC";
+
+            using (var con = new SqlConnection(connectionString))
+            using (var cmd = new SqlCommand(query, con))
+            {
+                cmd.Parameters.AddWithValue("@UserId", userId);
+                try
+                {
+                    con.Open();
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        if (!reader.HasRows) return new ChatResponse { Text = "Bạn chưa viết đánh giá nào." };
+                        while (reader.Read())
+                        {
+                            result.AppendLine($"- <b>{reader["TenSach"]}</b> ({reader["Diem"]}/5 sao): <i>{reader["NhanXet"]}</i><br/>");
+                        }
+                    }
+                }
+                catch { return new ChatResponse { Text = "Lỗi khi truy vấn đánh giá của bạn." }; }
+            }
+            // Không có nút bấm cho chức năng này vì trang Quản lý đánh giá của Admin không dành cho User
+            return new ChatResponse { Text = result.ToString() };
         }
 
         #endregion
