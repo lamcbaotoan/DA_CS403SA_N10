@@ -258,10 +258,39 @@ namespace Webebook.WebForm.Admin
             {
                 LinkButton lnkXoa = (LinkButton)e.Row.FindControl("lnkXoa");
                 DataRowView rowView = (DataRowView)e.Row.DataItem;
+<<<<<<< HEAD
+
+=======
+>>>>>>> 0ea43edc707e5e92fc656cf72f9448994cf7c8b3
                 if (lnkXoa != null && rowView != null)
                 {
                     string tenSach = rowView["TenSach"]?.ToString() ?? "Không có tên";
                     string idSach = rowView["IDSach"]?.ToString() ?? "N/A";
+<<<<<<< HEAD
+
+                    // Dòng code này sẽ gán OnClientClick một cách chính xác
+                    string tenSachEncoded = HttpUtility.JavaScriptStringEncode(tenSach);
+                    lnkXoa.OnClientClick = $"showDeleteConfirmation('{idSach}', '{tenSachEncoded}', '{lnkXoa.UniqueID}'); return false;";
+                }
+            }
+        }
+        /*
+                protected string GetDeleteConfirmationScript(object tenSachObject, object idSachObject)
+                {
+                    string tenSach = tenSachObject?.ToString() ?? "Không có tên";
+                    string idSach = idSachObject?.ToString() ?? "N/A";
+                    string encodedTenSach = HttpUtility.JavaScriptStringEncode(tenSach);
+                    string message = $"CẢNH BÁO:\\n\\n" +
+                                     $"Việc xóa sách \\\"{encodedTenSach}\\\" (ID: {idSach}) cũng sẽ xóa nó khỏi:\\n" +
+                                     $"  - Tủ Sách của tất cả người dùng\\n" +
+                                     $"  - Giỏ hàng của tất cả người dùng\\n" +
+                                     $"  - Chi tiết đơn hàng liên quan\\n" +
+                                     $"  - Bình luận (TuongTac) liên quan\\n" +
+                                     $"  - Nội dung và Đánh giá sách (tự động bởi CSDL nếu có ON DELETE CASCADE)\\n\\n" +
+                                     $"Bạn có chắc chắn muốn xóa không? Hành động này không thể hoàn tác.";
+                    return $"return confirm('{message}');";
+                }*/
+=======
                     lnkXoa.OnClientClick = GetDeleteConfirmationScript(tenSach, idSach);
                 }
             }
@@ -281,6 +310,7 @@ namespace Webebook.WebForm.Admin
                              $"Bạn có chắc chắn muốn xóa không? Hành động này không thể hoàn tác.";
             return $"return confirm('{message}');";
         }
+>>>>>>> 0ea43edc707e5e92fc656cf72f9448994cf7c8b3
         private void DeleteSach(int idSach)
         {
             string imagePathToDelete = null;

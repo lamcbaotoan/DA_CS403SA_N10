@@ -2,10 +2,19 @@
 <%@ Import Namespace="System.Data" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+<<<<<<< HEAD
+    <%-- Font Awesome và Styles không thay đổi --%>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <style>
+        /* Styles không thay đổi */
+=======
     <%-- Font Awesome and Styles remain the same --%>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
     <style>
         /* Styles remain the same */
+>>>>>>> 0ea43edc707e5e92fc656cf72f9448994cf7c8b3
         #<%= gvGioHang.ClientID %> {
             width: 100%;
             border-collapse: collapse;
@@ -32,7 +41,10 @@
         .gridview-row:hover {
             background-color: #F9FAFB; /* gray-50 */
         }
+<<<<<<< HEAD
+=======
         /* Removed tooltip CSS for name span as it's now a link */
+>>>>>>> 0ea43edc707e5e92fc656cf72f9448994cf7c8b3
         .item-checkbox, .header-checkbox {
             width: 1.5rem;
             height: 1.5rem;
@@ -54,6 +66,18 @@
             background-color: #F9FAFB; /* gray-50 */
             margin-left: auto;
             margin-right: auto;
+<<<<<<< HEAD
+            display: block;
+        }
+        .product-link:hover .product-image {
+            opacity: 0.9;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .book-title-link {
+            color: #1F2937; /* gray-800 */
+            font-weight: 500; /* medium */
+            transition: color 0.15s ease-in-out;
+=======
             display: block; /* Ensure it behaves like a block element */
         }
         .product-link:hover .product-image { /* Add subtle hover effect to image via link */
@@ -65,6 +89,7 @@
              color: #1F2937; /* gray-800 */
              font-weight: 500; /* medium */
              transition: color 0.15s ease-in-out;
+>>>>>>> 0ea43edc707e5e92fc656cf72f9448994cf7c8b3
         }
         .book-title-link:hover {
             color: #2563EB; /* blue-600 */
@@ -72,6 +97,41 @@
         }
 
         @media (max-width: 640px) {
+<<<<<<< HEAD
+            #<%= gvGioHang.ClientID %> { display: block; }
+            #<%= gvGioHang.ClientID %> thead { display: none; }
+            #<%= gvGioHang.ClientID %> tr {
+                display: flex;
+                flex-direction: column;
+                margin-bottom: 1.5rem;
+                padding: 1rem;
+                border: 1px solid #E5E7EB;
+                border-radius: 0.5rem;
+                background-color: #fff;
+                box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            }
+            #<%= gvGioHang.ClientID %> td {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 0.5rem 0;
+                border-bottom: 1px solid #F3F4F6;
+            }
+            #<%= gvGioHang.ClientID %> td:last-child { border-bottom: none; }
+            /* Vô hiệu hóa nhãn ::before bằng cách không có thuộc tính data-label để đọc */
+            #<%= gvGioHang.ClientID %> td::before {
+                content: attr(data-label);
+                font-weight: 600;
+                color: #374151;
+                margin-right: 0.5rem;
+            }
+            .item-checkbox, .header-checkbox { width: 1.5rem; height: 1.5rem; }
+            .action-icons a { font-size: 1.25rem; padding: 0.5rem; }
+            .gv-col-image { display: none; }
+            .gv-col-name { text-align: right; }
+            .book-title-link { max-width: 100%; white-space: normal; text-align: right; }
+            .gv-col-price { justify-content: flex-end; }
+=======
             /* Responsive styles remain the same */
              #<%= gvGioHang.ClientID %> { display: block; }
              #<%= gvGioHang.ClientID %> thead { display: none; }
@@ -105,6 +165,7 @@
              .gv-col-name { text-align: right; } /* Align content to the right for name */
              .book-title-link { max-width: 100%; white-space: normal; text-align: right; } /* Ensure link wraps */
              .gv-col-price { justify-content: flex-end; }
+>>>>>>> 0ea43edc707e5e92fc656cf72f9448994cf7c8b3
         }
     </style>
 </asp:Content>
@@ -137,19 +198,31 @@
                                 </div>
                             </HeaderTemplate>
                             <ItemTemplate>
+<<<<<<< HEAD
+                                <%-- === MODIFIED: Đã xóa span "Chọn" và data-label. Div sẽ căn chỉnh checkbox sang phải. === --%>
+                                <div class="flex justify-end items-center w-full">
+=======
                                 <div class="flex justify-between items-center w-full" data-label="Chọn">
                                     <span>Chọn</span>
+>>>>>>> 0ea43edc707e5e92fc656cf72f9448994cf7c8b3
                                     <asp:CheckBox ID="chkSelect" runat="server" CssClass="item-checkbox form-checkbox"/>
                                 </div>
                             </ItemTemplate>
                             <ItemStyle CssClass="px-4 py-3 text-center"/>
                         </asp:TemplateField>
 
+<<<<<<< HEAD
+                        <asp:TemplateField HeaderText="Ảnh Bìa" HeaderStyle-CssClass="px-4 py-3 text-center text-xs font-medium uppercase tracking-wider gv-col-image">
+                            <ItemTemplate>
+                                <%-- === MODIFIED: Đã xóa data-label. === --%>
+                                <div class="flex justify-center items-center py-2">
+=======
                         <%-- === MODIFIED: Ảnh Bìa Column === --%>
                         <asp:TemplateField HeaderText="Ảnh Bìa" HeaderStyle-CssClass="px-4 py-3 text-center text-xs font-medium uppercase tracking-wider gv-col-image">
                             <ItemTemplate>
                                 <div class="flex justify-center items-center py-2" data-label="Ảnh Bìa">
                                     <%-- Wrap Image in HyperLink with CORRECT Query String Parameter --%>
+>>>>>>> 0ea43edc707e5e92fc656cf72f9448994cf7c8b3
                                     <asp:HyperLink ID="hlProductImage" runat="server" CssClass="product-link"
                                         NavigateUrl='<%# string.Format("~/WebForm/User/chitietsach_user.aspx?IDSach={0}", Eval("IDSach")) %>'
                                         ToolTip='<%# "Xem chi tiết " + Eval("TenSach") %>'>
@@ -161,6 +234,13 @@
                             </ItemTemplate>
                             <ItemStyle CssClass="px-4 py-3"/>
                         </asp:TemplateField>
+<<<<<<< HEAD
+
+                        <asp:TemplateField HeaderText="Tên Sách" HeaderStyle-CssClass="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider gv-col-name">
+                            <ItemTemplate>
+                                <%-- === MODIFIED: Đã xóa data-label. Div sẽ căn chỉnh link sang trái. === --%>
+                                <div class="flex justify-start items-center w-full">
+=======
                         <%-- === END MODIFIED === --%>
 
                         <%-- === MODIFIED: Tên Sách Column === --%>
@@ -168,6 +248,7 @@
                             <ItemTemplate>
                                 <div class="flex justify-between items-center w-full" data-label="Tên Sách">
                                     <%-- Use HyperLink instead of span with CORRECT Query String Parameter --%>
+>>>>>>> 0ea43edc707e5e92fc656cf72f9448994cf7c8b3
                                     <asp:HyperLink ID="hlTenSach" runat="server" CssClass="book-title-link text-sm"
                                         NavigateUrl='<%# string.Format("~/WebForm/User/chitietsach_user.aspx?IDSach={0}", Eval("IDSach")) %>'
                                         Text='<%# Eval("TenSach") %>'
@@ -176,6 +257,13 @@
                             </ItemTemplate>
                             <ItemStyle CssClass="px-6 py-3"/>
                         </asp:TemplateField>
+<<<<<<< HEAD
+
+                        <asp:TemplateField HeaderText="Giá Sách (VNĐ)" HeaderStyle-CssClass="px-6 py-3 text-right text-xs font-medium uppercase tracking-wider gv-col-price">
+                            <ItemTemplate>
+                                <%-- === MODIFIED: Đã xóa span "Giá Sách" và data-label. Div sẽ căn chỉnh giá sang phải. === --%>
+                                <div class="flex justify-end items-center w-full">
+=======
                          <%-- === END MODIFIED === --%>
 
                         <asp:TemplateField HeaderText="Giá Sách (VNĐ)" HeaderStyle-CssClass="px-6 py-3 text-right text-xs font-medium uppercase tracking-wider gv-col-price">
@@ -183,6 +271,7 @@
                                 <div class="flex justify-between items-center w-full" data-label="Giá Sách">
                                     <span>Giá Sách</span>
                                     <%-- Comment outside the tag --%>
+>>>>>>> 0ea43edc707e5e92fc656cf72f9448994cf7c8b3
                                     <asp:Label ID="lblDonGia" runat="server"
                                         CssClass="item-price-display text-sm font-medium text-gray-700"
                                         Text='<%# string.Format("{0:N0} VNĐ", Convert.ToDecimal(Eval("GiaSach"))) %>'></asp:Label>
@@ -193,6 +282,16 @@
 
                         <asp:TemplateField HeaderText="Xóa" HeaderStyle-CssClass="px-6 py-3 text-center text-xs font-medium uppercase tracking-wider gv-col-delete">
                             <ItemTemplate>
+<<<<<<< HEAD
+                                <%-- === MODIFIED: Đã xóa span "Xóa" và data-label. Div sẽ căn chỉnh nút xóa sang phải. === --%>
+                                <div class="flex justify-end items-center w-full">
+                                <asp:LinkButton ID="lnkXoa" runat="server" CommandName="Xoa"
+                                    CommandArgument='<%# Eval("IDGioHang") %>'
+                                    CssClass="text-gray-400 hover:text-red-500 transition duration-150 ease-in-out" ToolTip="Xóa khỏi giỏ hàng">
+                                    <%-- Thuộc tính OnClientClick đã được xóa bỏ --%>
+                                    <i class="fas fa-trash-alt fa-fw text-base"></i>
+                                </asp:LinkButton>
+=======
                                 <div class="flex justify-between items-center w-full" data-label="Xóa">
                                     <span>Xóa</span>
                                     <asp:LinkButton ID="lnkXoa" runat="server" CommandName="Xoa"
@@ -201,6 +300,7 @@
                                         OnClientClick="return confirm('Bạn có chắc chắn muốn xóa sách này khỏi giỏ hàng?');">
                                         <i class="fas fa-trash-alt fa-fw text-base"></i> <%-- Increased icon size slightly --%>
                                     </asp:LinkButton>
+>>>>>>> 0ea43edc707e5e92fc656cf72f9448994cf7c8b3
                                 </div>
                             </ItemTemplate>
                             <ItemStyle CssClass="px-6 py-3 text-center"/>
@@ -209,7 +309,11 @@
                 </asp:GridView>
             </div>
 
+<<<<<<< HEAD
+            <%-- Phần Tổng cộng và Nút Thanh toán không thay đổi --%>
+=======
             <%-- Total and Checkout Button Section remains the same --%>
+>>>>>>> 0ea43edc707e5e92fc656cf72f9448994cf7c8b3
             <div class="mt-6 flex flex-col sm:flex-row justify-between items-center bg-white p-5 rounded-lg shadow-sm border border-gray-200">
                 <div class="text-lg sm:text-xl text-gray-700 mb-3 sm:mb-0 total-section">
                     <span>Tổng cộng (<asp:Label ID="lblSelectedItemCount" runat="server" Text="0"></asp:Label> chọn): </span>
@@ -221,7 +325,11 @@
             </div>
         </asp:Panel>
 
+<<<<<<< HEAD
+        <%-- Panel Giỏ hàng trống không thay đổi --%>
+=======
         <%-- Empty Cart Panel remains the same --%>
+>>>>>>> 0ea43edc707e5e92fc656cf72f9448994cf7c8b3
         <asp:Panel ID="pnlEmptyCart" runat="server" Visible="true" CssClass="text-center py-16 bg-white rounded-lg shadow-md border border-gray-200">
             <i class="fas fa-shopping-cart fa-3x text-gray-400 mb-4"></i>
             <p class="text-gray-500 text-lg mb-5">Giỏ hàng của bạn hiện đang trống.</p>
@@ -230,9 +338,15 @@
         </asp:Panel>
     </div>
 
+<<<<<<< HEAD
+    <%-- JavaScript không thay đổi --%>
+    <script type="text/javascript">
+        // Các hàm JavaScript hiện có: formatCurrency, updateTotalAndCheckoutButtonState, initializeCartEvents
+=======
     <%-- JavaScript remains the same --%>
     <script type="text/javascript">
         // Existing JavaScript functions: formatCurrency, updateTotalAndCheckoutButtonState, initializeCartEvents
+>>>>>>> 0ea43edc707e5e92fc656cf72f9448994cf7c8b3
         function formatCurrency(value) {
             const numberValue = Number(value);
             if (isNaN(numberValue)) { return "0 VNĐ"; }
@@ -254,6 +368,26 @@
                 return;
             }
 
+<<<<<<< HEAD
+            const headerCheckboxElement = gridView.querySelector('th .header-checkbox');
+            if (headerCheckboxElement) {
+                headerCheckboxInput = headerCheckboxElement.querySelector('input[type=checkbox]');
+                if (!headerCheckboxInput) headerCheckboxInput = headerCheckboxElement;
+            }
+
+            const itemCheckboxInputs = gridView.querySelectorAll('.item-checkbox input[type=checkbox], input.item-checkbox');
+            let allItemsChecked = true;
+
+            itemCheckboxInputs.forEach(checkboxInput => {
+                const row = checkboxInput.closest('tr');
+                let priceElement = row ? row.querySelector('[data-price]') : checkboxInput.closest('[data-price]');
+                if (!priceElement) {
+                    // Fallback to find the checkbox's parent div which now holds the data-price
+                    const parentDiv = checkboxInput.closest('div[data-price]');
+                    if (parentDiv) priceElement = parentDiv;
+                    else priceElement = checkboxInput;
+                }
+=======
             // Find header checkbox robustly
             const headerCheckboxElement = gridView.querySelector('th .header-checkbox');
             if (headerCheckboxElement) {
@@ -272,6 +406,7 @@
                 const row = checkboxInput.closest('tr');
                 let priceElement = row ? row.querySelector('[data-price]') : checkboxInput.closest('[data-price]');
                 if (!priceElement) priceElement = checkboxInput; // Fallback to checkbox itself
+>>>>>>> 0ea43edc707e5e92fc656cf72f9448994cf7c8b3
 
                 const priceString = priceElement.getAttribute('data-price') || '0';
                 const price = parseFloat(priceString) || 0;
@@ -301,12 +436,19 @@
                 return;
             }
 
+<<<<<<< HEAD
+=======
             // Header checkbox logic
+>>>>>>> 0ea43edc707e5e92fc656cf72f9448994cf7c8b3
             const headerCheckboxElement = gridView.querySelector('th .header-checkbox');
             if (headerCheckboxElement) {
                 const headerCheckboxInput = headerCheckboxElement.querySelector('input[type=checkbox]') || headerCheckboxElement;
                 if (headerCheckboxInput) {
+<<<<<<< HEAD
+                    headerCheckboxInput.addEventListener('change', function () {
+=======
                     headerCheckboxInput.addEventListener('change', function () { // Use 'change' event
+>>>>>>> 0ea43edc707e5e92fc656cf72f9448994cf7c8b3
                         const isChecked = headerCheckboxInput.checked;
                         const itemInputs = gridView.querySelectorAll('.item-checkbox input[type=checkbox], input.item-checkbox');
                         itemInputs.forEach(itemInput => {
@@ -319,25 +461,63 @@
                 } else { console.warn('Header checkbox INPUT not found!'); }
             } else { console.warn('Header checkbox element not found!'); }
 
+<<<<<<< HEAD
+            const itemCheckboxInputs = gridView.querySelectorAll('.item-checkbox input[type=checkbox], input.item-checkbox');
+            itemCheckboxInputs.forEach(checkboxInput => {
+                checkboxInput.addEventListener('change', function () {
+=======
             // Item checkbox logic
             const itemCheckboxInputs = gridView.querySelectorAll('.item-checkbox input[type=checkbox], input.item-checkbox');
             itemCheckboxInputs.forEach(checkboxInput => {
                 checkboxInput.addEventListener('change', function () { // Use 'change' event
+>>>>>>> 0ea43edc707e5e92fc656cf72f9448994cf7c8b3
                     updateTotalAndCheckoutButtonState();
                 });
             });
 
+<<<<<<< HEAD
+            updateTotalAndCheckoutButtonState();
+=======
             updateTotalAndCheckoutButtonState(); // Initial calculation
+>>>>>>> 0ea43edc707e5e92fc656cf72f9448994cf7c8b3
         }
 
         if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', initializeCartEvents);
         } else {
+<<<<<<< HEAD
+            initializeCartEvents();
+        }
+        if (typeof (Sys) !== 'undefined' && Sys.WebForms && Sys.WebForms.PageRequestManager) {
+            Sys.WebForms.PageRequestManager.getInstance().add_endRequest(initializeCartEvents);
+        }
+
+        // ==================== BẮT ĐẦU: THÊM HÀM POPUP XÓA ====================
+        function showCartItemDeleteConfirmation(cartItemId, bookTitle, sourceControlUniqueId) {
+            Swal.fire({
+                title: 'Xóa sách khỏi giỏ hàng?',
+                html: `Bạn có chắc chắn muốn xóa sách<br><strong>${bookTitle}</strong>`,
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#6b7280',
+                confirmButtonText: '<i class="fas fa-trash-alt"></i> Đồng ý, Xóa!',
+                cancelButtonText: 'Hủy'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Nếu xác nhận, trigger postback để server thực thi lệnh xóa
+                    __doPostBack(sourceControlUniqueId, '');
+                }
+            });
+        }
+        // ==================== KẾT THÚC: THÊM HÀM POPUP XÓA ====================
+=======
             initializeCartEvents(); // Already loaded
         }
         // Ensure re-initialization after potential partial updates (UpdatePanel)
         if (typeof (Sys) !== 'undefined' && Sys.WebForms && Sys.WebForms.PageRequestManager) {
             Sys.WebForms.PageRequestManager.getInstance().add_endRequest(initializeCartEvents);
         }
+>>>>>>> 0ea43edc707e5e92fc656cf72f9448994cf7c8b3
     </script>
 </asp:Content>

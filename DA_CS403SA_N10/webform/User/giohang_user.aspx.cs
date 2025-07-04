@@ -6,7 +6,11 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Collections.Generic;
 using System.Globalization;
+<<<<<<< HEAD
+using System.Linq;
+=======
 using System.Linq; // Keep this for potential future use
+>>>>>>> 0ea43edc707e5e92fc656cf72f9448994cf7c8b3
 using System.Web;
 
 namespace Webebook.WebForm.User
@@ -15,7 +19,10 @@ namespace Webebook.WebForm.User
     {
         string connectionString = ConfigurationManager.ConnectionStrings["datawebebookConnectionString"].ConnectionString;
 
+<<<<<<< HEAD
+=======
         // Page_Load remains the same
+>>>>>>> 0ea43edc707e5e92fc656cf72f9448994cf7c8b3
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["UserID"] == null)
@@ -31,27 +38,49 @@ namespace Webebook.WebForm.User
             }
         }
 
+<<<<<<< HEAD
+        // === PHƯƠNG THỨC ĐÃ SỬA LỖI ===
+=======
         // LoadCart, HandleLoadError, gvGioHang_RowCommand, DeleteItem, btnThanhToan_Click, UpdateMasterCartCount, ShowMessage, LogError
         // remain the same as previous version.
 
         // === MODIFIED: gvGioHang_RowDataBound ===
+>>>>>>> 0ea43edc707e5e92fc656cf72f9448994cf7c8b3
         protected void gvGioHang_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
+<<<<<<< HEAD
+                // Khai báo drv MỘT LẦN ở đây để sử dụng cho toàn bộ phương thức
+                DataRowView drv = (DataRowView)e.Row.DataItem;
+                if (drv == null) return; // Thêm kiểm tra an toàn
+
+                // --- Logic cho Checkbox ---
+                CheckBox chkSelect = (CheckBox)e.Row.FindControl("chkSelect");
+                if (chkSelect != null)
+                {
+                    // KHÔNG khai báo lại "DataRowView drv" ở đây nữa
+                    if (drv.Row.Table.Columns.Contains("GiaSach") && drv["GiaSach"] != DBNull.Value)
+=======
                 // --- Find Checkbox and Set Data Price ---
                 CheckBox chkSelect = (CheckBox)e.Row.FindControl("chkSelect");
                 if (chkSelect != null)
                 {
                     DataRowView drv = (DataRowView)e.Row.DataItem;
                     if (drv != null && drv.Row.Table.Columns.Contains("GiaSach") && drv["GiaSach"] != DBNull.Value)
+>>>>>>> 0ea43edc707e5e92fc656cf72f9448994cf7c8b3
                     {
                         try
                         {
                             decimal price = Convert.ToDecimal(drv["GiaSach"]);
+<<<<<<< HEAD
+                            chkSelect.Attributes["data-price"] = price.ToString(CultureInfo.InvariantCulture);
+
+=======
                             // Use InvariantCulture to ensure decimal point is '.' for JavaScript parseFloat
                             chkSelect.Attributes["data-price"] = price.ToString(CultureInfo.InvariantCulture);
                             // Also add to parent div for easier access in responsive view if needed
+>>>>>>> 0ea43edc707e5e92fc656cf72f9448994cf7c8b3
                             var parentDiv = chkSelect.Parent as System.Web.UI.HtmlControls.HtmlGenericControl;
                             if (parentDiv != null) parentDiv.Attributes["data-price"] = price.ToString(CultureInfo.InvariantCulture);
                         }
@@ -63,12 +92,30 @@ namespace Webebook.WebForm.User
                     }
                     else { chkSelect.Attributes["data-price"] = "0"; }
 
+<<<<<<< HEAD
+=======
                     // Ensure CSS classes are present (though they should be from markup)
+>>>>>>> 0ea43edc707e5e92fc656cf72f9448994cf7c8b3
                     if (!chkSelect.CssClass.Contains("item-checkbox")) { chkSelect.CssClass += " item-checkbox"; }
                     if (!chkSelect.CssClass.Contains("form-checkbox")) { chkSelect.CssClass += " form-checkbox"; }
                 }
                 else { LogError($"Could not find chkSelect in row {e.Row.RowIndex}"); }
 
+<<<<<<< HEAD
+                // --- GÁN SỰ KIỆN CHO NÚT XÓA ---
+                var lnkXoa = e.Row.FindControl("lnkXoa") as LinkButton;
+                if (lnkXoa != null)
+                {
+                    string cartItemId = drv["IDGioHang"].ToString();
+                    string bookTitle = drv["TenSach"]?.ToString() ?? "[Sách không tên]";
+                    string encodedBookTitle = HttpUtility.JavaScriptStringEncode(bookTitle);
+
+                    lnkXoa.OnClientClick = $"showCartItemDeleteConfirmation('{cartItemId}', '{encodedBookTitle}', '{lnkXoa.UniqueID}'); return false;";
+                }
+            }
+            else if (e.Row.RowType == DataControlRowType.Header)
+            {
+=======
                 // --- Remove Name Span Tooltip Logic ---
                 // The HyperLink in ASPX now handles the tooltip directly via Eval.
                 /*
@@ -87,6 +134,7 @@ namespace Webebook.WebForm.User
             else if (e.Row.RowType == DataControlRowType.Header)
             {
                 // --- Ensure Header Checkbox CSS ---
+>>>>>>> 0ea43edc707e5e92fc656cf72f9448994cf7c8b3
                 CheckBox chkHeader = e.Row.FindControl("chkHeader") as CheckBox;
                 if (chkHeader != null)
                 {
@@ -96,9 +144,13 @@ namespace Webebook.WebForm.User
                 else { LogError($"Could not find chkHeader in header row"); }
             }
         }
+<<<<<<< HEAD
+
+=======
         // === END MODIFIED ===
 
         // Other methods (LoadCart, DeleteItem, btnThanhToan_Click etc. remain the same)
+>>>>>>> 0ea43edc707e5e92fc656cf72f9448994cf7c8b3
         private void LoadCart()
         {
             pnlCart.Visible = false;
@@ -111,21 +163,33 @@ namespace Webebook.WebForm.User
             if (!int.TryParse(Session["UserID"]?.ToString(), out userId))
             {
                 ShowMessage("Không thể xác định người dùng. Vui lòng đăng nhập lại.", true);
+<<<<<<< HEAD
+                LogError("UserID session variable is missing or invalid in LoadCart.");
+                return;
+=======
                 // Consider redirecting here if user ID is essential and missing.
                 // Response.Redirect("~/WebForm/VangLai/dangnhap.aspx", true);
                 // return;
                 LogError("UserID session variable is missing or invalid in LoadCart.");
                 return; // Stop loading if no valid user ID
+>>>>>>> 0ea43edc707e5e92fc656cf72f9448994cf7c8b3
             }
 
             DataTable dt = new DataTable();
             using (SqlConnection con = new SqlConnection(connectionString))
             {
                 string query = @"SELECT gh.IDGioHang, gh.IDSach, s.TenSach, s.DuongDanBiaSach, s.GiaSach
+<<<<<<< HEAD
+                                 FROM GioHang gh
+                                 INNER JOIN Sach s ON gh.IDSach = s.IDSach
+                                 WHERE gh.IDNguoiDung = @UserId
+                                 ORDER BY gh.IDGioHang DESC";
+=======
                                    FROM GioHang gh
                                    INNER JOIN Sach s ON gh.IDSach = s.IDSach
                                    WHERE gh.IDNguoiDung = @UserId
                                    ORDER BY gh.IDGioHang DESC";
+>>>>>>> 0ea43edc707e5e92fc656cf72f9448994cf7c8b3
                 using (SqlCommand cmd = new SqlCommand(query, con))
                 {
                     cmd.Parameters.AddWithValue("@UserId", userId);
@@ -144,8 +208,11 @@ namespace Webebook.WebForm.User
 
                         if (hasItems)
                         {
+<<<<<<< HEAD
+=======
                             // Reregister script after databind to ensure elements exist
                             // Use different key to avoid conflicts if LoadCart is called multiple times
+>>>>>>> 0ea43edc707e5e92fc656cf72f9448994cf7c8b3
                             ClientScript.RegisterStartupScript(this.GetType(), "CartLoad_" + DateTime.Now.Ticks, "initializeCartEvents();", true);
                         }
                     }
@@ -169,6 +236,16 @@ namespace Webebook.WebForm.User
             int userId;
             if (!int.TryParse(Session["UserID"]?.ToString(), out userId)) { Response.Redirect("~/WebForm/VangLai/dangnhap.aspx", true); return; }
 
+<<<<<<< HEAD
+            if (e.CommandName == "Xoa")
+            {
+                if (!int.TryParse(e.CommandArgument?.ToString(), out int idGioHang) || idGioHang <= 0)
+                {
+                    ShowMessage("ID mục giỏ hàng không hợp lệ.", true);
+                    LogError($"Invalid CommandArgument in gvGioHang_RowCommand: '{e.CommandArgument}'");
+                    return;
+                }
+=======
             if (!int.TryParse(e.CommandArgument?.ToString(), out int idGioHang) || idGioHang <= 0)
             {
                 ShowMessage("ID mục giỏ hàng không hợp lệ.", true);
@@ -178,6 +255,7 @@ namespace Webebook.WebForm.User
 
             if (e.CommandName == "Xoa")
             {
+>>>>>>> 0ea43edc707e5e92fc656cf72f9448994cf7c8b3
                 DeleteItem(idGioHang, userId);
             }
         }
@@ -198,10 +276,15 @@ namespace Webebook.WebForm.User
                         if (rowsAffected > 0)
                         {
                             ShowMessage("Đã xóa sách khỏi giỏ hàng.", false);
+<<<<<<< HEAD
+                            LoadCart();
+                            UpdateMasterCartCount();
+=======
                             LoadCart(); // Reload data
                             UpdateMasterCartCount(); // Update count in master page
                                                      // Reregister script after databind
                             ClientScript.RegisterStartupScript(this.GetType(), "UpdateCartAfterDelete_" + DateTime.Now.Ticks, "initializeCartEvents();", true);
+>>>>>>> 0ea43edc707e5e92fc656cf72f9448994cf7c8b3
                         }
                         else
                         {
@@ -220,6 +303,11 @@ namespace Webebook.WebForm.User
 
         protected void btnThanhToan_Click(object sender, EventArgs e)
         {
+<<<<<<< HEAD
+            if (Session["UserID"] == null) { Response.Redirect("~/WebForm/VangLai/dangnhap.aspx", true); return; }
+
+            List<int> selectedCartItemIds = new List<int>();
+=======
             int userId;
             if (!int.TryParse(Session["UserID"]?.ToString(), out userId)) { Response.Redirect("~/WebForm/VangLai/dangnhap.aspx", true); return; }
 
@@ -233,12 +321,19 @@ namespace Webebook.WebForm.User
                 return;
             }
 
+>>>>>>> 0ea43edc707e5e92fc656cf72f9448994cf7c8b3
 
             foreach (GridViewRow row in gvGioHang.Rows)
             {
                 if (row.RowType == DataControlRowType.DataRow)
                 {
                     CheckBox chkSelect = (CheckBox)row.FindControl("chkSelect");
+<<<<<<< HEAD
+                    if (chkSelect != null && chkSelect.Checked)
+                    {
+                        int idGioHang = Convert.ToInt32(gvGioHang.DataKeys[row.RowIndex]["IDGioHang"]);
+                        selectedCartItemIds.Add(idGioHang);
+=======
                     // Check if DataKeys exists and index is valid before accessing
                     if (chkSelect != null && chkSelect.Checked && gvGioHang.DataKeys != null && row.RowIndex < gvGioHang.DataKeys.Count)
                     {
@@ -268,10 +363,22 @@ namespace Webebook.WebForm.User
                     else if (chkSelect == null)
                     {
                         LogError($"chkSelect is null in row {row.RowIndex} during checkout.");
+>>>>>>> 0ea43edc707e5e92fc656cf72f9448994cf7c8b3
                     }
                 }
             }
 
+<<<<<<< HEAD
+            if (selectedCartItemIds.Any())
+            {
+                Session["SelectedCartItems"] = selectedCartItemIds;
+                Response.Redirect("~/WebForm/User/thanhtoan.aspx", false);
+                Context.ApplicationInstance.CompleteRequest();
+            }
+            else
+            {
+                ShowMessage("Vui lòng chọn ít nhất một sản phẩm để thanh toán.", true);
+=======
             if (itemSelected)
             {
                 Session["SelectedCartItems"] = selectedCartItemIds;
@@ -283,18 +390,28 @@ namespace Webebook.WebForm.User
                 ShowMessage("Vui lòng chọn ít nhất một sản phẩm.", true);
                 // Ensure JS is re-initialized if needed after postback with message
                 ClientScript.RegisterStartupScript(this.GetType(), "CheckoutErrorReinit_" + DateTime.Now.Ticks, "initializeCartEvents();", true);
+>>>>>>> 0ea43edc707e5e92fc656cf72f9448994cf7c8b3
             }
         }
 
         private void UpdateMasterCartCount()
         {
+<<<<<<< HEAD
+=======
             // IMPORTANT: Ensure 'Webebook.WebForm.User.UserMaster' matches the EXACT namespace and class name of your Master Page code-behind file.
+>>>>>>> 0ea43edc707e5e92fc656cf72f9448994cf7c8b3
             if (Master is Webebook.WebForm.User.UserMaster master)
             {
                 master.UpdateCartCount();
             }
             else
             {
+<<<<<<< HEAD
+                LogError($"Could not find Master Page of expected type (Webebook.WebForm.User.UserMaster). Actual type: {Master?.GetType().FullName ?? "null"}");
+            }
+        }
+
+=======
                 // Log this error, it indicates a potential problem with Master Page type casting
                 LogError($"Could not find Master Page of expected type (Webebook.WebForm.User.UserMaster). Actual type: {Master?.GetType().FullName ?? "null"}");
                 // Optionally show a generic error or handle gracefully
@@ -302,14 +419,20 @@ namespace Webebook.WebForm.User
         }
 
 
+>>>>>>> 0ea43edc707e5e92fc656cf72f9448994cf7c8b3
         private void ShowMessage(string message, bool isError)
         {
             if (lblMessage != null)
             {
                 lblMessage.Text = Server.HtmlEncode(message);
                 lblMessage.CssClass = "block mb-4 p-3 rounded-md border text-sm " +
+<<<<<<< HEAD
+                                  (isError ? "bg-red-50 border-red-300 text-red-700"
+                                           : "bg-green-50 border-green-300 text-green-700");
+=======
                         (isError ? "bg-red-50 border-red-300 text-red-700"
                                  : "bg-green-50 border-green-300 text-green-700");
+>>>>>>> 0ea43edc707e5e92fc656cf72f9448994cf7c8b3
                 lblMessage.Visible = true;
             }
             else { LogError($"lblMessage control not found on page when trying to show: '{message}'"); }
@@ -317,10 +440,15 @@ namespace Webebook.WebForm.User
 
         private void LogError(string message)
         {
+<<<<<<< HEAD
+            System.Diagnostics.Debug.WriteLine("GIOHANG_ERROR: " + DateTime.Now + " | " + message);
+        }
+=======
             // Simple logging to Debug output. Replace/extend with a robust logging framework.
             System.Diagnostics.Debug.WriteLine("GIOHANG_ERROR: " + DateTime.Now + " | " + message);
             // Example: try { System.IO.File.AppendAllText(Server.MapPath("~/App_Data/ErrorLog_Cart.txt"), DateTime.Now + ": " + message + Environment.NewLine); } catch { /* Ignore logging errors */ }
         }
 
+>>>>>>> 0ea43edc707e5e92fc656cf72f9448994cf7c8b3
     }
 }

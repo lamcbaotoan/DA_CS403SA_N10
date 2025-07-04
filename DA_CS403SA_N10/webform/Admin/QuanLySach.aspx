@@ -3,6 +3,10 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <%-- Đảm bảo Font Awesome đã được liên kết (nên đặt trong MasterPage) --%>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<<<<<<< HEAD
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+=======
+>>>>>>> 0ea43edc707e5e92fc656cf72f9448994cf7c8b3
     <style>
         /* Các lớp utility của Tailwind sẽ xử lý hầu hết việc tạo kiểu. */
         .gridview-footer td { /* Ví dụ tạo kiểu cho phần phân trang */
@@ -149,8 +153,13 @@
                                     <i class="fas fa-edit fa-fw"></i>
                                 </asp:LinkButton>
                                 <asp:LinkButton ID="lnkXoa" runat="server" CommandName="Delete" CommandArgument='<%# Eval("IDSach") %>'
+<<<<<<< HEAD
+                                    CssClass="text-red-600 hover:text-red-900 transition duration-150 ease-in-out inline-flex items-center" ToolTip="Xóa">
+                                    <%-- Thuộc tính OnClientClick đã được xóa bỏ khỏi đây --%>
+=======
                                     CssClass="text-red-600 hover:text-red-900 transition duration-150 ease-in-out inline-flex items-center" ToolTip="Xóa"
                                     OnClientClick='<%# GetDeleteConfirmationScript(Eval("TenSach"), Eval("IDSach")) %>'>
+>>>>>>> 0ea43edc707e5e92fc656cf72f9448994cf7c8b3
                                     <i class="fas fa-trash fa-fw"></i>
                                 </asp:LinkButton>
                             </ItemTemplate>
@@ -180,4 +189,59 @@
         </div> <%-- Hết Grid Container --%>
 
     </div> <%-- Hết Container --%>
+<<<<<<< HEAD
+
+        <%-- BẮT ĐẦU: THÊM SCRIPT CHO POPUP XÓA --%>
+    <script type="text/javascript">
+        function showDeleteConfirmation(bookId, bookName, sourceControlUniqueId) {
+            const confirmationText = 'XÓA';
+            
+            Swal.fire({
+                title: '<span style="color: #d33;">BẠN CHẮC CHẮN MUỐN XÓA?</span>',
+                html: `
+                    <div class="text-left">
+                        <p class="mb-2">Bạn đang chuẩn bị xóa vĩnh viễn sách:</p>
+                        <p class="font-bold text-lg text-red-600 mb-4">${bookName} (ID: ${bookId})</p>
+                        <p class="font-semibold mb-2">Hành động này <strong>không thể hoàn tác</strong> và sẽ xóa tất cả dữ liệu liên quan:</p>
+                        <ul class="list-disc list-inside text-sm text-gray-600 space-y-1 bg-gray-50 p-3 rounded-md border">
+                            <li>Trong Tủ sách của tất cả người dùng</li>
+                            <li>Trong Giỏ hàng của tất cả người dùng</li>
+                            <li>Trong các Chi tiết đơn hàng đã có</li>
+                            <li>Tất cả bình luận và tương tác</li>
+                            <li>Nội dung sách, chương sách (nếu có)</li>
+                        </ul>
+                        <p class="mt-4">Để xác nhận, vui lòng gõ <strong class="text-red-700">${confirmationText}</strong> vào ô bên dưới:</p>
+                    </div>`,
+                icon: 'warning',
+                input: 'text',
+                inputPlaceholder: `Gõ '${confirmationText}' để xác nhận`,
+                inputAttributes: {
+                    autocapitalize: 'off',
+                    autocorrect: 'off'
+                },
+                showCancelButton: true,
+                confirmButtonText: 'Tôi hiểu và Xác Nhận Xóa',
+                cancelButtonText: 'Hủy',
+                confirmButtonColor: '#d33', // Màu đỏ cho nút xóa
+                cancelButtonColor: '#3085d6',
+                // Kiểm tra đầu vào trước khi xác nhận
+                preConfirm: () => {
+                    if (Swal.getInput().value.trim().toUpperCase() !== confirmationText) {
+                        Swal.showValidationMessage(`Vui lòng gõ chính xác "${confirmationText}" để xác nhận.`);
+                        return false; // Ngăn không cho đóng popup
+                    }
+                    return true;
+                },
+                allowOutsideClick: () => !Swal.isLoading()
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // Nếu xác nhận thành công, trigger postback của ASP.NET để thực thi lệnh xóa
+                    __doPostBack(sourceControlUniqueId, '');
+                }
+            });
+        }
+    </script>
+    <%-- KẾT THÚC: THÊM SCRIPT CHO POPUP XÓA --%>
+=======
+>>>>>>> 0ea43edc707e5e92fc656cf72f9448994cf7c8b3
 </asp:Content>
