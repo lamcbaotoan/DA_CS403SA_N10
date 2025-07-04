@@ -290,8 +290,6 @@ namespace Webebook.WebForm.Admin
                         lblError.Visible = true;
                     }
                 }
-<<<<<<< HEAD
-=======
                 // ================= THAY ĐỔI BẮT ĐẦU =================
                 // Gán sự kiện OnClientClick cho nút xóa
                 var lnkDelete = (LinkButton)e.Row.FindControl("lnkDeleteContent");
@@ -304,7 +302,6 @@ namespace Webebook.WebForm.Admin
                     lnkDelete.OnClientClick = $"showChapterDeleteConfirmation('{soChuong}', '{idNoiDung}', '{lnkDelete.UniqueID}'); return false;";
                 }
                 // ================= THAY ĐỔI KẾT THÚC =================
->>>>>>> 0a9fbe2f8465cd726941e5daf97b553a3dffae1c
             }
         }
 

@@ -70,9 +70,9 @@
                         <asp:HyperLink ID="hlLogin" runat="server" NavigateUrl="~/WebForm/VangLai/dangnhap.aspx" CssClass="px-4 py-2 bg-white text-blue-600 text-sm font-semibold rounded-md shadow hover:bg-gray-100 transition duration-150 ease-in-out">Đăng Nhập</asp:HyperLink>
                         <asp:HyperLink ID="hlRegister" runat="server" NavigateUrl="~/WebForm/VangLai/dangky.aspx" CssClass="px-4 py-2 bg-purple-500 hover:bg-purple-700 text-white text-sm font-semibold rounded-md shadow transition duration-150 ease-in-out hidden sm:inline-block">Đăng Ký</asp:HyperLink>
                         <%-- Nút menu cho mobile (nếu cần) --%>
-<button type="button" id="mobile-menu-button" class="md:hidden p-2 rounded-md hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-label="Menu">
-    <i class="fas fa-bars text-xl"></i>
-</button>
+                        <button type="button" id="mobile-menu-button" class="md:hidden p-2 rounded-md hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-label="Menu">
+                            <i class="fas fa-bars text-xl"></i>
+                        </button>
                     </nav>
                 </div>
                  <%-- Mobile Menu (Ẩn ban đầu) --%>

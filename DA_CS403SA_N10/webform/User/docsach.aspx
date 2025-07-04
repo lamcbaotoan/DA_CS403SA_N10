@@ -49,7 +49,6 @@
         .image-reader { display: flex; overflow: hidden; width: 100%; box-sizing: border-box; position: relative; background-color: #fff; }
         .image-reader .image-item { box-sizing: border-box; flex-shrink: 0; display: flex; justify-content: center; align-items: center; overflow: hidden; }
         .image-reader .reader-image { display: block; margin: 0 auto; max-width: 100%; max-height: 100%; object-fit: contain; } /* contain là an toàn nhất */
-<<<<<<< HEAD
         .image-reader-vertical { flex-direction: column; overflow-y: auto; overflow-x: hidden; height: auto; background-color: transparent; }
         .image-reader-vertical .image-item { width: 100%; margin-bottom: 1px; height: auto; aspect-ratio: unset; padding: 0; /* Sát nhau */ }
         .image-reader-vertical.fit-width .reader-image { width: 100%; height: auto; max-width: 100%; /* Đảm bảo không vượt quá */ }
@@ -97,39 +96,6 @@
             }
         }
         /* --- END: ANTI-COPY CSS --- */
-=======
-
-        /* --- Cuộn Dọc --- */
-        .image-reader-vertical { flex-direction: column; overflow-y: auto; overflow-x: hidden; height: auto; background-color: transparent; }
-        .image-reader-vertical .image-item { width: 100%; margin-bottom: 1px; height: auto; aspect-ratio: unset; padding: 0; /* Sát nhau */ }
-        /* Dọc - Vừa khung: Bỏ giới hạn 665px, rộng 100% */
-        .image-reader-vertical.fit-width .reader-image { width: 100%; height: auto; max-width: 100%; /* Đảm bảo không vượt quá */ }
-        /* Dọc - Gốc: Giới hạn 665px */
-         .image-reader-vertical.fit-original .image-item { width: 100%; /* Item vẫn chiếm 100% để căn giữa ảnh */ text-align: center; }
-         .image-reader-vertical.fit-original .reader-image { max-width: 665px; /* Giới hạn chiều rộng */ width: auto; height: auto; display: inline-block; /* Để căn giữa hoạt động */ }
-
-        /* --- Ngang --- */
-        .image-reader-horizontal { flex-direction: row; overflow-x: auto; overflow-y: hidden; scroll-snap-type: x proximity; -webkit-overflow-scrolling: touch; height: calc(100vh - 60px); }
-        .image-reader-horizontal .image-item { scroll-snap-align: center; height: 100%; padding: 0 2px; /* Thêm lại khoảng cách nhỏ ngang */ display: flex; justify-content: center; align-items: center; overflow: hidden;}
-        /* Ảnh ngang - Vừa khung */
-        .image-reader-horizontal.fit-width .reader-image { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; } /* Vừa cả rộng và cao của item */
-        /* Ảnh ngang - Gốc */
-        .image-reader-horizontal.fit-original .reader-image { max-width: none; max-height: 100%; /* Giới hạn chiều cao */ height: auto; width: auto; object-fit: contain; }
-
-        /* Kiểu trang ngang */
-        .image-reader-horizontal.page-single .image-item { width: 100%; }
-        .image-reader-horizontal.page-double .image-item { width: 50%; }
-        .image-reader-horizontal.page-triple .image-item { width: 33.333333%; }
-
-        /* Hướng Đọc RTL */
-        .image-reader-horizontal.read-rtl { direction: rtl; }
-        .image-reader-horizontal.read-rtl .image-item { direction: ltr; }
-
-        /* Lớp phủ Chạm để Chuyển Trang */
-        #imageTapOverlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 10; display: none; cursor: pointer; }
-        #imageTapOverlay.active { display: block; }
-        /* --- KẾT THÚC CSS IMAGE READER --- */
->>>>>>> 0ea43edc707e5e92fc656cf72f9448994cf7c8b3
 
     </style>
 </asp:Content>
@@ -153,7 +119,6 @@
         <div id="readerContent" class="reader-content">
             <%-- Panel TEXT --%>
             <asp:Panel ID="pnlTextContent" runat="server" Visible="false">
-<<<<<<< HEAD
                 <div id="textContentWrapper" class="prose prose-lg prose-indigo max-w-none px-4 md:px-6 py-2"> <asp:Literal ID="litTextContent" runat="server" Mode="PassThrough"></asp:Literal> </div>
             </asp:Panel>
             <%-- Panel IMAGE --%>
@@ -165,19 +130,6 @@
                         </ItemTemplate>
                     </asp:Repeater>
                 </div>
-=======
-                 <div id="textContentWrapper" class="prose prose-lg prose-indigo max-w-none px-4 md:px-6 py-2"> <asp:Literal ID="litTextContent" runat="server" Mode="PassThrough"></asp:Literal> </div>
-            </asp:Panel>
-            <%-- Panel IMAGE --%>
-            <asp:Panel ID="pnlImageContent" runat="server" Visible="false">
-                 <div id="imageContentWrapper" class="not-prose image-reader image-reader-vertical fit-width"> <%-- Mặc định dọc, vừa khung --%>
-                    <asp:Repeater ID="rptImageContent" runat="server">
-                        <ItemTemplate>
-                             <div class="image-item" data-index="<%# Container.ItemIndex %>"> <img src="<%# Container.DataItem %>" alt="Trang <%# Container.ItemIndex + 1 %>" loading="lazy" class="reader-image block mx-auto" /> </div>
-                        </ItemTemplate>
-                    </asp:Repeater>
-                 </div>
->>>>>>> 0ea43edc707e5e92fc656cf72f9448994cf7c8b3
             </asp:Panel>
             <%-- Panel FILE VIEWER --%>
             <asp:Panel ID="pnlFileViewer" runat="server" Visible="false"> <div class="max-w-4xl mx-auto px-4 md:px-0"> <asp:Literal ID="litFileViewerContent" runat="server" Mode="PassThrough"></asp:Literal> </div> </asp:Panel>
@@ -187,7 +139,6 @@
         <div class="max-w-3xl mx-auto px-4 md:px-0 mt-8">
             <asp:UpdatePanel ID="UpdatePanelComments" runat="server" UpdateMode="Conditional">
                 <ContentTemplate>
-<<<<<<< HEAD
                     <div class="comment-section pt-8 border-t border-gray-200">
                         <h2 class="text-xl font-semibold text-gray-800 mb-6">Bình luận (<asp:Label ID="lblCommentCount" runat="server" Text="0"></asp:Label>)</h2>
                         <div class="comment-form mb-8">
@@ -213,33 +164,6 @@
                             </asp:Repeater>
                         </div>
                     </div>
-=======
-                     <div class="comment-section pt-8 border-t border-gray-200">
-                         <h2 class="text-xl font-semibold text-gray-800 mb-6">Bình luận (<asp:Label ID="lblCommentCount" runat="server" Text="0"></asp:Label>)</h2>
-                         <div class="comment-form mb-8">
-                             <asp:TextBox ID="txtCommentInput" runat="server" TextMode="MultiLine" placeholder="Viết bình luận của bạn..." Rows="3" CssClass="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 text-sm"></asp:TextBox>
-                             <asp:RequiredFieldValidator ID="rfvComment" runat="server" ControlToValidate="txtCommentInput" ValidationGroup="CommentValidation" ErrorMessage="Vui lòng nhập nội dung." Display="Dynamic" CssClass="text-red-600 text-xs mt-1"></asp:RequiredFieldValidator>
-                             <div class="text-right mt-3 relative">
-                                 <asp:Button ID="btnSubmitComment" runat="server" Text="Gửi bình luận" OnClick="btnSubmitComment_Click" ValidationGroup="CommentValidation" CssClass="inline-flex items-center px-4 py-2 bg-indigo-600 border border-transparent rounded-md font-semibold text-sm text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50" />
-                                 <div id="commentSpinner" class="comment-loading-spinner"></div>
-                             </div>
-                         </div>
-                         <asp:Label ID="lblNoComments" runat="server" Text="Chưa có bình luận nào." CssClass="text-gray-500 text-sm italic block text-center" Visible="false"></asp:Label>
-                         <div class="comment-list space-y-6">
-                             <asp:Repeater ID="rptComments" runat="server">
-                                  <ItemTemplate>
-                                     <div class="comment-item flex gap-3">
-                                         <div class="comment-avatar flex-shrink-0"> <asp:Image ID="imgCommentAvatar" runat="server" ImageUrl='<%# GetAvatarUrl(Eval("AnhNen")) %>' AlternateText='<%# Eval("TenHienThi") %>' CssClass="w-10 h-10 rounded-full object-cover border border-gray-200" /> </div>
-                                         <div class="comment-body flex-grow bg-gray-50 p-3 rounded-md border border-gray-100">
-                                             <div class="comment-header flex justify-between items-baseline mb-1"> <span class="comment-author font-semibold text-gray-800 text-sm"><%# Eval("TenHienThi") %></span> <span class="comment-date text-xs text-gray-500"><%# Eval("NgayBinhLuan", "{0:dd/MM/yyyy HH:mm}") %></span> </div>
-                                             <div class="comment-text text-sm text-gray-700 leading-relaxed prose prose-sm max-w-none"> <asp:Literal ID="litCommentText" runat="server" Text='<%# FormatCommentText(Eval("BinhLuan")) %>' Mode="PassThrough"></asp:Literal> </div>
-                                         </div>
-                                     </div>
-                                 </ItemTemplate>
-                             </asp:Repeater>
-                         </div>
-                     </div>
->>>>>>> 0ea43edc707e5e92fc656cf72f9448994cf7c8b3
                 </ContentTemplate>
                 <Triggers> <asp:AsyncPostBackTrigger ControlID="btnSubmitComment" EventName="Click" /> </Triggers>
             </asp:UpdatePanel>
@@ -250,7 +174,6 @@
     <%-- Panel Điều hướng --%>
     <asp:Panel ID="pnlNavigation" runat="server" CssClass="reader-nav fixed bottom-2 right-2 md:bottom-4 md:right-4 flex flex-col items-center gap-2 z-40" Visible="false">
         <div id="nav-wrapper" class="p-1 rounded-full bg-gray-900/60 backdrop-blur-sm">
-<<<<<<< HEAD
             <asp:HyperLink ID="hlPrevChap" runat="server" ToolTip="Chương trước" CssClass="flex items-center justify-center w-11 h-11 hover:bg-gray-700/80 text-white rounded-full transition duration-200 ease-in-out"><i class="fas fa-chevron-left text-sm"></i></asp:HyperLink>
             <asp:HyperLink ID="hlNextChap" runat="server" ToolTip="Chương sau" CssClass="flex items-center justify-center w-11 h-11 hover:bg-gray-700/80 text-white rounded-full transition duration-200 ease-in-out"><i class="fas fa-chevron-right text-sm"></i></asp:HyperLink>
             <asp:LinkButton ID="btnToggleChapterList" runat="server" OnClientClick="toggleChapterPopup(); return false;" ToolTip="Danh sách chương" Visible="false" CssClass="flex items-center justify-center w-11 h-11 hover:bg-gray-700/80 text-white rounded-full transition duration-200 ease-in-out cursor-pointer"><i class="fas fa-list-ul text-sm"></i></asp:LinkButton>
@@ -269,32 +192,11 @@
                 <asp:Repeater ID="rptChapterListPopup" runat="server"> <ItemTemplate> <li> <a href='<%# ResolveUrl("~/WebForm/User/docsach.aspx?IDSach=") + Eval("IDSach") + "&SoChuong=" + Eval("SoChuong") %>' onclick="toggleChapterPopup();" class="block py-2 px-3 text-sm text-gray-700 hover:bg-indigo-50 rounded-md transition duration-150 ease-in-out truncate <%# Convert.ToInt32(Eval("SoChuong")) == currentChuong ? "bg-indigo-100 font-semibold text-indigo-700" : "" %>"> Chương <%# Eval("SoChuong") %> <%# !string.IsNullOrEmpty(Eval("TenChuong")?.ToString()) ? ": " + Server.HtmlEncode(Eval("TenChuong").ToString()) : "" %> </a> </li> </ItemTemplate> </asp:Repeater>
             </ul>
         </div>
-=======
-             <asp:HyperLink ID="hlPrevChap" runat="server" ToolTip="Chương trước" CssClass="flex items-center justify-center w-11 h-11 hover:bg-gray-700/80 text-white rounded-full transition duration-200 ease-in-out"><i class="fas fa-chevron-left text-sm"></i></asp:HyperLink>
-             <asp:HyperLink ID="hlNextChap" runat="server" ToolTip="Chương sau" CssClass="flex items-center justify-center w-11 h-11 hover:bg-gray-700/80 text-white rounded-full transition duration-200 ease-in-out"><i class="fas fa-chevron-right text-sm"></i></asp:HyperLink>
-             <asp:LinkButton ID="btnToggleChapterList" runat="server" OnClientClick="toggleChapterPopup(); return false;" ToolTip="Danh sách chương" Visible="false" CssClass="flex items-center justify-center w-11 h-11 hover:bg-gray-700/80 text-white rounded-full transition duration-200 ease-in-out cursor-pointer"><i class="fas fa-list-ul text-sm"></i></asp:LinkButton>
-             <asp:HyperLink ID="hlInfo" runat="server" ToolTip="Thông tin sách" CssClass="flex items-center justify-center w-11 h-11 hover:bg-gray-700/80 text-white rounded-full transition duration-200 ease-in-out"><i class="fas fa-info-circle text-sm"></i></asp:HyperLink>
-             <asp:HyperLink ID="hlBookshelf" runat="server" ToolTip="Tủ sách" CssClass="flex items-center justify-center w-11 h-11 hover:bg-gray-700/80 text-white rounded-full transition duration-200 ease-in-out"><i class="fas fa-book-bookmark text-sm"></i></asp:HyperLink>
-             <asp:LinkButton ID="btnToggleReaderSettings" runat="server" OnClientClick="toggleReaderSettingsPopup(); return false;" ToolTip="Cài đặt hiển thị" CssClass="flex items-center justify-center w-11 h-11 hover:bg-gray-700/80 text-white rounded-full transition duration-200 ease-in-out cursor-pointer"><i class="fas fa-cog text-sm"></i></asp:LinkButton>
-         </div>
-     </asp:Panel>
-
-    <%-- Popup Danh sách chương --%>
-    <asp:Panel ID="pnlChapterListPopup" runat="server" CssClass="chapter-popup fixed inset-0 bg-black/60 z-50 hidden items-center justify-center p-4" Style="display: none;">
-         <div class="chapter-popup-content bg-white p-5 md:p-6 rounded-lg shadow-xl max-h-[80vh] overflow-y-auto w-full max-w-sm relative">
-             <button type="button" class="chapter-popup-close absolute top-2 right-2 text-gray-500 hover:text-gray-800 text-2xl leading-none" title="Đóng" onclick="toggleChapterPopup();">×</button>
-             <h3 class="text-lg font-semibold mb-4 text-center text-gray-800">Danh sách chương</h3>
-             <ul class="popup-chapter-list -mx-1">
-                  <asp:Repeater ID="rptChapterListPopup" runat="server"> <ItemTemplate> <li> <a href='<%# ResolveUrl("~/WebForm/User/docsach.aspx?IDSach=") + Eval("IDSach") + "&SoChuong=" + Eval("SoChuong") %>' onclick="toggleChapterPopup();" class="block py-2 px-3 text-sm text-gray-700 hover:bg-indigo-50 rounded-md transition duration-150 ease-in-out truncate <%# Convert.ToInt32(Eval("SoChuong")) == currentChuong ? "bg-indigo-100 font-semibold text-indigo-700" : "" %>"> Chương <%# Eval("SoChuong") %> <%# !string.IsNullOrEmpty(Eval("TenChuong")?.ToString()) ? ": " + Server.HtmlEncode(Eval("TenChuong").ToString()) : "" %> </a> </li> </ItemTemplate> </asp:Repeater>
-              </ul>
-         </div>
->>>>>>> 0ea43edc707e5e92fc656cf72f9448994cf7c8b3
     </asp:Panel>
 
     <%-- Popup Cài đặt Đọc --%>
     <asp:Panel ID="pnlReaderSettingsPopup" runat="server" CssClass="reader-settings-popup fixed inset-0 bg-black/60 z-50 hidden items-center justify-center p-4" Style="display: none;">
         <div class="reader-settings-content bg-white p-5 md:p-6 rounded-lg shadow-xl max-h-[85vh] overflow-y-auto w-full max-w-xs relative text-sm">
-<<<<<<< HEAD
             <button type="button" class="reader-settings-close absolute top-2 right-2 text-gray-500 hover:text-gray-800 text-2xl leading-none" title="Đóng" onclick="toggleReaderSettingsPopup();">×</button>
             <h3 class="text-base font-semibold mb-5 text-center text-gray-800 border-b pb-2">Cài đặt hiển thị</h3>
             <%-- Cài đặt cho Truyện Chữ (Chỉ còn Màu nền, Font, Căn chỉnh) --%>
@@ -310,31 +212,10 @@
                 <div id="readingDirectionSetting" style="display: none;"><label class="block font-medium text-gray-700 mb-1.5">Hướng đọc (Ngang)</label><div class="flex gap-2" data-setting="readDirection"><button type="button" data-value="ltr" class="setting-btn flex-1 px-2 py-1 border border-gray-300 rounded text-xs hover:bg-gray-100 focus:outline-none focus:ring-1 focus:ring-indigo-500">Trái->Phải</button><button type="button" data-value="rtl" class="setting-btn flex-1 px-2 py-1 border border-gray-300 rounded text-xs hover:bg-gray-100 focus:outline-none focus:ring-1 focus:ring-indigo-500">Phải->Trái</button></div></div>
                 <div><label class="block font-medium text-gray-700 mb-1.5">Hiển thị ảnh</label><div class="flex gap-2" data-setting="imageFit"><button type="button" data-value="fit-width" class="setting-btn flex-1 px-2 py-1 border border-gray-300 rounded text-xs hover:bg-gray-100 focus:outline-none focus:ring-1 focus:ring-indigo-500">Vừa khung</button><button type="button" data-value="fit-original" class="setting-btn flex-1 px-2 py-1 border border-gray-300 rounded text-xs hover:bg-gray-100 focus:outline-none focus:ring-1 focus:ring-indigo-500">Gốc</button></div></div>
                 <div><label class="block font-medium text-gray-700 mb-1.5">Chuyển trang</label><div class="flex items-center gap-2" data-setting="tapToNavigate"><label class="flex items-center cursor-pointer"><input type="checkbox" id="chkTapToNavigate" class="setting-checkbox form-checkbox h-4 w-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"><span class="ml-2 text-gray-700">Chạm để chuyển</span></label></div></div>
-=======
-             <button type="button" class="reader-settings-close absolute top-2 right-2 text-gray-500 hover:text-gray-800 text-2xl leading-none" title="Đóng" onclick="toggleReaderSettingsPopup();">×</button>
-             <h3 class="text-base font-semibold mb-5 text-center text-gray-800 border-b pb-2">Cài đặt hiển thị</h3>
-             <%-- Cài đặt cho Truyện Chữ (Chỉ còn Màu nền, Font, Căn chỉnh) --%>
-             <div id="textReaderSettings" class="space-y-4" style="display: none;">
-                 <div><label class="block font-medium text-gray-700 mb-1.5">Màu nền</label><div class="flex flex-wrap gap-2" data-setting="bgColor"><button type="button" data-value="bg-white" class="setting-btn w-8 h-8 rounded border border-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-indigo-500" title="Trắng"></button><button type="button" data-value="bg-sepia" class="setting-btn w-8 h-8 rounded border border-gray-300 bg-[#fbf0d9] focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-indigo-500" title="Sepia"></button><button type="button" data-value="bg-gray-200" class="setting-btn w-8 h-8 rounded border border-gray-300 bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-indigo-500" title="Xám"></button><button type="button" data-value="bg-gray-800" class="setting-btn w-8 h-8 rounded border border-gray-600 bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-indigo-500" title="Tối"></button><button type="button" data-value="bg-black" class="setting-btn w-8 h-8 rounded border border-gray-600 bg-black focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-indigo-500" title="Đen"></button></div></div>
-                 <div><label for="selectFontFamily" class="block font-medium text-gray-700 mb-1">Font chữ</label><select id="selectFontFamily" data-setting="fontFamily" class="setting-select mt-1 block w-full pl-3 pr-10 py-1.5 text-base border border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"><option value="'Times New Roman', Times, serif">Times New Roman</option><option value="'Inter', sans-serif">Inter</option><option value="Arial, Helvetica, sans-serif">Arial</option><option value="'Lora', serif">Lora</option><option value="'Source Sans Pro', sans-serif">Source Sans Pro</option><option value="'Merriweather', serif">Merriweather</option><option value="'Verdana', Geneva, sans-serif">Verdana</option></select></div>
-                 <div><label class="block font-medium text-gray-700 mb-1.5">Căn chỉnh</label><div class="flex justify-around" data-setting="textAlign"><button type="button" data-value="text-left" class="setting-btn p-1.5 rounded border border-transparent hover:bg-gray-100 hover:border-gray-300 focus:outline-none focus:ring-1 focus:ring-indigo-500" title="Trái"><i class="fas fa-align-left w-5 h-5 inline-block"></i></button><button type="button" data-value="text-center" class="setting-btn p-1.5 rounded border border-transparent hover:bg-gray-100 hover:border-gray-300 focus:outline-none focus:ring-1 focus:ring-indigo-500" title="Giữa"><i class="fas fa-align-center w-5 h-5 inline-block"></i></button><button type="button" data-value="text-right" class="setting-btn p-1.5 rounded border border-transparent hover:bg-gray-100 hover:border-gray-300 focus:outline-none focus:ring-1 focus:ring-indigo-500" title="Phải"><i class="fas fa-align-right w-5 h-5 inline-block"></i></button><button type="button" data-value="text-justify" class="setting-btn p-1.5 rounded border border-transparent hover:bg-gray-100 hover:border-gray-300 focus:outline-none focus:ring-1 focus:ring-indigo-500" title="Đều"><i class="fas fa-align-justify w-5 h-5 inline-block"></i></button></div></div>
-             </div>
-             <%-- Cài đặt cho Truyện Tranh --%>
-             <div id="imageReaderSettings" class="space-y-4" style="display: none;">
-                 <div><label class="block font-medium text-gray-700 mb-1.5">Hướng xem</label><div class="flex gap-2" data-setting="orientation"><button type="button" data-value="vertical" class="setting-btn flex-1 px-2 py-1 border border-gray-300 rounded text-xs hover:bg-gray-100 focus:outline-none focus:ring-1 focus:ring-indigo-500 flex items-center justify-center gap-1"><i class="fas fa-arrows-alt-v"></i> Dọc</button><button type="button" data-value="horizontal" class="setting-btn flex-1 px-2 py-1 border border-gray-300 rounded text-xs hover:bg-gray-100 focus:outline-none focus:ring-1 focus:ring-indigo-500 flex items-center justify-center gap-1"><i class="fas fa-arrows-alt-h"></i> Ngang</button></div></div>
-                 <div id="horizontalPageModeSettings" class="space-y-1" style="display: none;"><label class="block font-medium text-gray-700 mb-1.5">Kiểu xem ngang</label><div class="grid grid-cols-3 gap-2" data-setting="horizontalMode"><button type="button" data-value="single" class="setting-btn px-2 py-1 border border-gray-300 rounded text-xs hover:bg-gray-100 focus:outline-none focus:ring-1 focus:ring-indigo-500">1 trang</button><button type="button" data-value="double" class="setting-btn px-2 py-1 border border-gray-300 rounded text-xs hover:bg-gray-100 focus:outline-none focus:ring-1 focus:ring-indigo-500">2 trang</button><button type="button" data-value="triple" class="setting-btn px-2 py-1 border border-gray-300 rounded text-xs hover:bg-gray-100 focus:outline-none focus:ring-1 focus:ring-indigo-500">3 trang</button></div></div>
-                 <div id="readingDirectionSetting" style="display: none;"><label class="block font-medium text-gray-700 mb-1.5">Hướng đọc (Ngang)</label><div class="flex gap-2" data-setting="readDirection"><button type="button" data-value="ltr" class="setting-btn flex-1 px-2 py-1 border border-gray-300 rounded text-xs hover:bg-gray-100 focus:outline-none focus:ring-1 focus:ring-indigo-500">Trái->Phải</button><button type="button" data-value="rtl" class="setting-btn flex-1 px-2 py-1 border border-gray-300 rounded text-xs hover:bg-gray-100 focus:outline-none focus:ring-1 focus:ring-indigo-500">Phải->Trái</button></div></div>
-                 <div><label class="block font-medium text-gray-700 mb-1.5">Hiển thị ảnh</label><div class="flex gap-2" data-setting="imageFit"><button type="button" data-value="fit-width" class="setting-btn flex-1 px-2 py-1 border border-gray-300 rounded text-xs hover:bg-gray-100 focus:outline-none focus:ring-1 focus:ring-indigo-500">Vừa khung</button><button type="button" data-value="fit-original" class="setting-btn flex-1 px-2 py-1 border border-gray-300 rounded text-xs hover:bg-gray-100 focus:outline-none focus:ring-1 focus:ring-indigo-500">Gốc</button></div></div>
-                 <div><label class="block font-medium text-gray-700 mb-1.5">Chuyển trang</label><div class="flex items-center gap-2" data-setting="tapToNavigate"><label class="flex items-center cursor-pointer"><input type="checkbox" id="chkTapToNavigate" class="setting-checkbox form-checkbox h-4 w-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500"><span class="ml-2 text-gray-700">Chạm để chuyển</span></label></div></div>
->>>>>>> 0ea43edc707e5e92fc656cf72f9448994cf7c8b3
             </div>
         </div>
     </asp:Panel>
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 0ea43edc707e5e92fc656cf72f9448994cf7c8b3
     <%-- JavaScript xử lý --%>
     <script type="text/javascript">
         // Khai báo biến toàn cục
@@ -382,10 +263,6 @@
             const cont=imageContentWrapper; const cW=$(cont).width(); const cH=$(cont).height(); const cX=event.offsetX; const cY=event.offsetY;
             const mode=localStorage.getItem('imageOrientation')||imageDefaults.orientation; console.log(`Tap detected. Mode: ${mode}`); // Sử dụng orientation
 
-<<<<<<< HEAD
-=======
-            // XỬ LÝ CHO CHẾ ĐỘ DỌC (VERTICAL) - Chạm Trái=Xuống, Phải=Lên
->>>>>>> 0ea43edc707e5e92fc656cf72f9448994cf7c8b3
             if (mode === 'vertical') {
                 const thrH = cW / 2; let action = (cX < thrH) ? 'down' : 'up'; console.log(`Vertical Tap Action: ${action}`);
                 let cS = cont.scrollTop; let mS = cont.scrollHeight - cH;
@@ -394,10 +271,6 @@
                 let a = cH * 0.85; let t = (action === 'down') ? cS + a : cS - a; t = Math.max(0, Math.min(t, mS));
                 $(cont).stop().animate({ scrollTop: t }, 150); console.log(`Vertical scroll ${action} to ${t}`);
             }
-<<<<<<< HEAD
-=======
-            // XỬ LÝ CHO CHẾ ĐỘ NGANG (HORIZONTAL) - Dùng scrollIntoView
->>>>>>> 0ea43edc707e5e92fc656cf72f9448994cf7c8b3
             else {
                 const isRTL=(localStorage.getItem('imageReadDirection')||imageDefaults.readDirection)==='rtl'; const thrH=cW/2; let action=(cX<thrH)?(isRTL?'next':'prev'):(isRTL?'prev':'next'); console.log(`Horizontal Tap Action: ${action}, RTL: ${isRTL}`);
                 let currentItem=null; let minCenterDist = Infinity; const items = Array.from(cont.querySelectorAll('.image-item')); const cScrollLeft = cont.scrollLeft; const cCenterX = cScrollLeft + cW / 2;
@@ -414,7 +287,6 @@
         // --- $(document).ready ---
         $(document).ready(function () {
             console.log("Document Ready: Initializing...");
-<<<<<<< HEAD
 
             // --- START: ANTI-COPY JAVASCRIPT ---
             // Chặn sự kiện chuột phải trên toàn bộ trang
@@ -438,8 +310,6 @@
             });
             // --- END: ANTI-COPY JAVASCRIPT ---
 
-=======
->>>>>>> 0ea43edc707e5e92fc656cf72f9448994cf7c8b3
             // 3. Logic ẩn/hiện thanh điều hướng
             var $navPanel=$('#<%= pnlNavigation.ClientID %>'); if($navPanel.length>0){var lST=0;var dt=5;var nH=$navPanel.outerHeight();var isHid=false;var tT=null;var tD=300; $(window).scroll(function(e){var st=$(this).scrollTop();if(Math.abs(lST-st)<=dt)return;if(isHid){$navPanel.addClass('hidden-by-scroll');lST=st;return;} if(st>lST&&st>nH){$navPanel.addClass('hidden-by-scroll');}else{if(st+$(window).height()<$(document).height()||st===0){$navPanel.removeClass('hidden-by-scroll');}} lST=st;}); $('#nav-wrapper').on('click',function(e){if(tT===null){tT=setTimeout(function(){tT=null;},tD);}else{clearTimeout(tT);tT=null;isHid=!isHid;if(isHid){$navPanel.addClass('hidden-by-scroll');}else{$navPanel.removeClass('hidden-by-scroll');$(window).trigger('scroll');}}}); $('#nav-wrapper').find('a, button').on('dblclick',function(e){e.stopPropagation();});}
 
@@ -455,11 +325,7 @@
             $settingsPopup.off('change.settingTxt').on('change.settingTxt', '#selectFontFamily', function () { applyTextSetting('fontFamily', $(this).val()); });
             $settingsPopup.on('click.settingTxt', '#textReaderSettings [data-setting="textAlign"] button', function () { applyTextSetting('textAlign', $(this).data('value')); $(this).attr('aria-pressed', 'true').siblings().attr('aria-pressed', 'false'); });
             // Image Settings
-<<<<<<< HEAD
             $settingsPopup.on('click.settingImg', '#imageReaderSettings [data-setting="orientation"] button', function () { applyImageSetting('orientation', $(this).data('value')); $(this).attr('aria-pressed', 'true').siblings().attr('aria-pressed', 'false'); });
-=======
-            $settingsPopup.off('click.settingImg').on('click.settingImg', '#imageReaderSettings [data-setting="orientation"] button', function () { applyImageSetting('orientation', $(this).data('value')); $(this).attr('aria-pressed', 'true').siblings().attr('aria-pressed', 'false'); });
->>>>>>> 0ea43edc707e5e92fc656cf72f9448994cf7c8b3
             $settingsPopup.on('click.settingImg', '#imageReaderSettings [data-setting="horizontalMode"] button', function () { applyImageSetting('horizontalMode', $(this).data('value')); $(this).attr('aria-pressed', 'true').siblings().attr('aria-pressed', 'false'); });
             $settingsPopup.on('click.settingImg', '#imageReaderSettings [data-setting="readDirection"] button', function () { applyImageSetting('readDirection', $(this).data('value')); $(this).attr('aria-pressed', 'true').siblings().attr('aria-pressed', 'false'); });
             $settingsPopup.on('click.settingImg', '#imageReaderSettings [data-setting="imageFit"] button', function () { applyImageSetting('imageFit', $(this).data('value')); $(this).attr('aria-pressed', 'true').siblings().attr('aria-pressed', 'false'); });

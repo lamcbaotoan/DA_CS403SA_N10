@@ -3,10 +3,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
-<<<<<<< HEAD
-=======
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
->>>>>>> 0a9fbe2f8465cd726941e5daf97b553a3dffae1c
     <style>
         .chapter-image-container { display: flex; flex-wrap: wrap; gap: 5px; align-items: center; }
         .chapter-image { height: 50px; width: auto; max-width: 70px; object-fit: cover; border: 1px solid #ccc; border-radius: 3px; }
@@ -128,16 +125,11 @@
                         <asp:TemplateField HeaderText="Hành Động" ItemStyle-CssClass="px-4 py-3 text-sm text-center w-32">
                             <ItemTemplate>
                                 <asp:LinkButton ID="lnkEditChapter" runat="server" CommandName="EditChapter" CommandArgument='<%# Eval("IDNoiDung") %>' CssClass="btn-link-edit">
-                                    <i class="fas fa-edit"></i> Sửa
+                                    <i class="fas fa-edit"></i>
                                 </asp:LinkButton>
-<<<<<<< HEAD
-                                <asp:LinkButton ID="lnkDeleteContent" runat="server" CommandName="Delete" CommandArgument='<%# Eval("IDNoiDung") %>' CssClass="btn-link-delete"
-                                    OnClientClick='<%# "return confirm(\"Bạn có chắc chắn muốn xóa chương " + Eval("SoChuong") + " không? Hành động này sẽ xóa cả file ảnh liên quan và không thể hoàn tác!\");" %>'>
-=======
                                 <asp:LinkButton ID="lnkDeleteContent" runat="server" CommandName="Delete" CommandArgument='<%# Eval("IDNoiDung") %>' CssClass="btn-link-delete">
                                     <%-- Thuộc tính OnClientClick đã được xóa bỏ --%>
->>>>>>> 0a9fbe2f8465cd726941e5daf97b553a3dffae1c
-                                    <i class="fas fa-trash"></i> Xóa
+                                    <i class="fas fa-trash"></i> 
                                 </asp:LinkButton>
                             </ItemTemplate>
                         </asp:TemplateField>
@@ -146,8 +138,6 @@
             </div>
         </div>
     </div>
-<<<<<<< HEAD
-=======
 
         <%-- BẮT ĐẦU: THÊM SCRIPT CHO POPUP XÓA CHƯƠNG --%>
     <script type="text/javascript">
@@ -170,5 +160,4 @@
         }
     </script>
     <%-- KẾT THÚC: THÊM SCRIPT CHO POPUP XÓA CHƯƠNG --%>
->>>>>>> 0a9fbe2f8465cd726941e5daf97b553a3dffae1c
 </asp:Content>

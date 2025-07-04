@@ -177,209 +177,54 @@
     <Content Include="images\QR\placeholder-qr-viettelmoney.png" />
     <Content Include="images\QR\placeholder-qr-vnpay.png" />
     <Content Include="images\QR\placeholder-qr.png" />
+    <Content Include="WebForm\Admin\adminhome.aspx" />
+    <Content Include="WebForm\Admin\BaoCaoDoanhThu.aspx" />
+    <Content Include="WebForm\Admin\ChiTietDonHang_Admin.aspx" />
+    <Content Include="WebForm\Admin\QuanLyDanhGia.aspx" />
+    <Content Include="WebForm\Admin\QuanLyDonHang.aspx" />
+    <Content Include="WebForm\Admin\QuanLyNguoiDung.aspx" />
+    <Content Include="WebForm\Admin\QuanLySach.aspx" />
+    <Content Include="WebForm\Admin\SuaNoiDungChuong.aspx" />
+    <Content Include="WebForm\Admin\SuaNoiDungSach.aspx" />
+    <Content Include="WebForm\Admin\SuaSach.aspx" />
+    <Content Include="WebForm\Admin\ThemChuongMoi.aspx" />
+    <Content Include="WebForm\Admin\ThemNguoiDung.aspx" />
+    <Content Include="WebForm\Admin\ThemSach.aspx" />
+    <Content Include="WebForm\Admin\ThongKeSach.aspx" />
+    <Content Include="WebForm\User\chitietdonhang.aspx" />
+    <Content Include="WebForm\User\chitietsach_chap.aspx" />
+    <Content Include="WebForm\User\chitietsach_user.aspx" />
+    <Content Include="WebForm\User\danhgia.aspx" />
+    <Content Include="WebForm\User\danhsachsach_user.aspx" />
+    <Content Include="WebForm\User\docsach.aspx" />
+    <Content Include="WebForm\User\giohang_user.aspx" />
+    <Content Include="WebForm\User\gioithieu_user.aspx" />
+    <Content Include="WebForm\User\lichsumuahang.aspx" />
+    <Content Include="WebForm\User\thanhtoan.aspx" />
+    <Content Include="WebForm\User\thanhvien.aspx" />
+    <Content Include="WebForm\User\thongtincanhan.aspx" />
+    <Content Include="WebForm\User\timkiem_user.aspx" />
+    <Content Include="WebForm\User\tusach.aspx" />
+    <Content Include="WebForm\User\usertrangchu.aspx" />
+    <Content Include="WebForm\User\xacnhandonhang.aspx" />
+    <Content Include="WebForm\VangLai\chitietsach.aspx" />
+    <Content Include="WebForm\VangLai\dangky.aspx" />
+    <Content Include="WebForm\VangLai\dangnhap.aspx" />
+    <Content Include="WebForm\VangLai\danhsachsach.aspx" />
+    <Content Include="WebForm\VangLai\gioithieu.aspx" />
+    <Content Include="WebForm\VangLai\quenmatkhau.aspx" />
+    <Content Include="WebForm\VangLai\thanhvienvl.aspx" />
+    <Content Include="WebForm\VangLai\timkiem.aspx" />
+    <Content Include="WebForm\VangLai\trangchu.aspx" />
     <None Include="scripts\jquery-3.7.1.intellisense.js" />
     <Content Include="scripts\jquery-3.7.1.js" />
     <Content Include="scripts\jquery-3.7.1.min.js" />
     <Content Include="scripts\jquery-3.7.1.slim.js" />
     <Content Include="scripts\jquery-3.7.1.slim.min.js" />
     <Content Include="Web.config" />
-<<<<<<< HEAD
-    <Content Include="webform\Admin\adminhome.aspx" />
-    <Content Include="webform\Admin\QuanLySach.aspx" />
-    <Content Include="webform\Admin\SuaNoiDungChuong.aspx" />
-    <Content Include="webform\Admin\SuaNoiDungSach.aspx" />
-    <Content Include="webform\Admin\SuaSach.aspx" />
-    <Content Include="webform\Admin\ThemChuongMoi.aspx" />
-    <Content Include="webform\Admin\ThemSach.aspx" />
-    <Content Include="webform\User\chitietsach_chap.aspx" />
-    <Content Include="webform\User\docsach.aspx" />
-    <Content Include="webform\User\giohang_user.aspx" />
-    <Content Include="webform\User\tusach.aspx" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="webform\Admin\Admin.Master.cs">
-      <DependentUpon>Admin.Master</DependentUpon>
-    </Compile>
-    <Compile Include="webform\Admin\Admin.Master.designer.cs">
-      <DependentUpon>Admin.Master</DependentUpon>
-    </Compile>
-    <Compile Include="webform\Admin\adminhome.aspx.cs">
-      <DependentUpon>adminhome.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="webform\Admin\adminhome.aspx.designer.cs">
-      <DependentUpon>adminhome.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="webform\Admin\QuanLySach.aspx.cs">
-      <DependentUpon>QuanLySach.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="webform\Admin\QuanLySach.aspx.designer.cs">
-      <DependentUpon>QuanLySach.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="webform\Admin\SuaNoiDungChuong.aspx.cs">
-      <DependentUpon>SuaNoiDungChuong.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="webform\Admin\SuaNoiDungChuong.aspx.designer.cs">
-      <DependentUpon>SuaNoiDungChuong.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="webform\Admin\SuaNoiDungSach.aspx.cs">
-      <DependentUpon>SuaNoiDungSach.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="webform\Admin\SuaNoiDungSach.aspx.designer.cs">
-      <DependentUpon>SuaNoiDungSach.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="webform\Admin\SuaSach.aspx.cs">
-      <DependentUpon>SuaSach.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="webform\Admin\SuaSach.aspx.designer.cs">
-      <DependentUpon>SuaSach.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="webform\Admin\ThemChuongMoi.aspx.cs">
-      <DependentUpon>ThemChuongMoi.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="webform\Admin\ThemChuongMoi.aspx.designer.cs">
-      <DependentUpon>ThemChuongMoi.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="webform\Admin\ThemSach.aspx.cs">
-      <DependentUpon>ThemSach.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="webform\Admin\ThemSach.aspx.designer.cs">
-      <DependentUpon>ThemSach.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="webform\User\chitietsach_chap.aspx.cs">
-      <DependentUpon>chitietsach_chap.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="webform\User\chitietsach_chap.aspx.designer.cs">
-      <DependentUpon>chitietsach_chap.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="webform\User\docsach.aspx.cs">
-      <DependentUpon>docsach.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="webform\User\docsach.aspx.designer.cs">
-      <DependentUpon>docsach.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="webform\User\giohang_user.aspx.cs">
-      <DependentUpon>giohang_user.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="webform\User\giohang_user.aspx.designer.cs">
-      <DependentUpon>giohang_user.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="webform\User\tusach.aspx.cs">
-      <DependentUpon>tusach.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="webform\User\tusach.aspx.designer.cs">
-      <DependentUpon>tusach.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="webform\User\User.Master.cs">
-      <DependentUpon>User.Master</DependentUpon>
-    </Compile>
-    <Compile Include="webform\User\User.Master.designer.cs">
-      <DependentUpon>User.Master</DependentUpon>
-    </Compile>
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-    <Content Include="webform\Admin\adminhome.aspx" />
->>>>>>> 757b752e1a665f286a6b9901d0c7bb818d2d3c46
-    <Content Include="webform\Admin\BaoCaoDoanhThu.aspx" />
-    <Content Include="webform\Admin\ChiTietDonHang_Admin.aspx" />
-    <Content Include="webform\Admin\QuanLyDanhGia.aspx" />
-    <Content Include="webform\Admin\QuanLyDonHang.aspx" />
-    <Content Include="webform\Admin\QuanLyNguoiDung.aspx" />
-<<<<<<< HEAD
-    <Content Include="webform\Admin\ThemNguoiDung.aspx" />
-    <Content Include="webform\Admin\ThongKeSach.aspx" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="webform\Admin\BaoCaoDoanhThu.aspx.cs">
-      <DependentUpon>BaoCaoDoanhThu.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="webform\Admin\BaoCaoDoanhThu.aspx.designer.cs">
-      <DependentUpon>BaoCaoDoanhThu.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="webform\Admin\ChiTietDonHang_Admin.aspx.cs">
-      <DependentUpon>ChiTietDonHang_Admin.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="webform\Admin\ChiTietDonHang_Admin.aspx.designer.cs">
-      <DependentUpon>ChiTietDonHang_Admin.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="webform\Admin\QuanLyDanhGia.aspx.cs">
-      <DependentUpon>QuanLyDanhGia.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="webform\Admin\QuanLyDanhGia.aspx.designer.cs">
-      <DependentUpon>QuanLyDanhGia.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="webform\Admin\QuanLyDonHang.aspx.cs">
-      <DependentUpon>QuanLyDonHang.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="webform\Admin\QuanLyDonHang.aspx.designer.cs">
-      <DependentUpon>QuanLyDonHang.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="webform\Admin\QuanLyNguoiDung.aspx.cs">
-      <DependentUpon>QuanLyNguoiDung.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="webform\Admin\QuanLyNguoiDung.aspx.designer.cs">
-      <DependentUpon>QuanLyNguoiDung.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="webform\Admin\ThemNguoiDung.aspx.cs">
-      <DependentUpon>ThemNguoiDung.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="webform\Admin\ThemNguoiDung.aspx.designer.cs">
-      <DependentUpon>ThemNguoiDung.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="webform\Admin\ThongKeSach.aspx.cs">
-      <DependentUpon>ThongKeSach.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="webform\Admin\ThongKeSach.aspx.designer.cs">
-      <DependentUpon>ThongKeSach.aspx</DependentUpon>
-=======
-<<<<<<< HEAD
-=======
-    <Content Include="webform\Admin\QuanLySach.aspx" />
-    <Content Include="webform\Admin\SuaNoiDungChuong.aspx" />
-    <Content Include="webform\Admin\SuaNoiDungSach.aspx" />
-    <Content Include="webform\Admin\SuaSach.aspx" />
-    <Content Include="webform\Admin\ThemChuongMoi.aspx" />
-    <Content Include="webform\Admin\ThemNguoiDung.aspx" />
-    <Content Include="webform\Admin\ThemSach.aspx" />
-    <Content Include="webform\Admin\ThongKeSach.aspx" />
->>>>>>> 757b752e1a665f286a6b9901d0c7bb818d2d3c46
-    <Content Include="webform\User\chitietdonhang.aspx" />
-    <Content Include="webform\User\chitietsach_chap.aspx" />
-    <Content Include="webform\User\chitietsach_user.aspx" />
-    <Content Include="webform\User\danhgia.aspx" />
-    <Content Include="webform\User\danhsachsach_user.aspx" />
-    <Content Include="webform\User\docsach.aspx" />
-    <Content Include="webform\User\giohang_user.aspx" />
-    <Content Include="webform\User\gioithieu_user.aspx" />
-    <Content Include="webform\User\lichsumuahang.aspx" />
-    <Content Include="webform\User\thanhtoan.aspx" />
-    <Content Include="webform\User\thanhvien.aspx" />
-    <Content Include="webform\User\thongtincanhan.aspx" />
-    <Content Include="webform\User\timkiem_user.aspx" />
-    <Content Include="webform\User\tusach.aspx" />
-    <Content Include="webform\User\usertrangchu.aspx" />
-    <Content Include="webform\User\xacnhandonhang.aspx" />
-    <Content Include="webform\VangLai\chitietsach.aspx" />
-    <Content Include="webform\VangLai\dangky.aspx" />
-    <Content Include="webform\VangLai\dangnhap.aspx" />
-    <Content Include="webform\VangLai\danhsachsach.aspx" />
-    <Content Include="webform\VangLai\gioithieu.aspx" />
-    <Content Include="webform\VangLai\quenmatkhau.aspx" />
-    <Content Include="webform\VangLai\thanhvienvl.aspx" />
-    <Content Include="webform\VangLai\timkiem.aspx" />
-    <Content Include="webform\VangLai\trangchu.aspx" />
-    <Content Include="webform\VangLai\WebForm1.aspx" />
->>>>>>> 0ea43edc707e5e92fc656cf72f9448994cf7c8b3
+    <Content Include="WebForm\Admin\Admin.Master" />
+    <Content Include="WebForm\User\User.Master" />
+    <Content Include="WebForm\VangLai\Site.Master" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdminAssistantService.asmx.cs">
@@ -398,310 +243,257 @@
       <DependentUpon>UploadHandler.ashx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="webform\Admin\Admin.Master.cs">
-      <DependentUpon>Admin.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="webform\Admin\Admin.Master.designer.cs">
+    <Compile Include="WebForm\Admin\Admin.Master.cs">
       <DependentUpon>Admin.Master</DependentUpon>
     </Compile>
-    <Compile Include="webform\Admin\adminhome.aspx.cs">
+    <Compile Include="WebForm\Admin\Admin.Master.designer.cs">
+      <DependentUpon>Admin.Master</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm\Admin\adminhome.aspx.cs">
       <DependentUpon>adminhome.aspx</DependentUpon>
     </Compile>
-    <Compile Include="webform\Admin\adminhome.aspx.designer.cs">
+    <Compile Include="WebForm\Admin\adminhome.aspx.designer.cs">
       <DependentUpon>adminhome.aspx</DependentUpon>
     </Compile>
-    <Compile Include="webform\Admin\BaoCaoDoanhThu.aspx.cs">
-      <DependentUpon>BaoCaoDoanhThu.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="webform\Admin\BaoCaoDoanhThu.aspx.designer.cs">
+    <Compile Include="WebForm\Admin\BaoCaoDoanhThu.aspx.cs">
       <DependentUpon>BaoCaoDoanhThu.aspx</DependentUpon>
     </Compile>
-    <Compile Include="webform\Admin\ChiTietDonHang_Admin.aspx.cs">
+    <Compile Include="WebForm\Admin\BaoCaoDoanhThu.aspx.designer.cs">
+      <DependentUpon>BaoCaoDoanhThu.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm\Admin\ChiTietDonHang_Admin.aspx.cs">
       <DependentUpon>ChiTietDonHang_Admin.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="webform\Admin\ChiTietDonHang_Admin.aspx.designer.cs">
+    <Compile Include="WebForm\Admin\ChiTietDonHang_Admin.aspx.designer.cs">
       <DependentUpon>ChiTietDonHang_Admin.aspx</DependentUpon>
     </Compile>
-    <Compile Include="webform\Admin\QuanLyDanhGia.aspx.cs">
-      <DependentUpon>QuanLyDanhGia.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="webform\Admin\QuanLyDanhGia.aspx.designer.cs">
+    <Compile Include="WebForm\Admin\QuanLyDanhGia.aspx.cs">
       <DependentUpon>QuanLyDanhGia.aspx</DependentUpon>
     </Compile>
-    <Compile Include="webform\Admin\QuanLyDonHang.aspx.cs">
+    <Compile Include="WebForm\Admin\QuanLyDanhGia.aspx.designer.cs">
+      <DependentUpon>QuanLyDanhGia.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm\Admin\QuanLyDonHang.aspx.cs">
       <DependentUpon>QuanLyDonHang.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="webform\Admin\QuanLyDonHang.aspx.designer.cs">
+    <Compile Include="WebForm\Admin\QuanLyDonHang.aspx.designer.cs">
       <DependentUpon>QuanLyDonHang.aspx</DependentUpon>
     </Compile>
-    <Compile Include="webform\Admin\QuanLyNguoiDung.aspx.cs">
-      <DependentUpon>QuanLyNguoiDung.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="webform\Admin\QuanLyNguoiDung.aspx.designer.cs">
+    <Compile Include="WebForm\Admin\QuanLyNguoiDung.aspx.cs">
       <DependentUpon>QuanLyNguoiDung.aspx</DependentUpon>
     </Compile>
-    <Compile Include="webform\Admin\QuanLySach.aspx.cs">
+    <Compile Include="WebForm\Admin\QuanLyNguoiDung.aspx.designer.cs">
+      <DependentUpon>QuanLyNguoiDung.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm\Admin\QuanLySach.aspx.cs">
       <DependentUpon>QuanLySach.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="webform\Admin\QuanLySach.aspx.designer.cs">
+    <Compile Include="WebForm\Admin\QuanLySach.aspx.designer.cs">
       <DependentUpon>QuanLySach.aspx</DependentUpon>
     </Compile>
-    <Compile Include="webform\Admin\SuaNoiDungChuong.aspx.cs">
-      <DependentUpon>SuaNoiDungChuong.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="webform\Admin\SuaNoiDungChuong.aspx.designer.cs">
+    <Compile Include="WebForm\Admin\SuaNoiDungChuong.aspx.cs">
       <DependentUpon>SuaNoiDungChuong.aspx</DependentUpon>
     </Compile>
-    <Compile Include="webform\Admin\SuaNoiDungSach.aspx.cs">
+    <Compile Include="WebForm\Admin\SuaNoiDungChuong.aspx.designer.cs">
+      <DependentUpon>SuaNoiDungChuong.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm\Admin\SuaNoiDungSach.aspx.cs">
       <DependentUpon>SuaNoiDungSach.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="webform\Admin\SuaNoiDungSach.aspx.designer.cs">
+    <Compile Include="WebForm\Admin\SuaNoiDungSach.aspx.designer.cs">
       <DependentUpon>SuaNoiDungSach.aspx</DependentUpon>
     </Compile>
-    <Compile Include="webform\Admin\SuaSach.aspx.cs">
-      <DependentUpon>SuaSach.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="webform\Admin\SuaSach.aspx.designer.cs">
+    <Compile Include="WebForm\Admin\SuaSach.aspx.cs">
       <DependentUpon>SuaSach.aspx</DependentUpon>
     </Compile>
-    <Compile Include="webform\Admin\ThemChuongMoi.aspx.cs">
+    <Compile Include="WebForm\Admin\SuaSach.aspx.designer.cs">
+      <DependentUpon>SuaSach.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm\Admin\ThemChuongMoi.aspx.cs">
       <DependentUpon>ThemChuongMoi.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="webform\Admin\ThemChuongMoi.aspx.designer.cs">
+    <Compile Include="WebForm\Admin\ThemChuongMoi.aspx.designer.cs">
       <DependentUpon>ThemChuongMoi.aspx</DependentUpon>
     </Compile>
-    <Compile Include="webform\Admin\ThemNguoiDung.aspx.cs">
-      <DependentUpon>ThemNguoiDung.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="webform\Admin\ThemNguoiDung.aspx.designer.cs">
+    <Compile Include="WebForm\Admin\ThemNguoiDung.aspx.cs">
       <DependentUpon>ThemNguoiDung.aspx</DependentUpon>
     </Compile>
-    <Compile Include="webform\Admin\ThemSach.aspx.cs">
+    <Compile Include="WebForm\Admin\ThemNguoiDung.aspx.designer.cs">
+      <DependentUpon>ThemNguoiDung.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm\Admin\ThemSach.aspx.cs">
       <DependentUpon>ThemSach.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="webform\Admin\ThemSach.aspx.designer.cs">
+    <Compile Include="WebForm\Admin\ThemSach.aspx.designer.cs">
       <DependentUpon>ThemSach.aspx</DependentUpon>
     </Compile>
-    <Compile Include="webform\Admin\ThongKeSach.aspx.cs">
-      <DependentUpon>ThongKeSach.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="webform\Admin\ThongKeSach.aspx.designer.cs">
+    <Compile Include="WebForm\Admin\ThongKeSach.aspx.cs">
       <DependentUpon>ThongKeSach.aspx</DependentUpon>
     </Compile>
-    <Compile Include="webform\User\chitietdonhang.aspx.cs">
+    <Compile Include="WebForm\Admin\ThongKeSach.aspx.designer.cs">
+      <DependentUpon>ThongKeSach.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm\User\chitietdonhang.aspx.cs">
       <DependentUpon>chitietdonhang.aspx</DependentUpon>
     </Compile>
-    <Compile Include="webform\User\chitietdonhang.aspx.designer.cs">
+    <Compile Include="WebForm\User\chitietdonhang.aspx.designer.cs">
       <DependentUpon>chitietdonhang.aspx</DependentUpon>
     </Compile>
-    <Compile Include="webform\User\chitietsach_chap.aspx.cs">
-      <DependentUpon>chitietsach_chap.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="webform\User\chitietsach_chap.aspx.designer.cs">
+    <Compile Include="WebForm\User\chitietsach_chap.aspx.cs">
       <DependentUpon>chitietsach_chap.aspx</DependentUpon>
     </Compile>
-    <Compile Include="webform\User\chitietsach_user.aspx.cs">
+    <Compile Include="WebForm\User\chitietsach_chap.aspx.designer.cs">
+      <DependentUpon>chitietsach_chap.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm\User\chitietsach_user.aspx.cs">
       <DependentUpon>chitietsach_user.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="webform\User\chitietsach_user.aspx.designer.cs">
+    <Compile Include="WebForm\User\chitietsach_user.aspx.designer.cs">
       <DependentUpon>chitietsach_user.aspx</DependentUpon>
     </Compile>
-    <Compile Include="webform\User\danhgia.aspx.cs">
-      <DependentUpon>danhgia.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="webform\User\danhgia.aspx.designer.cs">
+    <Compile Include="WebForm\User\danhgia.aspx.cs">
       <DependentUpon>danhgia.aspx</DependentUpon>
     </Compile>
-    <Compile Include="webform\User\danhsachsach_user.aspx.cs">
+    <Compile Include="WebForm\User\danhgia.aspx.designer.cs">
+      <DependentUpon>danhgia.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm\User\danhsachsach_user.aspx.cs">
       <DependentUpon>danhsachsach_user.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="webform\User\danhsachsach_user.aspx.designer.cs">
+    <Compile Include="WebForm\User\danhsachsach_user.aspx.designer.cs">
       <DependentUpon>danhsachsach_user.aspx</DependentUpon>
     </Compile>
-    <Compile Include="webform\User\docsach.aspx.cs">
-      <DependentUpon>docsach.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="webform\User\docsach.aspx.designer.cs">
+    <Compile Include="WebForm\User\docsach.aspx.cs">
       <DependentUpon>docsach.aspx</DependentUpon>
     </Compile>
-    <Compile Include="webform\User\giohang_user.aspx.cs">
+    <Compile Include="WebForm\User\docsach.aspx.designer.cs">
+      <DependentUpon>docsach.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm\User\giohang_user.aspx.cs">
       <DependentUpon>giohang_user.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="webform\User\giohang_user.aspx.designer.cs">
+    <Compile Include="WebForm\User\giohang_user.aspx.designer.cs">
       <DependentUpon>giohang_user.aspx</DependentUpon>
     </Compile>
-    <Compile Include="webform\User\gioithieu_user.aspx.cs">
-      <DependentUpon>gioithieu_user.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="webform\User\gioithieu_user.aspx.designer.cs">
+    <Compile Include="WebForm\User\gioithieu_user.aspx.cs">
       <DependentUpon>gioithieu_user.aspx</DependentUpon>
     </Compile>
-    <Compile Include="webform\User\lichsumuahang.aspx.cs">
+    <Compile Include="WebForm\User\gioithieu_user.aspx.designer.cs">
+      <DependentUpon>gioithieu_user.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm\User\lichsumuahang.aspx.cs">
       <DependentUpon>lichsumuahang.aspx</DependentUpon>
     </Compile>
-    <Compile Include="webform\User\lichsumuahang.aspx.designer.cs">
+    <Compile Include="WebForm\User\lichsumuahang.aspx.designer.cs">
       <DependentUpon>lichsumuahang.aspx</DependentUpon>
     </Compile>
-    <Compile Include="webform\User\thanhtoan.aspx.cs">
-      <DependentUpon>thanhtoan.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="webform\User\thanhtoan.aspx.designer.cs">
+    <Compile Include="WebForm\User\thanhtoan.aspx.cs">
       <DependentUpon>thanhtoan.aspx</DependentUpon>
     </Compile>
-    <Compile Include="webform\User\thanhvien.aspx.cs">
+    <Compile Include="WebForm\User\thanhtoan.aspx.designer.cs">
+      <DependentUpon>thanhtoan.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm\User\thanhvien.aspx.cs">
       <DependentUpon>thanhvien.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="webform\User\thanhvien.aspx.designer.cs">
+    <Compile Include="WebForm\User\thanhvien.aspx.designer.cs">
       <DependentUpon>thanhvien.aspx</DependentUpon>
     </Compile>
-    <Compile Include="webform\User\thongtincanhan.aspx.cs">
-      <DependentUpon>thongtincanhan.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="webform\User\thongtincanhan.aspx.designer.cs">
+    <Compile Include="WebForm\User\thongtincanhan.aspx.cs">
       <DependentUpon>thongtincanhan.aspx</DependentUpon>
     </Compile>
-    <Compile Include="webform\User\timkiem_user.aspx.cs">
+    <Compile Include="WebForm\User\thongtincanhan.aspx.designer.cs">
+      <DependentUpon>thongtincanhan.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm\User\timkiem_user.aspx.cs">
       <DependentUpon>timkiem_user.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="webform\User\timkiem_user.aspx.designer.cs">
+    <Compile Include="WebForm\User\timkiem_user.aspx.designer.cs">
       <DependentUpon>timkiem_user.aspx</DependentUpon>
     </Compile>
-    <Compile Include="webform\User\tusach.aspx.cs">
-      <DependentUpon>tusach.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="webform\User\tusach.aspx.designer.cs">
+    <Compile Include="WebForm\User\tusach.aspx.cs">
       <DependentUpon>tusach.aspx</DependentUpon>
     </Compile>
-    <Compile Include="webform\User\User.Master.cs">
+    <Compile Include="WebForm\User\tusach.aspx.designer.cs">
+      <DependentUpon>tusach.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm\User\User.Master.cs">
       <DependentUpon>User.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="webform\User\User.Master.designer.cs">
+    <Compile Include="WebForm\User\User.Master.designer.cs">
       <DependentUpon>User.Master</DependentUpon>
     </Compile>
-    <Compile Include="webform\User\usertrangchu.aspx.cs">
-      <DependentUpon>usertrangchu.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="webform\User\usertrangchu.aspx.designer.cs">
+    <Compile Include="WebForm\User\usertrangchu.aspx.cs">
       <DependentUpon>usertrangchu.aspx</DependentUpon>
     </Compile>
-    <Compile Include="webform\User\xacnhandonhang.aspx.cs">
+    <Compile Include="WebForm\User\usertrangchu.aspx.designer.cs">
+      <DependentUpon>usertrangchu.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm\User\xacnhandonhang.aspx.cs">
       <DependentUpon>xacnhandonhang.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="webform\User\xacnhandonhang.aspx.designer.cs">
+    <Compile Include="WebForm\User\xacnhandonhang.aspx.designer.cs">
       <DependentUpon>xacnhandonhang.aspx</DependentUpon>
     </Compile>
-    <Compile Include="webform\VangLai\chitietsach.aspx.cs">
-      <DependentUpon>chitietsach.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="webform\VangLai\chitietsach.aspx.designer.cs">
+    <Compile Include="WebForm\VangLai\chitietsach.aspx.cs">
       <DependentUpon>chitietsach.aspx</DependentUpon>
     </Compile>
-    <Compile Include="webform\VangLai\dangky.aspx.cs">
+    <Compile Include="WebForm\VangLai\chitietsach.aspx.designer.cs">
+      <DependentUpon>chitietsach.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm\VangLai\dangky.aspx.cs">
       <DependentUpon>dangky.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="webform\VangLai\dangky.aspx.designer.cs">
+    <Compile Include="WebForm\VangLai\dangky.aspx.designer.cs">
       <DependentUpon>dangky.aspx</DependentUpon>
     </Compile>
-    <Compile Include="webform\VangLai\dangnhap.aspx.cs">
-      <DependentUpon>dangnhap.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="webform\VangLai\dangnhap.aspx.designer.cs">
+    <Compile Include="WebForm\VangLai\dangnhap.aspx.cs">
       <DependentUpon>dangnhap.aspx</DependentUpon>
     </Compile>
-    <Compile Include="webform\VangLai\danhsachsach.aspx.cs">
+    <Compile Include="WebForm\VangLai\dangnhap.aspx.designer.cs">
+      <DependentUpon>dangnhap.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm\VangLai\danhsachsach.aspx.cs">
       <DependentUpon>danhsachsach.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="webform\VangLai\danhsachsach.aspx.designer.cs">
+    <Compile Include="WebForm\VangLai\danhsachsach.aspx.designer.cs">
       <DependentUpon>danhsachsach.aspx</DependentUpon>
     </Compile>
-    <Compile Include="webform\VangLai\gioithieu.aspx.cs">
-      <DependentUpon>gioithieu.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="webform\VangLai\gioithieu.aspx.designer.cs">
+    <Compile Include="WebForm\VangLai\gioithieu.aspx.cs">
       <DependentUpon>gioithieu.aspx</DependentUpon>
     </Compile>
-    <Compile Include="webform\VangLai\quenmatkhau.aspx.cs">
+    <Compile Include="WebForm\VangLai\gioithieu.aspx.designer.cs">
+      <DependentUpon>gioithieu.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm\VangLai\quenmatkhau.aspx.cs">
       <DependentUpon>quenmatkhau.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="webform\VangLai\quenmatkhau.aspx.designer.cs">
+    <Compile Include="WebForm\VangLai\quenmatkhau.aspx.designer.cs">
       <DependentUpon>quenmatkhau.aspx</DependentUpon>
     </Compile>
-    <Compile Include="webform\VangLai\Site.Master.cs">
-      <DependentUpon>Site.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="webform\VangLai\Site.Master.designer.cs">
+    <Compile Include="WebForm\VangLai\Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
     </Compile>
-    <Compile Include="webform\VangLai\thanhvienvl.aspx.cs">
+    <Compile Include="WebForm\VangLai\Site.Master.designer.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm\VangLai\thanhvienvl.aspx.cs">
       <DependentUpon>thanhvienvl.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="webform\VangLai\thanhvienvl.aspx.designer.cs">
+    <Compile Include="WebForm\VangLai\thanhvienvl.aspx.designer.cs">
       <DependentUpon>thanhvienvl.aspx</DependentUpon>
     </Compile>
-    <Compile Include="webform\VangLai\timkiem.aspx.cs">
-      <DependentUpon>timkiem.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="webform\VangLai\timkiem.aspx.designer.cs">
+    <Compile Include="WebForm\VangLai\timkiem.aspx.cs">
       <DependentUpon>timkiem.aspx</DependentUpon>
     </Compile>
-    <Compile Include="webform\VangLai\trangchu.aspx.cs">
+    <Compile Include="WebForm\VangLai\timkiem.aspx.designer.cs">
+      <DependentUpon>timkiem.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm\VangLai\trangchu.aspx.cs">
       <DependentUpon>trangchu.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="webform\VangLai\trangchu.aspx.designer.cs">
+    <Compile Include="WebForm\VangLai\trangchu.aspx.designer.cs">
       <DependentUpon>trangchu.aspx</DependentUpon>
-<<<<<<< HEAD
->>>>>>> 9b244bbd52650f1051f7c446f4749e0c1b18e3a7
->>>>>>> 3792d9fd889da65a4202dd3d3f6106476f865db9
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-=======
-    </Compile>
-    <Compile Include="webform\VangLai\WebForm1.aspx.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="webform\VangLai\WebForm1.aspx.designer.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -709,23 +501,12 @@
     <None Include="packages.config" />
     <Content Include="scripts\jquery-3.7.1.min.map" />
     <Content Include="scripts\jquery-3.7.1.slim.min.map" />
->>>>>>> 757b752e1a665f286a6b9901d0c7bb818d2d3c46
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
-    <Content Include="webform\Admin\Admin.Master" />
-    <Content Include="webform\User\User.Master" />
-<<<<<<< HEAD
-=======
-    <Content Include="webform\VangLai\Site.Master" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="webform\user\" />
-    <Folder Include="webform\VangLai\" />
->>>>>>> 0ea43edc707e5e92fc656cf72f9448994cf7c8b3
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

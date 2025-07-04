@@ -314,7 +314,6 @@ namespace Webebook.WebForm.User
         }
 
         // Hiển thị trình xem PDF nhúng
-<<<<<<< HEAD
         // Helper: Hiển thị trình xem PDF nhúng
         private void DisplayPdfEmbed(string fileUrl)
         {
@@ -329,18 +328,6 @@ namespace Webebook.WebForm.User
                 </p>
             </iframe>
         </div>";
-=======
-        private void DisplayPdfEmbed(string fileUrl)
-        {
-            litFileViewerContent.Text = $@"
-                 <div class='not-prose file-viewer-container mt-4' style='height: 80vh; border: 1px solid #ccc;'>
-                     <iframe src='{fileUrl}' type='application/pdf' width='100%' height='100%'>
-                         <p>Trình duyệt của bạn không hỗ trợ xem PDF trực tiếp.
-                             <a href='{fileUrl}' target='_blank' class='text-indigo-600 hover:underline'>Nhấn vào đây để tải về</a>.
-                         </p>
-                     </iframe>
-                 </div>";
->>>>>>> 0ea43edc707e5e92fc656cf72f9448994cf7c8b3
         }
 
         // Cập nhật vị trí đọc cuối cùng của người dùng cho sách này
